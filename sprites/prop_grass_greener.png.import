@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kkdder4nlcs2"
-path="res://.godot/imported/Bee.png-a1cda6ca5b5fdaa5d5f5dbc792ac2543.ctex"
+uid="uid://b88mp032quo0w"
+path="res://.godot/imported/prop_grass_greener.png-3611b38036a25d6a4df32b33236d5ee5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bee/Bee.png"
-dest_files=["res://.godot/imported/Bee.png-a1cda6ca5b5fdaa5d5f5dbc792ac2543.ctex"]
+source_file="res://sprites/prop_grass_greener.png"
+dest_files=["res://.godot/imported/prop_grass_greener.png-3611b38036a25d6a4df32b33236d5ee5.ctex"]
 
 [params]
 

@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfwpk23clejcm"]
+
+[ext_resource type="Script" path="res://flower/flower.gd" id="1_hwbv3"]
+[ext_resource type="PackedScene" uid="uid://cxew2wf8xbr5r" path="res://components/comp_in_area.tscn" id="1_jdgby"]
+[ext_resource type="Texture2D" uid="uid://de62ttyo31ql" path="res://flower/flower1.png" id="1_knc30"]
+[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://ui/square.png" id="4_180o0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ep81l"]
+radius = 13.0384
+
+[node name="Flower" type="Node2D" node_paths=PackedStringArray("progress_bar")]
+script = ExtResource("1_hwbv3")
+progress_bar = NodePath("ProgressBar")
+
+[node name="CompInArea" parent="." node_paths=PackedStringArray("component") instance=ExtResource("1_jdgby")]
+component = NodePath("..")
+function_name = "gather_pollen"
+has_argument = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_knc30")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ep81l")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -8.0
+offset_top = 9.0
+offset_right = 8.0
+offset_bottom = 14.0
+value = 20.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_180o0")
+texture_progress = ExtResource("4_180o0")
+tint_under = Color(0.101961, 0.054902, 0.0784314, 1)
+tint_progress = Color(0.74902, 0.168627, 0.160784, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

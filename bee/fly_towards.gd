@@ -17,7 +17,7 @@ func enter():
 
 func update(delta : float):
 	if final_position.distance_squared_to(bee.position) < REDIRECT_DISTANCE:
-		print("to close to the coursor")
+		#print("to close to the coursor")
 		enter()
 	if target_location.distance_squared_to(final_position) > NEW_POSITION_DISTANCE:
 		print("coursor moved")

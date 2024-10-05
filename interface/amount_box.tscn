@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://blj7ti13fmh85"]
+
+[ext_resource type="Script" path="res://interface/amount_box.gd" id="1_07bpx"]
+[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://ui/square.png" id="2_v0ha4"]
+[ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/Bee1.png" id="3_4eo6d"]
+
+[node name="AmountBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_right = -1.0
+script = ExtResource("1_07bpx")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0.101961, 0.054902, 0.0784314, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 1.0
+offset_right = 33.0
+offset_bottom = 32.0
+texture = ExtResource("2_v0ha4")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 28.0
+offset_bottom = 26.0
+texture = ExtResource("3_4eo6d")
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 18.0
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 10
+text = "100"
+horizontal_alignment = 1
