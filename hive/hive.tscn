@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfwalf1sfdxhe"]
+
+[ext_resource type="Texture2D" uid="uid://rj2lw13efhrp" path="res://hive/beehive.png" id="1_6smtp"]
+[ext_resource type="Script" path="res://hive/hive_data.gd" id="1_25ou0"]
+[ext_resource type="PackedScene" uid="uid://cxew2wf8xbr5r" path="res://components/comp_in_area.tscn" id="2_vuxuf"]
+[ext_resource type="PackedScene" uid="uid://dfis1aunv1mul" path="res://hive/comp_hive.tscn" id="3_vn5dp"]
+[ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="5_m7ity"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7cgb0"]
+radius = 21.0
+
+[node name="Hive" type="Node2D"]
+script = ExtResource("1_25ou0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6smtp")
+
+[node name="CompInArea" parent="." node_paths=PackedStringArray("component") instance=ExtResource("2_vuxuf")]
+component = NodePath("../CompHive")
+function_name = "give_pollen"
+has_argument = true
+shape = SubResource("CircleShape2D_7cgb0")
+
+[node name="CompHive" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_vn5dp")]
+parent = NodePath("..")
+bee = ExtResource("5_m7ity")

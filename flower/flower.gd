@@ -1,16 +1,16 @@
 extends Node2D
 
-@export var max_pollens : int = 5
-@export var progress_bar : Node
+@export var image : CompressedTexture2D		##texture of object
+@export var max_pollens : int = 5			##max amount of pollens which can be stored at once
+var progress_bar : Node
 var current_pollens : int
 	
 func _ready():
+	progress_bar = $ProgressBar
 	current_pollens = max_pollens
 	progress_bar.max_value = current_pollens
 	progress_bar.value = current_pollens
-	
-func _process(delta: float) -> void:
-	print($Timer.time_left)
+	$Sprite2D.texture = image
 	
 func gather_pollen(character : Node):
 	#checking is character have backpack component

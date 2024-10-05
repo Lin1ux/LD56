@@ -1,11 +1,6 @@
 extends Area2D
 
-@export var parent : Node ##Parent of component
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
+@export var parent : Node 		##Parent of component
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

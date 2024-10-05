@@ -19,3 +19,10 @@ func decrease_pollen(amount : int):
 	pollen_amount -= amount
 	if pollen_amount < 0:
 		pollen_amount = 0
+
+#remove pollens and returns value before cleaning up	
+func remove_pollen():
+	var pollens = pollen_amount
+	pollen_amount = 0
+	return pollens
+	

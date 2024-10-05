@@ -5,25 +5,20 @@
 [ext_resource type="Texture2D" uid="uid://de62ttyo31ql" path="res://flower/flower1.png" id="1_knc30"]
 [ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://ui/square.png" id="4_180o0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ep81l"]
-radius = 13.0384
+[sub_resource type="CircleShape2D" id="CircleShape2D_xathf"]
 
-[node name="Flower" type="Node2D" node_paths=PackedStringArray("progress_bar")]
+[node name="Flower" type="Node2D"]
 script = ExtResource("1_hwbv3")
-progress_bar = NodePath("ProgressBar")
+image = ExtResource("1_knc30")
 
 [node name="CompInArea" parent="." node_paths=PackedStringArray("component") instance=ExtResource("1_jdgby")]
 component = NodePath("..")
 function_name = "gather_pollen"
 has_argument = true
+shape = SubResource("CircleShape2D_xathf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_knc30")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_ep81l")
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -8.0
