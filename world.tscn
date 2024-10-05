@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cba46e4uahmff"]
+[gd_scene load_steps=10 format=3 uid="uid://cba46e4uahmff"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="1_oqf80"]
+[ext_resource type="Script" path="res://interface/ui.gd" id="4_5dwdf"]
+[ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="4_djjkn"]
+[ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/Bee1.png" id="5_t563b"]
+[ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="6_7u8t0"]
 
 [sub_resource type="Environment" id="Environment_i2q20"]
 background_mode = 3
@@ -212,3 +216,26 @@ offset_left = 46.0
 offset_top = -16.0
 offset_right = 86.0
 offset_bottom = 24.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_5dwdf")
+
+[node name="BeesInfo" parent="CanvasLayer/UI" instance=ExtResource("4_djjkn")]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0
+texture = ExtResource("5_t563b")
+
+[node name="PollenInfo" parent="CanvasLayer/UI" instance=ExtResource("4_djjkn")]
+offset_left = 36.0
+offset_top = 2.0
+offset_right = 36.0
+offset_bottom = 2.0
+texture = ExtResource("6_7u8t0")
