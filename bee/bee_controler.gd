@@ -2,19 +2,20 @@ extends RigidBody2D
 
 
 var direction : Vector2
+@export_group("Movement")
 @export var acceleration : float = 10
 
 @export var max_speed : float = 4
 
-
 @export var random_shpere_radius : float = 50
-
-
 
 @export var tween_duration: float = 0.2
 var direction_tween: Tween
 
 var side_acceleration : float
+#Components
+@export_group("Components")
+@export var backpack : Node		##Component of backpack
 
 
 # Called when the node enters the scene tree for the first time.
@@ -60,5 +61,8 @@ func new_target(target_position : Vector2):
 	direction_tween = create_tween()
 	direction_tween.tween_property(self,"direction",new_direction,tween_duration)
 	direction_tween.set_trans(Tween.TRANS_SPRING)	
+	
+func get_backpack():
+	return backpack
 	
 	

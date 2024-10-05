@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctn52y1n6l3u3"]
+[gd_scene load_steps=6 format=3 uid="uid://cba46e4uahmff"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
@@ -42,195 +42,167 @@ stretch_mode = 1
 material = SubResource("ShaderMaterial_b5yfb")
 
 [node name="Bee" parent="Bees" instance=ExtResource("1_ic6f1")]
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee2" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(193, 69)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee3" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(243, -41)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee4" parent="Bees" instance=ExtResource("1_ic6f1")]
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee5" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(-100, 113)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee6" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(-131, -119)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee7" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(86, -93)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee8" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee9" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee10" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee11" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee12" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee13" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee14" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee15" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee16" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee17" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee18" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee19" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee20" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee21" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee22" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee23" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee24" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee25" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee26" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee27" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee28" parent="Bees" instance=ExtResource("1_ic6f1")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
