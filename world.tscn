@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctn52y1n6l3u3"]
+
+[ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
+[ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
+[ext_resource type="Shader" path="res://outline.gdshader" id="1_oqf80"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5yfb"]
+shader = ExtResource("1_oqf80")
+shader_parameter/line_thickness = 1
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/screen_size = Vector2(640, 360)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -423.0
+offset_top = -215.0
+offset_right = 482.0
+offset_bottom = 260.0
+texture = ExtResource("1_hs1qf")
+stretch_mode = 1
+
+[node name="Bees" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_b5yfb")
+
+[node name="Bee" parent="Bees" instance=ExtResource("1_ic6f1")]
+mass = 0.01
+inertia = 10.0
+acceleration = 40.0
+max_speed = 500.0
+
+[node name="Bee2" parent="Bees" instance=ExtResource("1_ic6f1")]
+position = Vector2(193, 69)
+mass = 0.01
+inertia = 10.0
+acceleration = 40.0
+max_speed = 500.0
+
+[node name="Bee3" parent="Bees" instance=ExtResource("1_ic6f1")]
+position = Vector2(243, -41)
+mass = 0.01
+inertia = 10.0
+acceleration = 40.0
+max_speed = 500.0
+
+[node name="Bee4" parent="Bees" instance=ExtResource("1_ic6f1")]
+mass = 0.01
+inertia = 10.0
+acceleration = 40.0
+max_speed = 500.0
+
+[node name="Bee5" parent="Bees" instance=ExtResource("1_ic6f1")]
+position = Vector2(-100, 113)
+mass = 0.01
+inertia = 10.0
+acceleration = 40.0
+max_speed = 500.0
+
+[node name="Bee6" parent="Bees" instance=ExtResource("1_ic6f1")]
+position = Vector2(-131, -119)
+mass = 0.01
+inertia = 10.0
+acceleration = 40.0
+max_speed = 500.0
+
+[node name="Bee7" parent="Bees" instance=ExtResource("1_ic6f1")]
+position = Vector2(86, -93)
+mass = 0.01
+inertia = 10.0
+acceleration = 40.0
+max_speed = 500.0
+
+[node name="Bee8" parent="Bees" instance=ExtResource("1_ic6f1")]
+position = Vector2(55, 99)
+mass = 0.01
+inertia = 10.0
+acceleration = 40.0
+max_speed = 500.0
