@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfwpk23clejcm"]
+
+[ext_resource type="Script" path="res://flower/flower.gd" id="1_hwbv3"]
+[ext_resource type="PackedScene" uid="uid://cxew2wf8xbr5r" path="res://components/comp_in_area.tscn" id="1_jdgby"]
+[ext_resource type="Texture2D" uid="uid://de62ttyo31ql" path="res://flower/flower1.png" id="1_knc30"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ep81l"]
+radius = 13.0384
+
+[node name="Flower" type="Node2D"]
+script = ExtResource("1_hwbv3")
+
+[node name="CompInArea" parent="." node_paths=PackedStringArray("component") instance=ExtResource("1_jdgby")]
+component = NodePath("..")
+function_name = "gather_pollen"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_knc30")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ep81l")

@@ -1,17 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://w24gbxobovvk"]
+[gd_scene load_steps=3 format=3 uid="uid://w24gbxobovvk"]
 
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_2gaek"]
+[ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="2_1o5tm"]
+[gd_scene load_steps=2 format=3 uid="uid://bfpwjx0d5a0py"]
+
+[ext_resource type="PackedScene" uid="uid://ctn52y1n6l3u3" path="res://world.tscn" id="1_3oa8l"]
 
 [node name="game" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 325)
+[node name="World" parent="." instance=ExtResource("1_3oa8l")]
 
-[node name="Bee" parent="." instance=ExtResource("1_2gaek")]
-mass = 0.01
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Bee2" parent="." instance=ExtResource("1_2gaek")]
 position = Vector2(193, 69)
@@ -60,3 +59,12 @@ mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
+
+[node name="Flower" parent="." instance=ExtResource("2_1o5tm")]
+position = Vector2(346, 261)
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 70.0
+offset_bottom = 43.0
+text = "BEE"

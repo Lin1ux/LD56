@@ -6,11 +6,23 @@ var direction : Vector2
 
 @export var max_speed : float = 4
 
+
+@export var random_shpere_radius : float = 50
+
+
+
+@export var tween_duration: float = 0.2
 var direction_tween: Tween
+
+var side_acceleration : float
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	custom_integrator = true
+
+	side_acceleration = randf_range(-1,1)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,12 +30,13 @@ func _process(delta):
 	pass
 	
 func _integrate_forces(state : PhysicsDirectBodyState2D):
-	var ratio = 1
-	if direction.dot(state.linear_velocity) < 0.25:
-		ratio = 0.1
 	
-	state.apply_impulse(direction * acceleration * ratio)
 	
+	
+	state.apply_impulse(direction * acceleration)
+	
+	var side_motion = direction.rotated(deg_to_rad(90))
+	state.apply_impulse(side_motion * side_acceleration)
 	
 	
 	if state.linear_velocity.length() > max_speed:
@@ -33,19 +46,19 @@ func _integrate_forces(state : PhysicsDirectBodyState2D):
 	
 	
 func _physics_process(delta):
+		pass
+		
+	
+	
+
+func new_target(target_position : Vector2):
 	if direction_tween:
 		direction_tween.kill()
 		
-		
-		
-	var new_direction = (get_global_mouse_position() - position).normalized()
-	
-	
-	
+	var new_direction = (target_position - position).normalized()
+
 	direction_tween = create_tween()
-	direction_tween.tween_property(self,"direction",new_direction,0.4)
-	direction_tween.set_trans(Tween.TRANS_QUAD)	
-		
-	
+	direction_tween.tween_property(self,"direction",new_direction,tween_duration)
+	direction_tween.set_trans(Tween.TRANS_SPRING)	
 	
 	
