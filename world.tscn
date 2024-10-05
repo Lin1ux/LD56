@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cba46e4uahmff"]
+[gd_scene load_steps=11 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="4_djjkn"]
 [ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/Bee1.png" id="5_t563b"]
 [ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="6_7u8t0"]
+[ext_resource type="Script" path="res://bee/bee_manager.gd" id="6_ayyef"]
 
 [sub_resource type="Environment" id="Environment_i2q20"]
 background_mode = 3
@@ -42,175 +43,6 @@ offset_bottom = 260.0
 texture = ExtResource("1_hs1qf")
 stretch_mode = 1
 
-[node name="Bees" type="CanvasGroup" parent="."]
-material = SubResource("ShaderMaterial_b5yfb")
-
-[node name="Bee" parent="Bees" instance=ExtResource("1_ic6f1")]
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee2" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(193, 69)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee3" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(243, -41)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee4" parent="Bees" instance=ExtResource("1_ic6f1")]
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee5" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(-100, 113)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee6" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(-131, -119)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee7" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(86, -93)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee8" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee9" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee10" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee11" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee12" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee13" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee14" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee15" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee16" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee17" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee18" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee19" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee20" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee21" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee22" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee23" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee24" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee25" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee26" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee27" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee28" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 46.0
 offset_top = -16.0
@@ -239,3 +71,148 @@ offset_top = 2.0
 offset_right = 36.0
 offset_bottom = 2.0
 texture = ExtResource("6_7u8t0")
+
+[node name="BeeManager" type="Node2D" parent="."]
+script = ExtResource("6_ayyef")
+bee_prefab = ExtResource("1_ic6f1")
+
+[node name="Bees" type="CanvasGroup" parent="BeeManager"]
+material = SubResource("ShaderMaterial_b5yfb")
+
+[node name="Bee" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+inertia = 10.0
+
+[node name="Bee2" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(193, 69)
+inertia = 10.0
+
+[node name="Bee3" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(243, -41)
+inertia = 10.0
+
+[node name="Bee4" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+inertia = 10.0
+
+[node name="Bee5" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(-100, 113)
+inertia = 10.0
+
+[node name="Bee6" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(-131, -119)
+inertia = 10.0
+
+[node name="Bee7" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(86, -93)
+inertia = 10.0
+
+[node name="Bee8" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee9" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee10" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee11" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee12" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee13" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee14" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee15" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee16" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee17" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee18" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee19" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee20" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee21" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee22" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee23" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee24" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee25" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee26" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee27" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0
+
+[node name="Bee28" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
+visible = false
+position = Vector2(55, 99)
+inertia = 10.0

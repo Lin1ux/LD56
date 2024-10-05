@@ -1,18 +1,13 @@
 extends Node2D
+class_name BeeControler
 
-@export var bee_prefab : PackedScene
-@export var bees_to_spawn : int
-
-var bees : Array[Bee]
-
-var selected_bees : Array[Bee]
 
 
 var direction : Vector2
 @export_group("Movement")
-@export var acceleration : float = 10
+@export var acceleration : float = 40
 
-@export var max_speed : float = 4
+@export var max_speed : float = 500
 
 @export var random_shpere_radius : float = 50
 
@@ -25,25 +20,8 @@ var side_acceleration : float
 @export var backpack : Node		##Component of backpack
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	spawn_bees(Vector2.ZERO, 10)
-	
 
 
-
-func spawn_bees(location : Vector2, count : int):
-	for i in range(count):
-		var bee :Bee= bee_prefab.instantiate()
-		bees.append(bee)
-		bee.position = location
-		bee.new_target(location)
-		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	for bee in bees:
-		bee.new_target(get_global_mouse_position())
-	pass
 	
 func _integrate_forces(state : PhysicsDirectBodyState2D):
 	
@@ -65,7 +43,8 @@ func _physics_process(delta):
 		pass
 		
 	
-	
+func provide_new_target_location(target: Vector2):
+	$StateMachine/FlyTowards.set_new_target_location(target)
 
 func new_target(target_position : Vector2):
 	if direction_tween:

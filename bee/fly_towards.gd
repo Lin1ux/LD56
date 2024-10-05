@@ -2,7 +2,7 @@ extends Node
 
 @onready var bee = $"../.."
 const REDIRECT_DISTANCE = 25
-const NEW_POSITION_DISTANCE = 100
+const NEW_POSITION_DISTANCE = 250
 
 
 var final_position : Vector2
@@ -20,7 +20,6 @@ func update(delta : float):
 		#print("to close to the coursor")
 		enter()
 	if target_location.distance_squared_to(final_position) > NEW_POSITION_DISTANCE:
-		print("coursor moved")
 		enter()
 	
 	

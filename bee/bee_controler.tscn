@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyygyfbpr3yqq"]
+[gd_scene load_steps=3 format=3 uid="uid://dyygyfbpr3yqq"]
 
-[ext_resource type="Script" path="res://bee/bee_controler.gd" id="1_xkl03"]
+[ext_resource type="Script" path="res://bee/bee_manager.gd" id="1_6rsat"]
+[ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="2_txc8r"]
 
-[node name="BeeControler" type="Node2D"]
-script = ExtResource("1_xkl03")
+[node name="beeManager" type="Node2D"]
+script = ExtResource("1_6rsat")
+bee_prefab = ExtResource("2_txc8r")
