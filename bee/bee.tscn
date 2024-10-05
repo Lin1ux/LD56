@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk8yhj7gqf6qe"]
+
+[ext_resource type="Script" path="res://bee/bee_controler.gd" id="1_47a2a"]
+[ext_resource type="Texture2D" uid="uid://kkdder4nlcs2" path="res://bee/bee.png" id="1_cpm8j"]
+[ext_resource type="Script" path="res://bee/fly_towards.gd" id="3_djx18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ub2sv"]
+size = Vector2(2, 3)
+
+[node name="Bee" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_47a2a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ub2sv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cpm8j")
+
+[node name="StateMachine" type="Node" parent="."]
+
+[node name="FlyTowards" type="Node" parent="StateMachine"]
+script = ExtResource("3_djx18")
