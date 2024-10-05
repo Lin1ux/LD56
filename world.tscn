@@ -3,10 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="1_oqf80"]
-[ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="2_xy1p3"]
 [ext_resource type="Script" path="res://interface/ui.gd" id="4_5dwdf"]
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="4_djjkn"]
-[ext_resource type="Texture2D" uid="uid://cdyrisukkr3rc" path="res://flower/flower3.png" id="4_isv71"]
 [ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/Bee1.png" id="5_t563b"]
 [ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="6_7u8t0"]
 [ext_resource type="Script" path="res://bee/bee_manager.gd" id="6_ayyef"]
@@ -32,24 +30,6 @@ shader_parameter/screen_size = Vector2(640, 360)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Objects" type="Node2D" parent="."]
-z_index = 1
-
-[node name="Hive" parent="Objects" node_paths=PackedStringArray("bee_container") instance=ExtResource("8_dahsq")]
-position = Vector2(-121, -73)
-bee_container = NodePath("../../Bees")
-
-[node name="Flower" parent="Objects" instance=ExtResource("2_xy1p3")]
-position = Vector2(59, -57)
-
-[node name="Flower2" parent="Objects" instance=ExtResource("2_xy1p3")]
-position = Vector2(-36, 46)
-image = ExtResource("6_7u8t0")
-
-[node name="Flower3" parent="Objects" instance=ExtResource("2_xy1p3")]
-position = Vector2(94, 58)
-image = ExtResource("4_isv71")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -62,176 +42,6 @@ offset_right = 482.0
 offset_bottom = 260.0
 texture = ExtResource("1_hs1qf")
 stretch_mode = 1
-
-[node name="Bees" type="CanvasGroup" parent="."]
-z_index = 2
-material = SubResource("ShaderMaterial_b5yfb")
-
-[node name="Bee" parent="Bees" instance=ExtResource("1_ic6f1")]
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee2" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(193, 69)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee3" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(243, -41)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee4" parent="Bees" instance=ExtResource("1_ic6f1")]
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee5" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(-100, 113)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee6" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(-131, -119)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee7" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(86, -93)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee8" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee9" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee10" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee11" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee12" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee13" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee14" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee15" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee16" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee17" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee18" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee19" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee20" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee21" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee22" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee23" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee24" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee25" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee26" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee27" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
-
-[node name="Bee28" parent="Bees" instance=ExtResource("1_ic6f1")]
-position = Vector2(55, 99)
-inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 46.0
