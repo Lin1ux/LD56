@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=14 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
+[ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="1_l8oh7"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="1_oqf80"]
+[ext_resource type="Texture2D" uid="uid://cdyrisukkr3rc" path="res://flower/flower3.png" id="2_7f44n"]
 [ext_resource type="Script" path="res://interface/ui.gd" id="4_5dwdf"]
+[ext_resource type="PackedScene" uid="uid://dfwalf1sfdxhe" path="res://hive/hive.tscn" id="4_6haew"]
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="4_djjkn"]
 [ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/Bee1.png" id="5_t563b"]
 [ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="6_7u8t0"]
@@ -30,6 +33,24 @@ shader_parameter/screen_size = Vector2(640, 360)
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Objects" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Flower" parent="Objects" instance=ExtResource("1_l8oh7")]
+position = Vector2(160, 32)
+
+[node name="Flower2" parent="Objects" instance=ExtResource("1_l8oh7")]
+position = Vector2(-96, 39)
+image = ExtResource("2_7f44n")
+
+[node name="Flower3" parent="Objects" instance=ExtResource("1_l8oh7")]
+position = Vector2(139, -81)
+image = ExtResource("6_7u8t0")
+
+[node name="Hive" parent="Objects" node_paths=PackedStringArray("bee_controller") instance=ExtResource("4_6haew")]
+position = Vector2(-103, -86)
+bee_controller = NodePath("../../BeeManager")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -51,12 +72,14 @@ offset_bottom = 24.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UI" type="Control" parent="CanvasLayer"]
+[node name="UI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("bees_info", "pollen_info")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_5dwdf")
+bees_info = NodePath("BeesInfo")
+pollen_info = NodePath("PollenInfo")
 
 [node name="BeesInfo" parent="CanvasLayer/UI" instance=ExtResource("4_djjkn")]
 offset_left = 2.0
@@ -72,12 +95,15 @@ offset_right = 36.0
 offset_bottom = 2.0
 texture = ExtResource("6_7u8t0")
 
-[node name="BeeManager" type="Node2D" parent="."]
+[node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]
 script = ExtResource("6_ayyef")
 bee_prefab = ExtResource("1_ic6f1")
+UI = NodePath("../CanvasLayer/UI")
 
 [node name="Bees" type="CanvasGroup" parent="BeeManager"]
+z_index = 2
 material = SubResource("ShaderMaterial_b5yfb")
+position = Vector2(0, 1)
 
 [node name="Bee" parent="BeeManager/Bees" instance=ExtResource("1_ic6f1")]
 visible = false

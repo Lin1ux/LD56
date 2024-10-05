@@ -15,9 +15,11 @@ func _ready():
 func gather_pollen(character : Node):
 	#checking is character have backpack component
 	if not character.has_method("get_backpack"):
+		print("in area 1")
 		return
 	var backpack = character.get_backpack()
 	if backpack == null:
+		print("in area 2")
 		return
 	#moving pollen from object to backpack
 	if current_pollens > 0 and not backpack.is_full():
@@ -25,6 +27,7 @@ func gather_pollen(character : Node):
 		backpack.increase_pollen(1)
 		progress_bar.value = current_pollens
 		$Timer.start()
+		print("in area 3")
 		print("gathering")
 
 func _on_timer_timeout() -> void:

@@ -1,8 +1,11 @@
 extends Node2D
 
+@export_group("Bees")
 @export var bee_prefab : PackedScene
 @export var bees_to_spawn : int
 
+@export_group("Other")
+@export var UI : Node
 
 @onready var bees_holder = $Bees
 
@@ -26,3 +29,7 @@ func spawn_bees(location : Vector2, count : int):
 		bee.position = location
 		bee.new_target(location)
 		bees_holder.add_child(bee)
+	UI.set_bees_amount(get_amount_of_bees())
+		
+func get_amount_of_bees():
+	return len(bees)

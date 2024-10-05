@@ -7,6 +7,8 @@ resource_local_to_scene = true
 radius = 2.0
 
 [node name="CompInArea" type="Area2D"]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_ax51k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

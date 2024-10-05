@@ -19,6 +19,7 @@ func _ready():
 func in_area(trigger : Node):
 	#print("In Area")
 	if not component.has_method(function_name):
+		print("in area 1")
 		return
 	if has_argument:
 		function.call(trigger)
