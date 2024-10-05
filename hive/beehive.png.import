@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rj2lw13efhrp"
-path="res://.godot/imported/beehive.png-71660bfc8b0f22fb30195610ad90b6ac.ctex"
+path="res://.godot/imported/beehive.png-a33b632d7acf4428e524c4e88f44533d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/beehive.png"
-dest_files=["res://.godot/imported/beehive.png-71660bfc8b0f22fb30195610ad90b6ac.ctex"]
+source_file="res://hive/beehive.png"
+dest_files=["res://.godot/imported/beehive.png-a33b632d7acf4428e524c4e88f44533d.ctex"]
 
 [params]
 
