@@ -1,62 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://w24gbxobovvk"]
+[gd_scene load_steps=3 format=3 uid="uid://w24gbxobovvk"]
 
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_2gaek"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fws05"]
+size = Vector2(286, 20)
+
 [node name="game" type="Node2D"]
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(55, 99)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(133, 0)
+rotation = -0.374451
+shape = SubResource("RectangleShape2D_fws05")
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 325)
+position = Vector2(78, 20)
 
 [node name="Bee" parent="." instance=ExtResource("1_2gaek")]
-mass = 0.01
+collision_mask = 2
 inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
+acceleration = 30.0
+max_speed = 400.0
+tween_duration = 0.4
 
 [node name="Bee2" parent="." instance=ExtResource("1_2gaek")]
 position = Vector2(193, 69)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee3" parent="." instance=ExtResource("1_2gaek")]
 position = Vector2(243, -41)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee4" parent="." instance=ExtResource("1_2gaek")]
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee5" parent="." instance=ExtResource("1_2gaek")]
 position = Vector2(-100, 113)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee6" parent="." instance=ExtResource("1_2gaek")]
 position = Vector2(-131, -119)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee7" parent="." instance=ExtResource("1_2gaek")]
 position = Vector2(86, -93)
-mass = 0.01
 inertia = 10.0
 acceleration = 40.0
 max_speed = 500.0
 
 [node name="Bee8" parent="." instance=ExtResource("1_2gaek")]
 position = Vector2(55, 99)
-mass = 0.01
 inertia = 10.0
-acceleration = 40.0
-max_speed = 500.0
+acceleration = 50.0
+max_speed = 400.0
