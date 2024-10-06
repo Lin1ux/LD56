@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cexvh4akbw14t"
-path="res://.godot/imported/bird_test.png-e9d66a2b7b9f54df5e95abd690cb3948.ctex"
+uid="uid://bd37y57q36xaf"
+path="res://.godot/imported/flower_3_rotting.png-f49dcdf50f3f98f483cbf88c055aee6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/bird/bird_test.png"
-dest_files=["res://.godot/imported/bird_test.png-e9d66a2b7b9f54df5e95abd690cb3948.ctex"]
+source_file="res://flower/flower_3_rotting.png"
+dest_files=["res://.godot/imported/flower_3_rotting.png-f49dcdf50f3f98f483cbf88c055aee6c.ctex"]
 
 [params]
 

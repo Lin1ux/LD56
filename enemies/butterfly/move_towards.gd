@@ -13,7 +13,7 @@ func enter() -> void:
 	degree += 360
 	#if degree < 0:
 	var time = degree/144
-	tween.tween_property(parent,"rotation",parent.rotation + deg_to_rad(degree),time)
+	tween.tween_property(parent,"rotation",parent.global_rotation + deg_to_rad(degree),time)
 
 func next_state():
 	parent.empty_backpack()
@@ -33,6 +33,6 @@ func exit() -> void:
 	pass
 
 func fly_forward(delta: float):
-	return Vector2.RIGHT.rotated(parent.rotation) * parent.get_speed() * delta * 100 
+	return Vector2.RIGHT.rotated(parent.rotation) * parent.get_speed() * delta * 100 * 0.5
 	
 	

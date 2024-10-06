@@ -1,14 +1,22 @@
-extends CharacterBody2D
+extends Enemy
 
-@export var speed : int = 300 			##speed of bird
-@export var max_hp : int = 10 			##max amount of hp
-@export var rotation_speed : float = 100 	##how fast bird rotates
+@export var bee_manager : Node				##Bee manager to pick target from
+@export var after_dash_range : float = 100	##how close unit have to be to change dash state
+@export var correction : float = 0.4		##how often dash have correction
+var target : BeeControler
 
-func get_speed():
-	return speed
+func get_target():
+	return target
 	
-func get_rotation_speed():
-	return rotation_speed
+func get_new_target():
+	target = bee_manager.get_random_bee()
+	return target
 	
-func get_max_hp():
-	return max_hp
+func get_after_dash_range():
+	return after_dash_range
+	
+func after_dash_range_sqr():
+	return after_dash_range * after_dash_range
+
+func get_correction():
+	return correction
