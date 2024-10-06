@@ -135,7 +135,6 @@ bee_controller = NodePath("../../../BeeManager")
 [node name="NPC" type="Node2D" parent="Objects"]
 
 [node name="Bird" parent="Objects/NPC" instance=ExtResource("11_sfr2r")]
-z_index = 2
 position = Vector2(-19, 54)
 
 [node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]
