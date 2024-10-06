@@ -42,7 +42,12 @@ func _integrate_forces(state : PhysicsDirectBodyState2D):
 	
 	
 func _physics_process(delta):
-		pass
+		
+		
+	if $CompBackpack.is_full():
+		$Sprite2D.modulate = Color.YELLOW
+	else:
+		$Sprite2D.modulate = Color.WHITE
 		
 	
 func provide_new_target_location(target: Vector2):
