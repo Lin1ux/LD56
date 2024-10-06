@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/Bee1.png" id="5_t563b"]
 [ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="6_7u8t0"]
 [ext_resource type="Script" path="res://bee/bee_manager.gd" id="6_ayyef"]
+[ext_resource type="PackedScene" uid="uid://oyb10us6hrpt" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
 
 [sub_resource type="Environment" id="Environment_i2q20"]
 background_mode = 3
@@ -123,6 +124,11 @@ image = ExtResource("6_7u8t0")
 
 [node name="Hive" parent="Objects/Objects" node_paths=PackedStringArray("bee_controller") instance=ExtResource("4_6haew")]
 bee_controller = NodePath("../../../BeeManager")
+[node name="LvlBar" parent="CanvasLayer" instance=ExtResource("9_ghk2f")]
+offset_left = 71.0
+offset_top = 2.0
+offset_right = 71.0
+offset_bottom = 2.0
 
 [node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]
 script = ExtResource("6_ayyef")
