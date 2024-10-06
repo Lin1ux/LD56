@@ -32,6 +32,7 @@ texture = ExtResource("3_2syh3")
 shape = SubResource("CircleShape2D_wp5r3")
 
 [node name="CompStateMachine" parent="." node_paths=PackedStringArray("state") instance=ExtResource("4_4wf70")]
+state_machine_name = "Butterfly"
 state = NodePath("circle")
 
 [node name="circle" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]

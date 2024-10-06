@@ -10,7 +10,7 @@ func enter() -> void:
 	#var degree = randi_range(720,1440)
 	var degree = 360+120
 	var time = degree/144
-	tween.tween_property(parent,"rotation",parent.rotation + deg_to_rad(degree),time)
+	tween.tween_property(parent,"rotation",parent.global_rotation + deg_to_rad(degree),time)
 
 func next_state():
 	get_parent().change_state("moveTowards")
