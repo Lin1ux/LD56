@@ -9,6 +9,7 @@ anchors_preset = 0
 script = ExtResource("1_3nv2s")
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
 offset_right = 60.0
 offset_bottom = 23.0
 value = 20.0
