@@ -16,6 +16,9 @@ mass = 0.01
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_47a2a")
+acceleration = 20.0
+max_speed = 250.0
+random_shpere_radius = 25.0
 backpack = NodePath("CompBackpack")
 
 [node name="CompInteractionArea" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_lhk1w")]

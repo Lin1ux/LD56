@@ -37,6 +37,8 @@ func _integrate_forces(state : PhysicsDirectBodyState2D):
 		var dir = state.linear_velocity.normalized()
 		state.linear_velocity = dir * max_speed
 	
+	$Sprite2D.look_at(state.linear_velocity.rotated(PI/2))
+	
 	
 	
 func _physics_process(delta):

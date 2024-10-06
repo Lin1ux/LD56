@@ -15,7 +15,7 @@ var selected_bees : Array[BeeControler]
 
 
 func _ready():
-	spawn_bees(Vector2.ZERO, 10)
+	spawn_bees(Vector2.ZERO, 3)
 	
 
 func _process(delta):

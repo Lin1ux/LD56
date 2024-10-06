@@ -18,6 +18,10 @@ void fragment() {
 			|| (texture(screen_texture, SCREEN_UV + float(line_thickness) * pixel_size * vec2(1, 0)).a != 0.0)
 			|| (texture(screen_texture, SCREEN_UV + float(line_thickness) * pixel_size * vec2(0, -1)).a != 0.0)
 			|| (texture(screen_texture, SCREEN_UV + float(line_thickness) * pixel_size * vec2(0, 1)).a != 0.0)
+			|| (texture(screen_texture, SCREEN_UV + float(line_thickness) * pixel_size * vec2(-1, -1)).a != 0.0)
+			|| (texture(screen_texture, SCREEN_UV + float(line_thickness) * pixel_size * vec2(-1, 1)).a != 0.0)
+			|| (texture(screen_texture, SCREEN_UV + float(line_thickness) * pixel_size * vec2(1, -1)).a != 0.0)
+			|| (texture(screen_texture, SCREEN_UV + float(line_thickness) * pixel_size * vec2(1, 1)).a != 0.0)
 		) {
 			COLOR = line_color;
 		}
