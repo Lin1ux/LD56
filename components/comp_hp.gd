@@ -1,11 +1,18 @@
 extends Node
 
-@export var hp : int
+var hp : int
+@export var max_hp : int
 @export var parent : Node
-
+@export var progress_bar : Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	progress_bar = $ProgressBar
+	
+	hp = max_hp
+	progress_bar.max_value = hp
+	progress_bar.value = hp
+	
+	return
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,12 +25,14 @@ func get_hp() -> int:
 
 func decrease_hp(value : int):
 	hp = hp - value
+	progress_bar.value = hp
 	if hp <= 0:
 		death()
 	return
 
 func increase_hp(value : int):
-	hp = hp + value
+	hp = min(hp + value,max_hp)
+	progress_bar.value = hp
 	return
 	
 func death():

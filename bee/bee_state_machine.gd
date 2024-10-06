@@ -23,10 +23,10 @@ func change_state(new_state : String):
 		print("coud not find state: " + new_state)
 	
 
+func do_dash():
+	change_state("Dash")
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == 1 and event.is_pressed():
-			change_state("Dash")
-			print("Dash")
+
+
+
 			

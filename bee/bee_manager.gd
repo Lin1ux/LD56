@@ -7,6 +7,10 @@ extends Node2D
 @export_group("Other")
 @export var UI : Node
 
+
+
+@export var bees_ratio: float = 0.5
+
 @onready var bees_holder = $Bees
 
 var bees : Array[BeeControler]
@@ -17,6 +21,32 @@ var selected_bees : Array[BeeControler]
 func _ready():
 	spawn_bees(Vector2.ZERO, 3)
 	
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == 1 and event.pressed:
+			statr_dash()
+		if event.button_index == 1 and event.canceled:
+			end_dash()
+
+
+var dashing_bees : Array[BeeControler]
+
+
+func statr_dash():
+	
+	var bees_count = len(bees)
+	var arr : Array = range(bees_count)
+	arr.shuffle()
+	var bees_to_dash = ceil(bees_count * bees_ratio)
+	
+	for i in range(bees_to_dash):
+		bees[arr[i]].dash()
+	
+
+func end_dash():
+	pass
+	
+
 
 func _process(delta):
 	for bee in bees:
