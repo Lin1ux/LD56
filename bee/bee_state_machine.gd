@@ -11,3 +11,22 @@ func _ready():
 
 func _process(delta):
 	state.update(delta)
+	
+	
+func change_state(new_state : String):
+	var new = get_node_or_null(new_state)
+	if new:
+		state.exit()
+		state = new
+		state.enter()
+	else:
+		print("coud not find state: " + new_state)
+	
+
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == 1 and event.is_pressed():
+			change_state("Dash")
+			print("Dash")
+			
