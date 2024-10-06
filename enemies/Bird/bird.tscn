@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://brqfdgcoyn78m"]
+
+[ext_resource type="Texture2D" uid="uid://cexvh4akbw14t" path="res://enemies/Bird/bird_test.png" id="1_joh1w"]
+
+[node name="Bird" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_joh1w")
+
+[node name="Area2D" type="Area2D" parent="."]
