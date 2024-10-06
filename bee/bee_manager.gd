@@ -26,6 +26,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
 			statr_dash()
+			$DashSound.play()
 		if event.button_index == 1 and event.canceled:
 			end_dash()
 
@@ -68,6 +69,9 @@ func spawn_bees(location : Vector2, count : int):
 		
 func get_amount_of_bees():
 	return len(bees)
+	
+func get_random_bee():
+	return bees[randi_range(0,len(bees)-1)]
 	
 func get_amount_of_pollen():
 	var sum = 0

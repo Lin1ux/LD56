@@ -43,7 +43,9 @@ func _integrate_forces(state : PhysicsDirectBodyState2D):
 func _physics_process(delta):
 		
 		
-	if $CompBackpack.is_full():
+	if $StateMachine.state.name == "Dash":
+		$Sprite2D.modulate = Color(100.0, 100.0, 100.0)
+	elif $CompBackpack.is_full():
 		$Sprite2D.modulate = Color.YELLOW
 	else:
 		$Sprite2D.modulate = Color.WHITE

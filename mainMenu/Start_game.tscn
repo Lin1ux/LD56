@@ -41,7 +41,7 @@ timer = NodePath("../Timer")
 progress_bar = NodePath("../ProgressBar")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -51.0
