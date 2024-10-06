@@ -33,3 +33,9 @@ func spawn_bees(location : Vector2, count : int):
 		
 func get_amount_of_bees():
 	return len(bees)
+	
+func get_amount_of_pollen():
+	var sum = 0
+	for i in bees:
+		sum += i.get_backpack().get_pollen_amount()
+	return sum

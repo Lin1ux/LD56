@@ -24,7 +24,7 @@ func decrease_pollen(amount : int):
 	pollen_amount -= amount
 	if pollen_amount < 0:
 		pollen_amount = 0
-	PollenManager.remove_pollen(pollen_before-pollen_amount)
+	PollenManager.remove_pollen(pollen_before)
 
 #remove pollens and returns value before cleaning up	
 func remove_pollen():
