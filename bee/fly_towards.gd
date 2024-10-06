@@ -11,6 +11,8 @@ var target_location : Vector2
 func _ready():
 	enter()
 
+func exit():
+	pass
 
 func enter():
 	set_new_destination()
