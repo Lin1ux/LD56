@@ -8,12 +8,12 @@
 [ext_resource type="Script" path="res://interface/ui.gd" id="4_5dwdf"]
 [ext_resource type="PackedScene" uid="uid://dfwalf1sfdxhe" path="res://hive/hive.tscn" id="4_6haew"]
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="4_djjkn"]
-[ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/bee1.png" id="5_t563b"]
+[ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/Bee1.png" id="5_t563b"]
 [ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="6_7u8t0"]
 [ext_resource type="Script" path="res://bee/bee_manager.gd" id="6_ayyef"]
 [ext_resource type="Script" path="res://scripts/objects_manager.gd" id="7_1dilw"]
 [ext_resource type="PackedScene" uid="uid://oyb10us6hrpt" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
-[ext_resource type="PackedScene" uid="uid://brqfdgcoyn78m" path="res://enemies/Bird/bird.tscn" id="11_sfr2r"]
+[ext_resource type="PackedScene" uid="uid://brqfdgcoyn78m" path="res://enemies/bird/bird.tscn" id="11_sfr2r"]
 [ext_resource type="PackedScene" uid="uid://bhu8ftomn64sl" path="res://enemies/butterfly/butterfly.tscn" id="11_yfffk"]
 
 [sub_resource type="Environment" id="Environment_i2q20"]
@@ -142,8 +142,9 @@ bee_controller = NodePath("../../../BeeManager")
 position = Vector2(-85, -79)
 flower_manager = NodePath("../..")
 
-[node name="Bird" parent="Objects/NPC" instance=ExtResource("11_sfr2r")]
+[node name="Bird" parent="Objects/NPC" node_paths=PackedStringArray("bee_manager") instance=ExtResource("11_sfr2r")]
 position = Vector2(-19, 54)
+bee_manager = NodePath("../../../BeeManager")
 
 [node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]
 script = ExtResource("6_ayyef")
