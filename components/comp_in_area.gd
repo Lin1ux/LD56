@@ -3,6 +3,7 @@ extends Node2D
 @export var component : Node 		##Component where is function
 @export var function_name : String	##Name of function to call
 @export var has_argument : bool  	##Is function requires trigger
+@export var area_rotation : float 	##rotation of area in Degrees
 @export var shape :Shape2D 			##Shape of collider
 
 var function : Callable
@@ -12,12 +13,15 @@ var function : Callable
 func _ready():
 	function = Callable(component, function_name)
 	$CollisionShape2D.shape = shape
+	$CollisionShape2D.rotation = deg_to_rad(area_rotation)
 	#$CollisionShape2D.shape.radius = radius
 	#.shape.height = height
 
 
 func in_area(trigger : Node):
 	#print("In Area")
+	if component == null:
+		return
 	if not component.has_method(function_name):
 		print("in area 1")
 		return
