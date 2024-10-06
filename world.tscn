@@ -13,12 +13,6 @@
 [ext_resource type="Script" path="res://bee/bee_manager.gd" id="6_ayyef"]
 [ext_resource type="PackedScene" uid="uid://oyb10us6hrpt" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekm7m"]
-shader = ExtResource("1_oqf80")
-shader_parameter/line_thickness = 2
-shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/screen_size = Vector2(640, 360)
-
 [sub_resource type="Environment" id="Environment_i2q20"]
 background_mode = 3
 glow_enabled = true
@@ -32,6 +26,19 @@ glow_levels/7 = 3.4
 glow_hdr_threshold = 0.0
 glow_hdr_scale = 3.7
 
+[sub_resource type="GDScript" id="GDScript_d7nw4"]
+script/source = "extends CanvasLayer
+
+func _ready() -> void:
+	visible = true
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekm7m"]
+shader = ExtResource("1_oqf80")
+shader_parameter/line_thickness = 2
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/screen_size = Vector2(640, 360)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b5yfb"]
 shader = ExtResource("1_oqf80")
 shader_parameter/line_thickness = 2
@@ -40,47 +47,29 @@ shader_parameter/screen_size = Vector2(640, 360)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Objects" type="Node2D" parent="."]
-z_index = 1
-
-[node name="Objects" type="CanvasGroup" parent="Objects"]
-material = SubResource("ShaderMaterial_ekm7m")
-
-[node name="Flower" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(160, 32)
-
-[node name="Flower2" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(-96, 39)
-image = ExtResource("2_7f44n")
-
-[node name="Flower3" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(139, -81)
-image = ExtResource("6_7u8t0")
-
-[node name="Hive" parent="Objects/Objects" node_paths=PackedStringArray("bee_controller") instance=ExtResource("4_6haew")]
-position = Vector2(-103, -86)
-bee_controller = NodePath("../../../BeeManager")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i2q20")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -423.0
-offset_top = -215.0
-offset_right = 482.0
-offset_bottom = 260.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -736.5
+offset_top = -386.5
+offset_right = 736.5
+offset_bottom = 386.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_hs1qf")
 stretch_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 46.0
-offset_top = -16.0
-offset_right = 86.0
-offset_bottom = 24.0
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+script = SubResource("GDScript_d7nw4")
 
 [node name="UI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("bees_info", "pollen_info")]
 layout_mode = 3
@@ -105,6 +94,36 @@ offset_right = 36.0
 offset_bottom = 2.0
 texture = ExtResource("6_7u8t0")
 
+[node name="Objects" type="Node2D" parent="."]
+z_index = 1
+
+[node name="Objects" type="CanvasGroup" parent="Objects"]
+material = SubResource("ShaderMaterial_ekm7m")
+
+[node name="Flower" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
+position = Vector2(145, 69)
+image = ExtResource("6_7u8t0")
+
+[node name="Flower4" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
+position = Vector2(36, 143)
+
+[node name="Flower6" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
+position = Vector2(-135, -35)
+
+[node name="Flower5" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
+position = Vector2(117, -39)
+image = ExtResource("2_7f44n")
+
+[node name="Flower2" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
+position = Vector2(-144, 108)
+image = ExtResource("2_7f44n")
+
+[node name="Flower3" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
+position = Vector2(13, -128)
+image = ExtResource("6_7u8t0")
+
+[node name="Hive" parent="Objects/Objects" node_paths=PackedStringArray("bee_controller") instance=ExtResource("4_6haew")]
+bee_controller = NodePath("../../../BeeManager")
 [node name="LvlBar" parent="CanvasLayer" instance=ExtResource("9_ghk2f")]
 offset_left = 71.0
 offset_top = 2.0

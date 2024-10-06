@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 @export var image : CompressedTexture2D		##texture of object
@@ -6,11 +7,19 @@ var progress_bar : Node
 var current_pollens : int
 	
 func _ready():
+	if Engine.is_editor_hint():
+		return
+	
 	progress_bar = $ProgressBar
 	current_pollens = max_pollens
 	progress_bar.max_value = current_pollens
 	progress_bar.value = current_pollens
+	
+func _process(delta: float) -> void:
 	$Sprite2D.texture = image
+	
+	if Engine.is_editor_hint():
+		return
 	
 func gather_pollen(character : Node):
 	#checking is character have backpack component
