@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://brqfdgcoyn78m"]
 
 [ext_resource type="Script" path="res://enemies/bird/bird.gd" id="1_pxqbr"]
-[ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="2_gh6kl"]
+[ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="2_gh6kl"]
 [ext_resource type="Texture2D" uid="uid://bbecg2ndb6mw0" path="res://sprites/bird.png" id="2_hnns3"]
 [ext_resource type="Script" path="res://enemies/bird/patrol.gd" id="3_5gs5t"]
 [ext_resource type="PackedScene" uid="uid://cxew2wf8xbr5r" path="res://components/comp_in_area.tscn" id="3_wreey"]
