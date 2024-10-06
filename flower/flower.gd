@@ -52,4 +52,3 @@ func get_flower_position():
 	
 func set_image(texture :CompressedTexture2D):
 	image = texture
-	$Sprite2D.texture = texture

@@ -44,7 +44,7 @@ shader_parameter/line_thickness = 2
 shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/screen_size = Vector2(640, 360)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v1dm8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nmhm"]
 shader = ExtResource("1_oqf80")
 shader_parameter/line_thickness = 1
 shader_parameter/line_color = Color(0, 0, 0, 1)
@@ -271,15 +271,17 @@ image = ExtResource("6_7u8t0")
 bee_controller = NodePath("../../../BeeManager")
 
 [node name="NPC" type="CanvasGroup" parent="Objects"]
-material = SubResource("ShaderMaterial_v1dm8")
+material = SubResource("ShaderMaterial_7nmhm")
 
 [node name="Butterfly" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
 position = Vector2(-85, -79)
 flower_manager = NodePath("../..")
+spawn_range = 0.0
 
 [node name="Bird" parent="Objects/NPC" node_paths=PackedStringArray("bee_manager") instance=ExtResource("11_sfr2r")]
 position = Vector2(-19, 54)
 bee_manager = NodePath("../../../BeeManager")
+after_dash_range = 100.0
 
 [node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]
 script = ExtResource("6_ayyef")
