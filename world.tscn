@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=20 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
@@ -11,8 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/Bee1.png" id="5_t563b"]
 [ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="6_7u8t0"]
 [ext_resource type="Script" path="res://bee/bee_manager.gd" id="6_ayyef"]
+[ext_resource type="Script" path="res://scripts/objects_manager.gd" id="7_1dilw"]
 [ext_resource type="PackedScene" uid="uid://oyb10us6hrpt" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
 [ext_resource type="PackedScene" uid="uid://brqfdgcoyn78m" path="res://enemies/Bird/bird.tscn" id="11_sfr2r"]
+[ext_resource type="PackedScene" uid="uid://bhu8ftomn64sl" path="res://enemies/butterfly/butterfly.tscn" id="11_yfffk"]
 
 [sub_resource type="Environment" id="Environment_i2q20"]
 background_mode = 3
@@ -101,8 +103,10 @@ offset_top = 2.0
 offset_right = 71.0
 offset_bottom = 2.0
 
-[node name="Objects" type="Node2D" parent="."]
+[node name="Objects" type="Node2D" parent="." node_paths=PackedStringArray("Objects")]
 z_index = 1
+script = ExtResource("7_1dilw")
+Objects = NodePath("Objects")
 
 [node name="Objects" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_ekm7m")
@@ -133,6 +137,10 @@ image = ExtResource("6_7u8t0")
 bee_controller = NodePath("../../../BeeManager")
 
 [node name="NPC" type="Node2D" parent="Objects"]
+
+[node name="Butterfly" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
+position = Vector2(-85, -79)
+flower_manager = NodePath("../..")
 
 [node name="Bird" parent="Objects/NPC" instance=ExtResource("11_sfr2r")]
 position = Vector2(-19, 54)

@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://brqfdgcoyn78m"]
+[gd_scene load_steps=10 format=3 uid="uid://brqfdgcoyn78m"]
 
 [ext_resource type="Texture2D" uid="uid://cexvh4akbw14t" path="res://enemies/Bird/bird_test.png" id="1_joh1w"]
-[ext_resource type="Script" path="res://enemies/Bird/bird.gd" id="1_pxqbr"]
+[ext_resource type="Script" path="res://enemies/enemy_stats.gd" id="1_y7faw"]
 [ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="2_gh6kl"]
 [ext_resource type="Script" path="res://enemies/Bird/patrol.gd" id="3_5gs5t"]
 [ext_resource type="PackedScene" uid="uid://cxew2wf8xbr5r" path="res://components/comp_in_area.tscn" id="3_wreey"]
 [ext_resource type="Script" path="res://enemies/Bird/dash.gd" id="4_7u1hj"]
 [ext_resource type="Script" path="res://enemies/Bird/fly_forward.gd" id="6_ggr46"]
+[ext_resource type="Script" path="res://enemies/Bird/aim.gd" id="8_it8cr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjawy"]
 radius = 6.0
@@ -14,9 +15,9 @@ height = 24.0
 
 [node name="Bird" type="CharacterBody2D"]
 z_index = 2
-script = ExtResource("1_pxqbr")
+script = ExtResource("1_y7faw")
 speed = 50
-rotation_speed = 5.0
+rotation_speed = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_joh1w")
@@ -55,5 +56,6 @@ parent = NodePath("../..")
 wait_time = 5.0
 
 [node name="Aim" type="Node" parent="CompStateMachine"]
+script = ExtResource("8_it8cr")
 
 [connection signal="timeout" from="CompStateMachine/FlyForward/Timer" to="CompStateMachine/FlyForward" method="_on_timer_timeout"]

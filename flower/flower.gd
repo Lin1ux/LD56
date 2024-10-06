@@ -1,4 +1,5 @@
 @tool
+class_name Flower
 extends Node2D
 
 @export var image : CompressedTexture2D		##texture of object
@@ -45,3 +46,6 @@ func _on_timer_timeout() -> void:
 		print("timeout")
 		current_pollens += 1
 		progress_bar.value = current_pollens
+		
+func get_flower_position():
+	return global_position
