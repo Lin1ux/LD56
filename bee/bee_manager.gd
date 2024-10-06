@@ -21,6 +21,7 @@ var selected_bees : Array[BeeControler]
 func _ready():
 	spawn_bees(Vector2.ZERO, 3)
 	
+	
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
@@ -40,11 +41,15 @@ func statr_dash():
 	var bees_to_dash = ceil(bees_count * bees_ratio)
 	
 	for i in range(bees_to_dash):
-		bees[arr[i]].dash()
+		var dashing_bee = bees[arr[i]]
+		dashing_bee.dash()
+		dashing_bees.append(dashing_bee)
 	
 
 func end_dash():
-	pass
+	for bee in dashing_bees:
+		bee.end_dash()
+	dashing_bees.clear()
 	
 
 

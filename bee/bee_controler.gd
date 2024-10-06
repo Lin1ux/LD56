@@ -19,12 +19,9 @@ var side_acceleration : float
 @export_group("Components")
 @export var backpack : Node		##Component of backpack
 
-
-
-
+var dashing : bool
 	
 func _integrate_forces(state : PhysicsDirectBodyState2D):
-	
 	
 	
 	state.apply_impulse(direction * acceleration)
@@ -38,6 +35,8 @@ func _integrate_forces(state : PhysicsDirectBodyState2D):
 		state.linear_velocity = dir * max_speed
 	
 	$Sprite2D.look_at(state.linear_velocity.rotated(PI/2))
+	
+		
 	
 	
 	
@@ -69,3 +68,6 @@ func get_backpack():
 	
 func dash():
 	$StateMachine.do_dash()
+	
+func end_dash():
+	$StateMachine/Dash.end_dash_prematurely()
