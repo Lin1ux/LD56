@@ -62,3 +62,5 @@ func get_backpack():
 	return backpack
 	
 	
+func dash():
+	$StateMachine.do_dash()

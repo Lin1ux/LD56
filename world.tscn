@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=17 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
@@ -94,6 +94,12 @@ offset_right = 36.0
 offset_bottom = 2.0
 texture = ExtResource("6_7u8t0")
 
+[node name="LvlBar" parent="CanvasLayer" instance=ExtResource("9_ghk2f")]
+offset_left = 71.0
+offset_top = 2.0
+offset_right = 71.0
+offset_bottom = 2.0
+
 [node name="Objects" type="Node2D" parent="."]
 z_index = 1
 
@@ -124,11 +130,6 @@ image = ExtResource("6_7u8t0")
 
 [node name="Hive" parent="Objects/Objects" node_paths=PackedStringArray("bee_controller") instance=ExtResource("4_6haew")]
 bee_controller = NodePath("../../../BeeManager")
-[node name="LvlBar" parent="CanvasLayer" instance=ExtResource("9_ghk2f")]
-offset_left = 71.0
-offset_top = 2.0
-offset_right = 71.0
-offset_bottom = 2.0
 
 [node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]
 script = ExtResource("6_ayyef")
