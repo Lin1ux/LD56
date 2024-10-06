@@ -25,6 +25,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
 			statr_dash()
+			$DashSound.play()
 		if event.button_index == 1 and event.canceled:
 			end_dash()
 
