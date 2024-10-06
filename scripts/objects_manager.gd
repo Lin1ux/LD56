@@ -15,3 +15,8 @@ func _ready() -> void:
 func get_random_flower():
 	return flower_list[randi_range(0,len(flower_list)-1)]
 	
+func add_flower(new_flower : Flower):
+	flower_list.append(new_flower)
+	
+func add_new_child(new_child : Node):
+	$Objects.add_child(new_child)

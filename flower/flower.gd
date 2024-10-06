@@ -49,3 +49,7 @@ func _on_timer_timeout() -> void:
 		
 func get_flower_position():
 	return global_position
+	
+func set_image(texture :CompressedTexture2D):
+	image = texture
+	$Sprite2D.texture = texture
