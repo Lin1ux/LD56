@@ -19,7 +19,7 @@ var selected_bees : Array[BeeControler]
 
 
 func _ready():
-	spawn_bees(Vector2.ZERO, 3)
+	spawn_bees(Vector2.ZERO, bees_to_spawn)
 	
 func _input(event):
 	if event is InputEventMouseButton:

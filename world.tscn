@@ -276,6 +276,7 @@ position = Vector2(-19, 54)
 [node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]
 script = ExtResource("6_ayyef")
 bee_prefab = ExtResource("1_ic6f1")
+bees_to_spawn = 3
 UI = NodePath("../CanvasLayer/UI")
 
 [node name="Bees" type="CanvasGroup" parent="BeeManager"]
