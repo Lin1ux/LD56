@@ -12,8 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="6_7u8t0"]
 [ext_resource type="Script" path="res://bee/bee_manager.gd" id="6_ayyef"]
 [ext_resource type="Script" path="res://scripts/objects_manager.gd" id="7_1dilw"]
-[ext_resource type="PackedScene" uid="uid://oyb10us6hrpt" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
-[ext_resource type="PackedScene" uid="uid://brqfdgcoyn78m" path="res://enemies/bird/bird.tscn" id="11_sfr2r"]
+[ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="8_bbrd4"]
+[ext_resource type="PackedScene" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
+[ext_resource type="PackedScene" uid="uid://brqfdgcoyn78m" path="res://enemies/Bird/bird.tscn" id="11_sfr2r"]
 [ext_resource type="PackedScene" uid="uid://bhu8ftomn64sl" path="res://enemies/butterfly/butterfly.tscn" id="11_yfffk"]
 
 [sub_resource type="Environment" id="Environment_i2q20"]
@@ -48,7 +49,7 @@ shader_parameter/line_thickness = 2
 shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/screen_size = Vector2(640, 360)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
