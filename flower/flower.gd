@@ -36,6 +36,9 @@ func gather_pollen(character : Node):
 		$Timer.start()
 		print("in area 3")
 		print("gathering")
+		$CollectSound.play()
+		
+		
 
 func _on_timer_timeout() -> void:
 	if max_pollens > current_pollens:
