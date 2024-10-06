@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfwpk23clejcm"]
+[gd_scene load_steps=7 format=3 uid="uid://bfwpk23clejcm"]
 
 [ext_resource type="Script" path="res://flower/flower.gd" id="1_hwbv3"]
 [ext_resource type="PackedScene" uid="uid://cxew2wf8xbr5r" path="res://components/comp_in_area.tscn" id="1_jdgby"]
 [ext_resource type="Texture2D" uid="uid://de62ttyo31ql" path="res://flower/flower1.png" id="1_knc30"]
-[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://UI/square.png" id="4_180o0"]
+[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://ui/square.png" id="4_180o0"]
+[ext_resource type="AudioStream" uid="uid://cet62j757pg67" path="res://sounds/honey.wav" id="5_fk16d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xathf"]
 
@@ -34,5 +35,9 @@ tint_progress = Color(0.74902, 0.168627, 0.160784, 1)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="CollectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fk16d")
+volume_db = -10.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

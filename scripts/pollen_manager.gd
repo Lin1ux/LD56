@@ -12,6 +12,10 @@ func remove_pollen(amount : int):
 	player_pollens-=amount
 	value_changed.emit(player_pollens)
 	
+func set_pollen(amount : int):
+	player_pollens = amount
+	value_changed.emit(player_pollens)
+	
 func get_pollen():
 	return player_pollens
 	

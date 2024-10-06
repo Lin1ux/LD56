@@ -4,6 +4,7 @@ extends Node2D
 @export var parent : Node 	   ##Parent of component	
 @export var bee : PackedScene  ##Bee to spawn
 @export var progress_bar : Node ##Progress bar
+@export var update_pollen : bool 
 var number_of_pollen : int
 
 # Called when the node enters the scene tree for the first time.
@@ -13,12 +14,17 @@ func _ready() -> void:
 	
 func spawn_bees():
 	if number_of_pollen >= bee_cost:
+		$"../BeeSpawnSound".play()
 		print("Bee spawned")
 		number_of_pollen -= bee_cost
 		parent.get_bee_controller().spawn_bees(parent.global_position, 1)
+		if parent.get_update_pollen:
+			PollenManager.set_pollen(parent.get_bee_controller().get_amount_of_pollen())
 		
 		
 func add_pollen(pollens : int):
+	if pollens:
+		$"../CollectSound".play()
 	number_of_pollen += pollens
 	update_progress_bar()
 	

@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwrs8pdr8ohy8"]
+
+[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://ui/square.png" id="1_gaqal"]
+[ext_resource type="PackedScene" uid="uid://ceagu34mf0ohi" path="res://mainMenu/comp_start_game.tscn" id="3_tx8br"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfiaa"]
+size = Vector2(145, 66)
+
+[node name="StartGame" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.101961, 0.054902, 0.0784314, 1)
+scale = Vector2(6.46875, 2.3125)
+texture = ExtResource("1_gaqal")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -19.0
+offset_right = 52.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Start Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_pfiaa")
+
+[node name="CompStartGame" parent="." node_paths=PackedStringArray("area", "timer", "progress_bar") instance=ExtResource("3_tx8br")]
+area = NodePath("../Area2D")
+timer = NodePath("../Timer")
+progress_bar = NodePath("../ProgressBar")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -51.0
+offset_top = 13.0
+offset_right = 51.0
+offset_bottom = 18.0
+step = 0.1
+value = 20.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_gaqal")
+texture_progress = ExtResource("1_gaqal")
+tint_under = Color(0.101961, 0.054902, 0.0784314, 1)
+tint_progress = Color(0.74902, 0.168627, 0.160784, 1)
+
+[connection signal="area_entered" from="Area2D" to="CompStartGame" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="CompStartGame" method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer" to="CompStartGame" method="_on_timer_timeout"]

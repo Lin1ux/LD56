@@ -30,7 +30,6 @@ func decrease_pollen(amount : int):
 func remove_pollen():
 	var pollens = pollen_amount
 	pollen_amount = 0
-	print(pollens)
 	PollenManager.remove_pollen(pollens)
 	return pollens
 	
