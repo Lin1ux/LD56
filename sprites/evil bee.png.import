@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dykiyj0fj6tqw"
-path="res://.godot/imported/bee1.png-6fcab10d735966b020f17b609a32aad8.ctex"
+uid="uid://c18derik8kjc6"
+path="res://.godot/imported/evil bee.png-a424a5595bf921b3c8ac21afbc988670.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bee/bee1.png"
-dest_files=["res://.godot/imported/bee1.png-6fcab10d735966b020f17b609a32aad8.ctex"]
+source_file="res://sprites/evil bee.png"
+dest_files=["res://.godot/imported/evil bee.png-a424a5595bf921b3c8ac21afbc988670.ctex"]
 
 [params]
 
