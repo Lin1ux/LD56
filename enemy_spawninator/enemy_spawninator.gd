@@ -4,6 +4,7 @@ extends Node2D
 @export var flower_manager: Node2D
 @export var bee_manager: Node2D
 @export var hive : Node2D
+@export var bullet_container : Node2D
 var wave_number: int = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -21,8 +22,9 @@ var bird = preload("res://enemies/bird/bird.tscn")
 var big_bird = preload("res://enemies/bigbird/bigbird.tscn")
 var butterfly = preload("res://enemies/butterfly/butterfly.tscn")
 var wasp = preload("res://enemies/wasp/wasp.tscn")
+var final = preload("res://finalplant/final_plant.tscn")
 
-enum ENEMY { FLY, BIRD, BIG_BIRD, BUTTERFLY,WASP }
+enum ENEMY { FLY, BIRD, BIG_BIRD, BUTTERFLY,WASP,FINAL }
 func spawn(enemy):
 	match enemy:
 		ENEMY.FLY:
@@ -50,6 +52,12 @@ func spawn(enemy):
 			b.global_position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * 500
 			b.hive = hive
 			enemy_container.add_child(b)
+		ENEMY.FINAL:
+			var b = final.instantiate()
+			b.global_position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * 0
+			b.bee_manager = bee_manager
+			b.bullet_container = bullet_container
+			enemy_container.add_child(b)
 
 var wave_map = [
 	[ENEMY.BUTTERFLY, ENEMY.BUTTERFLY, ENEMY.FLY,ENEMY.WASP],
@@ -66,6 +74,7 @@ var wave_map = [
 	[ENEMY.FLY, ENEMY.WASP, ENEMY.WASP, ENEMY.BIG_BIRD],
 	[ENEMY.FLY, ENEMY.FLY, ENEMY.WASP],
 	[ENEMY.FLY, ENEMY.WASP, ENEMY.WASP, ENEMY.BIG_BIRD],
+	[ENEMY.FINAL]
 ]
 
 func _on_wave_timer_timeout() -> void:

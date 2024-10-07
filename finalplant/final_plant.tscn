@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cf3sijldrgw3j" path="res://finalplant/plant-25.png" id="24_cmb1j"]
 [ext_resource type="Texture2D" uid="uid://b5fwol25ax4iv" path="res://finalplant/plant-26.png" id="25_ppxkr"]
 [ext_resource type="Texture2D" uid="uid://il4p78ensqex" path="res://finalplant/plant-27.png" id="26_ogc16"]
-[ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="27_8ajlm"]
+[ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="27_8ajlm"]
 [ext_resource type="Script" path="res://finalplant/sleep.gd" id="28_5qqed"]
 [ext_resource type="Script" path="res://finalplant/open.gd" id="29_cwuob"]
 [ext_resource type="Script" path="res://finalplant/prepare_cannon.gd" id="30_qabpe"]
@@ -491,7 +491,7 @@ position = Vector2(0, -51)
 
 [node name="CompHP" parent="Node2D" node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("41_qecgs")]
 rotation = -1.5708
-max_hp = 50
+max_hp = 10
 parent = NodePath("../..")
 parent_sprite = NodePath("../Sprite2D")
 hitbox = NodePath("Area2D")

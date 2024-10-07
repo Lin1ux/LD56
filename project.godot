@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Nectarmancer"
-run/main_scene="res://game.tscn"
+run/main_scene="res://mainMenu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://promo/icon.png"
 config/windows_native_icon="res://promo/icon.ico"

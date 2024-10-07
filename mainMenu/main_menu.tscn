@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c3u7ikrbedrms"]
+[gd_scene load_steps=25 format=3 uid="uid://c3u7ikrbedrms"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_40j4h"]
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="2_r4q2d"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://3o27i0acf0qq" path="res://sprites/logo.png" id="13_kowkj"]
 [ext_resource type="PackedScene" uid="uid://cwrs8pdr8ohy8" path="res://mainMenu/Start_game.tscn" id="13_p41sl"]
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="15_elfjy"]
+[ext_resource type="Texture2D" uid="uid://6wvqmb2xw8nw" path="res://sprites/controls.png" id="16_6af5c"]
+[ext_resource type="Texture2D" uid="uid://b7dc56yvwr8bl" path="res://sprites/dash_controls.png" id="17_jgch5"]
 
 [sub_resource type="Environment" id="Environment_i2q20"]
 background_mode = 3
@@ -28,12 +30,6 @@ glow_levels/6 = 8.35
 glow_levels/7 = 3.4
 glow_hdr_threshold = 0.0
 glow_hdr_scale = 3.7
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekm7m"]
-shader = ExtResource("7_xcnc1")
-shader_parameter/line_thickness = 2
-shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/screen_size = Vector2(640, 360)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b5yfb"]
 shader = ExtResource("7_xcnc1")
@@ -249,7 +245,6 @@ position = Vector2(-329, 104)
 position = Vector2(-327, 226)
 
 [node name="Objects2" type="CanvasGroup" parent="."]
-material = SubResource("ShaderMaterial_ekm7m")
 
 [node name="Flower" parent="Objects2" instance=ExtResource("8_odms2")]
 position = Vector2(-76, 60)
@@ -316,3 +311,11 @@ libraries = {
 }
 
 [node name="Cursor" parent="CanvasLayer" instance=ExtResource("15_elfjy")]
+
+[node name="Controls" type="Sprite2D" parent="."]
+position = Vector2(-176, 93)
+texture = ExtResource("16_6af5c")
+
+[node name="DashControls" type="Sprite2D" parent="."]
+position = Vector2(241, 98)
+texture = ExtResource("17_jgch5")

@@ -8,10 +8,10 @@ uniform vec2 screen_size;
 
 void fragment() {
 	COLOR = texture(screen_texture, SCREEN_UV);
-	
+
 	// Get the size of the pixels on screen, and create a variable for out outline
 	vec2 pixel_size = 1.0 / screen_size;//vec2(textureSize(screen_texture, 0));
-	
+
 	if (texture(screen_texture, SCREEN_UV).a == 0.0) {
 		if (
 			   (texture(screen_texture, SCREEN_UV + float(line_thickness) * pixel_size * vec2(-1, 0)).a != 0.0)

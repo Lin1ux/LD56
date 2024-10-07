@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=24 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
@@ -12,10 +12,9 @@
 [ext_resource type="Script" path="res://scripts/objects_manager.gd" id="7_1dilw"]
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="7_2y1m6"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="8_bbrd4"]
-[ext_resource type="PackedScene" uid="uid://oyb10us6hrpt" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
+[ext_resource type="PackedScene" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
 [ext_resource type="AudioStream" uid="uid://tkhv62xv7g4h" path="res://sounds/beedash.wav" id="17_inpkd"]
 [ext_resource type="PackedScene" uid="uid://b207xegfvb5um" path="res://enemy_spawninator/enemy_spawninator.tscn" id="18_f6rh2"]
-[ext_resource type="PackedScene" uid="uid://b0g1l6aggyf33" path="res://enemies/wasp/wasp.tscn" id="18_lmx14"]
 
 [sub_resource type="Environment" id="Environment_i2q20"]
 background_mode = 3
@@ -285,15 +284,12 @@ bee_controller = NodePath("../../../BeeManager")
 material = SubResource("ShaderMaterial_7nmhm")
 script = SubResource("GDScript_lw4ag")
 
-[node name="Wasp" parent="Objects/NPC" node_paths=PackedStringArray("hive") instance=ExtResource("18_lmx14")]
-position = Vector2(-123, 6)
-hive = NodePath("../../Objects/Hive")
-
-[node name="EnemySpawninator" parent="." node_paths=PackedStringArray("enemy_container", "flower_manager", "bee_manager", "hive") instance=ExtResource("18_f6rh2")]
+[node name="EnemySpawninator" parent="." node_paths=PackedStringArray("enemy_container", "flower_manager", "bee_manager", "hive", "bullet_container") instance=ExtResource("18_f6rh2")]
 enemy_container = NodePath("../Objects/NPC")
 flower_manager = NodePath("../Objects")
 bee_manager = NodePath("../BeeManager")
 hive = NodePath("../Objects/Objects/Hive")
+bullet_container = NodePath("../Objects/Bullet Container")
 
 [node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]
 script = ExtResource("6_ayyef")
