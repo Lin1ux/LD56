@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3u7ikrbedrms"]
+[gd_scene load_steps=24 format=3 uid="uid://c3u7ikrbedrms"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_40j4h"]
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="2_r4q2d"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="12_jtims"]
 [ext_resource type="Texture2D" uid="uid://3o27i0acf0qq" path="res://sprites/logo.png" id="13_kowkj"]
 [ext_resource type="PackedScene" uid="uid://cwrs8pdr8ohy8" path="res://mainMenu/Start_game.tscn" id="13_p41sl"]
+[ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="15_elfjy"]
 
 [sub_resource type="Environment" id="Environment_i2q20"]
 background_mode = 3
@@ -313,3 +314,5 @@ script = SubResource("GDScript_6ylym")
 libraries = {
 "": SubResource("AnimationLibrary_2otur")
 }
+
+[node name="Cursor" parent="CanvasLayer" instance=ExtResource("15_elfjy")]

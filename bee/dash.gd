@@ -24,3 +24,4 @@ func update(delta):
 		
 func end_dash_prematurely():
 	current_time = min(current_time,minimal_dash_time_remaining)
+	$"../../ParticleTrail".process_material.color = Color(100.0, 100.0, 100.0)
