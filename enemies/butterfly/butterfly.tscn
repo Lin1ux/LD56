@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhu8ftomn64sl"]
+[gd_scene load_steps=13 format=3 uid="uid://bhu8ftomn64sl"]
 
 [ext_resource type="Script" path="res://enemies/butterfly/butterfly.gd" id="1_rvy4s"]
 [ext_resource type="PackedScene" uid="uid://bslpyvdn4cyi5" path="res://components/comp_interaction_area.tscn" id="1_tgc1r"]
 [ext_resource type="PackedScene" uid="uid://dl8ufx8gscd88" path="res://bee/comp_backpack.tscn" id="2_am4of"]
+[ext_resource type="Texture2D" uid="uid://de62ttyo31ql" path="res://flower/flower1.png" id="2_hcdcb"]
 [ext_resource type="Texture2D" uid="uid://dbyuf7mqe7ija" path="res://sprites/butterfly.png" id="3_2syh3"]
-[ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="4_4wf70"]
+[ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="3_ctbr6"]
+[ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="4_4wf70"]
+[ext_resource type="Texture2D" uid="uid://cdyrisukkr3rc" path="res://flower/flower3.png" id="4_pwvr4"]
+[ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="5_jacck"]
 [ext_resource type="Script" path="res://enemies/butterfly/circle.gd" id="5_uhwnu"]
 [ext_resource type="Script" path="res://enemies/butterfly/move_towards.gd" id="7_wtlg8"]
 
@@ -12,7 +16,11 @@
 radius = 6.0
 
 [node name="Butterfly" type="CharacterBody2D" node_paths=PackedStringArray("backpack")]
+z_index = 2
 script = ExtResource("1_rvy4s")
+spawn_range = 50.0
+images = Array[CompressedTexture2D]([ExtResource("2_hcdcb"), ExtResource("3_ctbr6"), ExtResource("4_pwvr4")])
+flower = ExtResource("5_jacck")
 speed = 50
 backpack = NodePath("CompBackpack")
 

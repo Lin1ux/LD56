@@ -19,6 +19,7 @@ has_argument = true
 shape = SubResource("CircleShape2D_xathf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("1_knc30")
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]

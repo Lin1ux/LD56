@@ -1,17 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwrs8pdr8ohy8"]
+[gd_scene load_steps=9 format=3 uid="uid://cwrs8pdr8ohy8"]
 
-[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://ui/square.png" id="1_gaqal"]
+[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://UI/square.png" id="1_gaqal"]
+[ext_resource type="PackedScene" uid="uid://cxew2wf8xbr5r" path="res://components/comp_in_area.tscn" id="3_ktweu"]
 [ext_resource type="PackedScene" uid="uid://ceagu34mf0ohi" path="res://mainMenu/comp_start_game.tscn" id="3_tx8br"]
+[ext_resource type="AudioStream" uid="uid://cet62j757pg67" path="res://sounds/honey.wav" id="4_6w0iv"]
+[ext_resource type="AudioStream" uid="uid://dm5spot3htyqp" path="res://sounds/start.wav" id="5_hwpx3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m447s"]
+bg_color = Color(0.17416, 0.100153, 0.0171228, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_y1c8g"]
+Panel/styles/panel = SubResource("StyleBoxFlat_m447s")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfiaa"]
 size = Vector2(145, 66)
 
 [node name="StartGame" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.101961, 0.054902, 0.0784314, 1)
-scale = Vector2(6.46875, 2.3125)
-texture = ExtResource("1_gaqal")
+[node name="Panel" type="Panel" parent="."]
+offset_left = -52.0
+offset_top = -19.0
+offset_right = 52.0
+offset_bottom = 19.0
+theme = SubResource("Theme_y1c8g")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8
@@ -20,9 +36,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -52.0
-offset_top = -19.0
+offset_top = -23.0
 offset_right = 52.0
-offset_bottom = 19.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -30,24 +46,17 @@ text = "Start Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_pfiaa")
-
-[node name="CompStartGame" parent="." node_paths=PackedStringArray("area", "timer", "progress_bar") instance=ExtResource("3_tx8br")]
-area = NodePath("../Area2D")
-timer = NodePath("../Timer")
+[node name="CompStartGame" parent="." node_paths=PackedStringArray("progress_bar") instance=ExtResource("3_tx8br")]
 progress_bar = NodePath("../ProgressBar")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]
-offset_left = -51.0
-offset_top = 13.0
-offset_right = 51.0
-offset_bottom = 18.0
+offset_left = -48.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 15.0
 step = 0.1
 value = 20.0
 nine_patch_stretch = true
@@ -56,6 +65,18 @@ texture_progress = ExtResource("1_gaqal")
 tint_under = Color(0.101961, 0.054902, 0.0784314, 1)
 tint_progress = Color(0.74902, 0.168627, 0.160784, 1)
 
-[connection signal="area_entered" from="Area2D" to="CompStartGame" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Area2D" to="CompStartGame" method="_on_area_2d_area_exited"]
+[node name="CompInArea" parent="." node_paths=PackedStringArray("component") instance=ExtResource("3_ktweu")]
+component = NodePath("../CompStartGame")
+function_name = "give_pollen"
+has_argument = true
+shape = SubResource("RectangleShape2D_pfiaa")
+
+[node name="CollectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6w0iv")
+volume_db = -10.0
+
+[node name="StartSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hwpx3")
+volume_db = -10.0
+
 [connection signal="timeout" from="Timer" to="CompStartGame" method="_on_timer_timeout"]
