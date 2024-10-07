@@ -1,7 +1,7 @@
 extends Enemy
 
 @export var bee_manager : Node				##Bee manager to pick target from
-@export var after_dash_range : float = 50	##how close unit have to be to change dash state
+@export var after_dash_range : float = 100	##how close unit have to be to change dash state
 @export var correction : float = 0.4		##how often dash have correction
 var target : BeeControler
 

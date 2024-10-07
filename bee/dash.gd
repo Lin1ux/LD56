@@ -10,11 +10,13 @@ func enter():
 	bee.dash_started = true
 	current_time = dash_time
 	$"../../ParticleTrail".emitting = true
+	$"../../CompHP".vulnerable = false
 	
 func exit():
 	bee.dashing = false
 	bee.dash_finished.emit(bee)
 	$"../../ParticleTrail".emitting = false
+	$"../../CompHP".vulnerable = true
 	
 func update(delta):
 	current_time -= delta

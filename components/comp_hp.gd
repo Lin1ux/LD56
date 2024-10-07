@@ -6,6 +6,7 @@ var hp : int
 @export var parent_sprite : Node2D
 @export var progress_bar : Node
 @export var hitbox : Area2D
+@export var vulnerable :  bool = true
 
 @export_range(-10, 10) var invincibility_frames : float = 0.5
 
@@ -24,6 +25,8 @@ func _ready() -> void:
 
 
 func got_hit(body: Node2D):
+	if not vulnerable:
+		return
 	if body.has_method("can_deal_damage"):
 		if body.can_deal_damage():
 			if $InvincibilityFrames.time_left == 0:
@@ -56,7 +59,12 @@ func increase_hp(value : int):
 	hp = min(hp + value,max_hp)
 	progress_bar.value = hp
 	return
-	
+
+
+@export var death_callback: Node
 func death():
-	parent.queue_free()
+	if death_callback != null:
+		death_callback.death()
+	else:
+		parent.queue_free()
 	return

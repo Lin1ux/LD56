@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs22ls8bmffct"
-path="res://.godot/imported/wasp.png-ae5f2f51721d1f0379b92f1f2518c1c7.ctex"
+uid="uid://7x4r86ttfhck"
+path="res://.godot/imported/dreamberd.png-93c84b01a22f498e892d63ab26d98373.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/wasp.png"
-dest_files=["res://.godot/imported/wasp.png-ae5f2f51721d1f0379b92f1f2518c1c7.ctex"]
+source_file="res://enemies/bigbird/dreamberd.png"
+dest_files=["res://.godot/imported/dreamberd.png-93c84b01a22f498e892d63ab26d98373.ctex"]
 
 [params]
 

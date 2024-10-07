@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=23 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
@@ -14,10 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="7_2y1m6"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="8_bbrd4"]
 [ext_resource type="PackedScene" uid="uid://oyb10us6hrpt" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
-[ext_resource type="PackedScene" uid="uid://brqfdgcoyn78m" path="res://enemies/Bird/bird.tscn" id="11_sfr2r"]
-[ext_resource type="PackedScene" uid="uid://bhu8ftomn64sl" path="res://enemies/butterfly/butterfly.tscn" id="11_yfffk"]
-[ext_resource type="PackedScene" uid="uid://br8gkj5owgbla" path="res://finalplant/final_plant.tscn" id="15_tjyia"]
 [ext_resource type="AudioStream" uid="uid://tkhv62xv7g4h" path="res://sounds/beedash.wav" id="17_inpkd"]
+[ext_resource type="PackedScene" uid="uid://b207xegfvb5um" path="res://enemy_spawninator/enemy_spawninator.tscn" id="18_f6rh2"]
+[ext_resource type="PackedScene" uid="uid://b0g1l6aggyf33" path="res://enemies/wasp/wasp.tscn" id="18_lmx14"]
 
 [sub_resource type="Environment" id="Environment_i2q20"]
 background_mode = 3
@@ -249,7 +248,6 @@ material = SubResource("ShaderMaterial_ekm7m")
 
 [node name="Flower" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
 position = Vector2(121, 58)
-texture_used = 2
 image = ExtResource("6_7u8t0")
 
 [node name="Hive" parent="Objects/Objects" node_paths=PackedStringArray("bee_controller") instance=ExtResource("4_6haew")]
@@ -258,37 +256,13 @@ bee_controller = NodePath("../../../BeeManager")
 [node name="NPC" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_7nmhm")
 
-[node name="Butterfly" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
-position = Vector2(-21, 111)
-flower_manager = NodePath("../..")
-spawn_range = 0.0
+[node name="Wasp" parent="Objects/NPC" node_paths=PackedStringArray("hive") instance=ExtResource("18_lmx14")]
+hive = NodePath("../../Objects/Hive")
 
-[node name="Butterfly4" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
-position = Vector2(100, -27)
-flower_manager = NodePath("../..")
-spawn_range = 0.0
-
-[node name="Butterfly2" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
-position = Vector2(-119, 42)
-flower_manager = NodePath("../..")
-spawn_range = 0.0
-
-[node name="Butterfly3" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
-position = Vector2(-22, -76)
-flower_manager = NodePath("../..")
-spawn_range = 0.0
-
-[node name="Bird" parent="Objects/NPC" node_paths=PackedStringArray("bee_manager") instance=ExtResource("11_sfr2r")]
-position = Vector2(-19, 54)
-bee_manager = NodePath("../../../BeeManager")
-after_dash_range = 50.0
-
-[node name="FinalPlant" parent="Objects/NPC" node_paths=PackedStringArray("bee_manager", "bullet_container") instance=ExtResource("15_tjyia")]
-position = Vector2(-105, 147)
-bee_manager = NodePath("../../../BeeManager")
-bullet_container = NodePath("../../../BulletContainer")
-
-[node name="BulletContainer" type="Node2D" parent="."]
+[node name="EnemySpawninator" parent="." node_paths=PackedStringArray("enemy_container", "flower_manager", "bee_manager") instance=ExtResource("18_f6rh2")]
+enemy_container = NodePath("../Objects/NPC")
+flower_manager = NodePath("../Objects")
+bee_manager = NodePath("../BeeManager")
 
 [node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]
 script = ExtResource("6_ayyef")

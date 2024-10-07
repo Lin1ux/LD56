@@ -85,7 +85,9 @@ func get_amount_of_bees():
 	return len(bees)
 	
 func get_random_bee():
-	return bees[randi_range(0,len(bees)-1)]
+	if len(bees)> 0:
+		return bees[randi_range(0,len(bees)-1)]
+	return null
 	
 func get_amount_of_pollen():
 	var sum = 0
@@ -94,8 +96,13 @@ func get_amount_of_pollen():
 	return sum
 
 
+
 func destroy_bee(bee: BeeControler):
 	bees.erase(bee)
 	cursour_folowing.erase(bee)
 	dashing_bees.erase(bee)
 	bee.queue_free()
+	UI.set_bees_amount(get_amount_of_bees())
+	if len(bees) == 0:
+		var callable = Callable(get_tree(),"change_scene_to_file")
+		callable.call_deferred("res://end_title.tscn")

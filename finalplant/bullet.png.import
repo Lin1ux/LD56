@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7x4r86ttfhck"
-path="res://.godot/imported/dreamberd.png-4d1dc9e9b28d1472879f89cf6f33c96a.ctex"
+uid="uid://jdb6af7g116x"
+path="res://.godot/imported/bullet.png-db98702c6beb23ccc2d20ac5b5bf413f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/dreamberd.png"
-dest_files=["res://.godot/imported/dreamberd.png-4d1dc9e9b28d1472879f89cf6f33c96a.ctex"]
+source_file="res://finalplant/bullet.png"
+dest_files=["res://.godot/imported/bullet.png-db98702c6beb23ccc2d20ac5b5bf413f.ctex"]
 
 [params]
 
