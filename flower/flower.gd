@@ -2,6 +2,7 @@
 class_name Flower
 extends Node2D
 
+@export var texture_used : int = 1
 @export var image : CompressedTexture2D		##texture of object
 @export var max_pollens : int = 5			##max amount of pollens which can be stored at once
 var progress_bar : Node

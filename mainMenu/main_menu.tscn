@@ -253,6 +253,7 @@ material = SubResource("ShaderMaterial_ekm7m")
 
 [node name="Flower" parent="Objects2" instance=ExtResource("8_odms2")]
 position = Vector2(-76, 60)
+texture_used = 1
 max_pollens = 3
 
 [node name="Arrow" type="Sprite2D" parent="Objects2"]

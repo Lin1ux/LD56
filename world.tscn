@@ -248,6 +248,7 @@ material = SubResource("ShaderMaterial_ekm7m")
 
 [node name="Flower" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
 position = Vector2(121, 58)
+texture_used = 2
 image = ExtResource("6_7u8t0")
 
 [node name="Hive" parent="Objects/Objects" node_paths=PackedStringArray("bee_controller") instance=ExtResource("4_6haew")]
