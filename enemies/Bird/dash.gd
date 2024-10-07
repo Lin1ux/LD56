@@ -11,7 +11,6 @@ var tween : Tween
 func enter() -> void:
 	selected_target = parent.get_target()
 	correction()
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func update(delta: float) -> void:
