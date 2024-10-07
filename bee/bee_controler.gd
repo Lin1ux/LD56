@@ -25,12 +25,12 @@ var dash_started: bool
 	
 func _integrate_forces(state : PhysicsDirectBodyState2D):
 	if dashing:
-		pass
+		state.linear_velocity *= 0.975
 		
 	elif dash_started:
 		dashing = true
 		dash_started = false
-		state.linear_velocity *= 1.5
+		state.linear_velocity *= 2.3
 	else:
 		
 		state.apply_impulse(direction * acceleration)
