@@ -66,7 +66,8 @@ func end_dash():
 
 func _process(delta):
 	for bee in bees:
-		bee.provide_new_target_location(get_global_mouse_position())
+		if bee != null:
+			bee.provide_new_target_location(get_global_mouse_position())
 
 func spawn_bees(location : Vector2, count : int):
 	for i in range(count):
@@ -77,6 +78,7 @@ func spawn_bees(location : Vector2, count : int):
 		bee.new_target(location)
 		bee.bee_dies.connect(destroy_bee,ConnectFlags.CONNECT_ONE_SHOT)
 		bees_holder.add_child(bee)
+		bee.manager = self
 	UI.set_bees_amount(get_amount_of_bees())
 		
 func get_amount_of_bees():

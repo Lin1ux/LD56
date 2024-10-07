@@ -21,6 +21,8 @@ var side_acceleration : float
 @export_group("Components")
 @export var backpack : Node		##Component of backpack
 
+@export var manager: Node2D
+
 var dashing : bool
 var dash_started: bool
 	
@@ -82,4 +84,14 @@ func end_dash():
 	
 func bee_died():
 	bee_dies.emit(self)
+	
+func can_deal_damage() -> bool:
+	return $StateMachine.state.name == "Dash"
+	
+
+
+func _on_tree_exiting() -> void:
+	manager.bees.erase(self)
+	manager.UI.set_bees_amount(manager.get_amount_of_bees())
+	manager.cursour_folowing.erase(self)
 	
