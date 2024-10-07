@@ -16,7 +16,6 @@ func enter() -> void:
 	tween.tween_property(parent,"rotation",parent.global_rotation + deg_to_rad(degree),time)
 
 func next_state():
-	parent.empty_backpack()
 	get_parent().change_state("circle")
 
 func update(delta: float) -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb2yjf4btbwwe"
-path="res://.godot/imported/fly.png-19af98740e7f5b9ebaecbe0541bb88e0.ctex"
+uid="uid://ck462lpbyyebc"
+path="res://.godot/imported/flower1_rotting.png-214635b2e004d5ea175047defa2cd1ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/fly.png"
-dest_files=["res://.godot/imported/fly.png-19af98740e7f5b9ebaecbe0541bb88e0.ctex"]
+source_file="res://flower/flower1_rotting.png"
+dest_files=["res://.godot/imported/flower1_rotting.png-214635b2e004d5ea175047defa2cd1ab.ctex"]
 
 [params]
 
