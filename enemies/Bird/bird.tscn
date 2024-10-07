@@ -26,8 +26,34 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_34fkc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
 rotation = 1.5708
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(-2, 0)
+texture = ExtResource("2_s08et")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(2, 0)
+texture = ExtResource("2_s08et")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, -2)
+texture = ExtResource("2_s08et")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, 2)
+texture = ExtResource("2_s08et")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_s08et")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -76,7 +102,7 @@ parent = NodePath("../..")
 [node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("10_afevb")]
 max_hp = 5
 parent = NodePath("..")
-parent_sprite = NodePath("../Sprite2D")
+parent_sprite = NodePath("../Sprites")
 hitbox = NodePath("Area2D")
 
 [node name="Area2D" type="Area2D" parent="CompHP"]

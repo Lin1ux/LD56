@@ -6,7 +6,7 @@ extends Enemy
 var target : BeeControler
 
 func _process(delta: float) -> void:
-	$CompHP.rotation = -$Sprite2D.global_rotation + PI/2
+	$CompHP.rotation = -$Sprites.global_rotation + PI/2
 
 func get_target():
 	return target

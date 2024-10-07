@@ -13,14 +13,40 @@
 script = ExtResource("1_hwbv3")
 image = ExtResource("1_knc30")
 
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(-2, 0)
+texture = ExtResource("1_knc30")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(2, 0)
+texture = ExtResource("1_knc30")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, -2)
+texture = ExtResource("1_knc30")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, 2)
+texture = ExtResource("1_knc30")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("1_knc30")
+
 [node name="CompInArea" parent="." node_paths=PackedStringArray("component") instance=ExtResource("1_jdgby")]
 component = NodePath("..")
 function_name = "gather_pollen"
 has_argument = true
 shape = SubResource("CircleShape2D_xathf")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_knc30")
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -8.0
@@ -43,7 +69,7 @@ volume_db = -10.0
 [node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("6_t0p6t")]
 max_hp = 1
 parent = NodePath("..")
-parent_sprite = NodePath("../Sprite2D")
+parent_sprite = NodePath("../Sprites")
 hitbox = NodePath("../CompInArea")
 vulnerable = false
 

@@ -39,9 +39,9 @@ func _ready() -> void:
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ekm7m"]
 shader = ExtResource("1_oqf80")
-shader_parameter/line_thickness = 2
+shader_parameter/line_thickness = 0
 shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/screen_size = Vector2(640, 360)
+shader_parameter/screen_size = null
 
 [sub_resource type="GDScript" id="GDScript_wwcls"]
 script/source = "@tool
@@ -49,14 +49,14 @@ extends CanvasGroup
 
 func _process(delta: float) -> void:
 	material.set(\"shader_parameter/screen_size\", get_viewport().size)
-	material.set(\"shader_parameter/line_thickness\", 2 * (get_viewport().size.x / 640))
+	material.set(\"shader_parameter/line_thickness\", 0 * (get_viewport().size.x / 640))
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7nmhm"]
 shader = ExtResource("1_oqf80")
-shader_parameter/line_thickness = 2
+shader_parameter/line_thickness = 0
 shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/screen_size = Vector2(640, 360)
+shader_parameter/screen_size = null
 
 [sub_resource type="GDScript" id="GDScript_lw4ag"]
 script/source = "@tool
@@ -64,14 +64,14 @@ extends CanvasGroup
 
 func _process(delta: float) -> void:
 	material.set(\"shader_parameter/screen_size\", get_viewport().size)
-	material.set(\"shader_parameter/line_thickness\", 2 * (get_viewport().size.x / 640))
+	material.set(\"shader_parameter/line_thickness\", 0 * (get_viewport().size.x / 640))
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b5yfb"]
 shader = ExtResource("1_oqf80")
-shader_parameter/line_thickness = 2
+shader_parameter/line_thickness = 0
 shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/screen_size = Vector2(640, 360)
+shader_parameter/screen_size = null
 
 [sub_resource type="GDScript" id="GDScript_8c8r1"]
 script/source = "@tool
@@ -79,7 +79,7 @@ extends CanvasGroup
 
 func _process(delta: float) -> void:
 	material.set(\"shader_parameter/screen_size\", get_viewport().size)
-	material.set(\"shader_parameter/line_thickness\", 2 * (get_viewport().size.x / 640))
+	material.set(\"shader_parameter/line_thickness\", 0 * (get_viewport().size.x / 640))
 "
 
 [node name="Node2D" type="Node2D"]

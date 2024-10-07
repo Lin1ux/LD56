@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="4_w45d6"]
 [ext_resource type="Script" path="res://fly/circle.gd" id="6_omugo"]
 [ext_resource type="Script" path="res://enemies/butterfly/move_towards.gd" id="6_xbpnc"]
-[ext_resource type="PackedScene" uid="uid://cwno5m4yph3p2" path="res://components/comp_hp.tscn" id="7_fpai4"]
+[ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="7_fpai4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xlput"]
 radius = 6.0
@@ -20,7 +20,34 @@ script = ExtResource("1_3kitr")
 [node name="CompInteractionArea" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("1_4nkai")]
 parent = NodePath("..")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
+rotation = 1.5708
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(-1, -3.57628e-06)
+texture = ExtResource("4_k2a1r")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(1, 3.57628e-06)
+texture = ExtResource("4_k2a1r")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(3.57628e-06, -1)
+texture = ExtResource("4_k2a1r")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(-3.57628e-06, 1)
+texture = ExtResource("4_k2a1r")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("4_k2a1r")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -43,7 +70,7 @@ parent = NodePath("../..")
 [node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("7_fpai4")]
 max_hp = 1
 parent = NodePath("..")
-parent_sprite = NodePath("../Sprite2D")
+parent_sprite = NodePath("../Sprites")
 hitbox = NodePath("Area2D")
 
 [node name="Area2D" type="Area2D" parent="CompHP"]
