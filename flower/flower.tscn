@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://de62ttyo31ql" path="res://flower/flower1.png" id="1_knc30"]
 [ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://UI/square.png" id="4_180o0"]
 [ext_resource type="AudioStream" uid="uid://cet62j757pg67" path="res://sounds/honey.wav" id="5_fk16d"]
-[ext_resource type="PackedScene" uid="uid://cwno5m4yph3p2" path="res://components/comp_hp.tscn" id="6_t0p6t"]
+[ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="6_t0p6t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xathf"]
 
@@ -13,14 +13,40 @@
 script = ExtResource("1_hwbv3")
 image = ExtResource("1_knc30")
 
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(-2, 0)
+texture = ExtResource("1_knc30")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(2, 0)
+texture = ExtResource("1_knc30")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, -2)
+texture = ExtResource("1_knc30")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, 2)
+texture = ExtResource("1_knc30")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("1_knc30")
+
 [node name="CompInArea" parent="." node_paths=PackedStringArray("component") instance=ExtResource("1_jdgby")]
 component = NodePath("..")
 function_name = "gather_pollen"
 has_argument = true
 shape = SubResource("CircleShape2D_xathf")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_knc30")
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -8.0
@@ -43,7 +69,7 @@ volume_db = -10.0
 [node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("6_t0p6t")]
 max_hp = 1
 parent = NodePath("..")
-parent_sprite = NodePath("../Sprite2D")
+parent_sprite = NodePath("../Sprites")
 hitbox = NodePath("../CompInArea")
 vulnerable = false
 

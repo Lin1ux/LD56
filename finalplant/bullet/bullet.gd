@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 @export var speed : float = 200 ## How fas bullet moves
+@export var life_time : float = 5 ##Hol long bullet lifes
 
 func _ready():
+	$Timer.wait_time = life_time
 	$Timer.start()
 
 func _process(delta):

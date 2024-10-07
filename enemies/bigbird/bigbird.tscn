@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://enemies/bird/fly_forward.gd" id="7_k8wm3"]
 [ext_resource type="Script" path="res://enemies/bird/after_dash.gd" id="8_myk3u"]
 [ext_resource type="Script" path="res://enemies/bird/dash.gd" id="9_t6j2b"]
-[ext_resource type="PackedScene" uid="uid://cwno5m4yph3p2" path="res://components/comp_hp.tscn" id="10_ykqpi"]
+[ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="10_ykqpi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjawy"]
 radius = 6.0
@@ -28,7 +28,33 @@ script = ExtResource("1_eob7b")
 speed = 300
 max_hp = 35
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(-2, 0)
+texture = ExtResource("2_si1s8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(2, 0)
+texture = ExtResource("2_si1s8")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, -2)
+texture = ExtResource("2_si1s8")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, 2)
+texture = ExtResource("2_si1s8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_si1s8")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -77,7 +103,7 @@ parent = NodePath("../..")
 [node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("10_ykqpi")]
 max_hp = 35
 parent = NodePath("..")
-parent_sprite = NodePath("../Sprite2D")
+parent_sprite = NodePath("../Sprites")
 hitbox = NodePath("Area2D")
 
 [node name="Area2D" type="Area2D" parent="CompHP"]

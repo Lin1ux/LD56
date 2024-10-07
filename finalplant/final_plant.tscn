@@ -44,6 +44,9 @@
 [ext_resource type="Script" path="res://finalplant/charge.gd" id="39_guq6j"]
 [ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="41_qecgs"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4dlqt"]
+radius = 34.7851
+
 [sub_resource type="Animation" id="Animation_fxlyk"]
 length = 0.001
 tracks/0/type = "value"
@@ -462,11 +465,9 @@ _data = {
 "sleep": SubResource("Animation_rjhuj")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4dlqt"]
-radius = 34.7851
-
-[node name="FinalPlant" type="CharacterBody2D"]
+[node name="FinalPlant" type="CharacterBody2D" node_paths=PackedStringArray("HP_component")]
 script = ExtResource("1_1qwfq")
+HP_component = NodePath("Sprite2D/CompHP")
 range = 400.0
 bullet = ExtResource("2_fkqej")
 root = ExtResource("3_nesvu")
@@ -477,6 +478,20 @@ engage_range = 100.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_3qday")
 offset = Vector2(0, -28)
+
+[node name="CompHP" parent="Sprite2D" node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("41_qecgs")]
+rotation = -1.5708
+max_hp = 50
+parent = NodePath("../..")
+parent_sprite = NodePath("..")
+hitbox = NodePath("Area2D")
+vulnerable = false
+
+[node name="Area2D" type="Area2D" parent="Sprite2D/CompHP"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/CompHP/Area2D"]
+position = Vector2(30, -2)
+shape = SubResource("CircleShape2D_4dlqt")
 
 [node name="Marker2D" type="Marker2D" parent="Sprite2D"]
 position = Vector2(0, -51)
@@ -577,18 +592,6 @@ script = ExtResource("39_g3xoi")
 parent = NodePath("../..")
 anim = NodePath("../../AnimationPlayer")
 anim_name = "melee"
-
-[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("41_qecgs")]
-max_hp = 10
-parent = NodePath("..")
-parent_sprite = NodePath("../Sprite2D")
-hitbox = NodePath("Area2D")
-
-[node name="Area2D" type="Area2D" parent="CompHP"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CompHP/Area2D"]
-position = Vector2(30, -2)
-shape = SubResource("CircleShape2D_4dlqt")
 
 [connection signal="timeout" from="CompStateMachine/Shot/Timer" to="CompStateMachine/Shot" method="_on_timer_timeout"]
 [connection signal="timeout" from="CompStateMachine/Defence/Timer" to="CompStateMachine/Defence" method="_on_timer_timeout"]

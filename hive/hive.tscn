@@ -20,7 +20,33 @@ height = 40.0
 [node name="Hive" type="Node2D"]
 script = ExtResource("1_25ou0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(-2, 0)
+texture = ExtResource("1_6smtp")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(2, 0)
+texture = ExtResource("1_6smtp")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, -2)
+texture = ExtResource("1_6smtp")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprites"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, 2)
+texture = ExtResource("1_6smtp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("1_6smtp")
 
 [node name="CompInArea" parent="." node_paths=PackedStringArray("component") instance=ExtResource("2_vuxuf")]
