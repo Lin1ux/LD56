@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cexvh4akbw14t"
-path="res://.godot/imported/bird_test.png-e9d66a2b7b9f54df5e95abd690cb3948.ctex"
+uid="uid://w0w3t86juciu"
+path="res://.godot/imported/plant-22.png-be2143aaf774f65d4088260e15734ffe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/bird/bird_test.png"
-dest_files=["res://.godot/imported/bird_test.png-e9d66a2b7b9f54df5e95abd690cb3948.ctex"]
+source_file="res://finalplant/plant-22.png"
+dest_files=["res://.godot/imported/plant-22.png-be2143aaf774f65d4088260e15734ffe.ctex"]
 
 [params]
 

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cxew2wf8xbr5r" path="res://components/comp_in_area.tscn" id="2_vuxuf"]
 [ext_resource type="PackedScene" uid="uid://dfis1aunv1mul" path="res://hive/comp_hive.tscn" id="3_vn5dp"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="5_m7ity"]
-[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://UI/square.png" id="6_lnm6b"]
+[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://ui/square.png" id="6_lnm6b"]
 [ext_resource type="AudioStream" uid="uid://cet62j757pg67" path="res://sounds/honey.wav" id="7_t0btv"]
 [ext_resource type="AudioStream" uid="uid://br7p050wye74" path="res://sounds/beespawn.wav" id="8_vjs4f"]
 
