@@ -32,6 +32,8 @@ func got_hit(body: Node2D):
 			if $InvincibilityFrames.time_left == 0:
 				$InvincibilityFrames.start()
 				decrease_hp(1)
+				if body.has_method("enemy_atacked"):
+					body.enemy_atacked()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

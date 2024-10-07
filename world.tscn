@@ -257,6 +257,7 @@ bee_controller = NodePath("../../../BeeManager")
 material = SubResource("ShaderMaterial_7nmhm")
 
 [node name="Wasp" parent="Objects/NPC" node_paths=PackedStringArray("hive") instance=ExtResource("18_lmx14")]
+position = Vector2(-123, 6)
 hive = NodePath("../../Objects/Hive")
 
 [node name="EnemySpawninator" parent="." node_paths=PackedStringArray("enemy_container", "flower_manager", "bee_manager") instance=ExtResource("18_f6rh2")]
