@@ -96,6 +96,7 @@ func get_amount_of_pollen():
 	return sum
 
 
+
 func destroy_bee(bee: BeeControler):
 	bees.erase(bee)
 	cursour_folowing.erase(bee)
@@ -103,4 +104,5 @@ func destroy_bee(bee: BeeControler):
 	bee.queue_free()
 	UI.set_bees_amount(get_amount_of_bees())
 	if len(bees) == 0:
-		get_tree().change_scene_to_file("res://end_title.tscn")
+		var callable = Callable(get_tree(),"change_scene_to_file")
+		callable.call_deferred("res://end_title.tscn")
