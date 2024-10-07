@@ -56,7 +56,12 @@ func increase_hp(value : int):
 	hp = min(hp + value,max_hp)
 	progress_bar.value = hp
 	return
-	
+
+
+@export var death_callback: Node
 func death():
-	parent.queue_free()
+	if death_callback != null:
+		death_callback.death()
+	else:
+		parent.queue_free()
 	return

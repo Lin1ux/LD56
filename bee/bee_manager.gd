@@ -99,3 +99,4 @@ func destroy_bee(bee: BeeControler):
 	cursour_folowing.erase(bee)
 	dashing_bees.erase(bee)
 	bee.queue_free()
+	UI.set_bees_amount(get_amount_of_bees())

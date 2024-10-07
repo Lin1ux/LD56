@@ -268,7 +268,6 @@ script = ExtResource("11_70aq4")
 bee_prefab = ExtResource("12_jtims")
 bees_to_spawn = 1
 UI = NodePath("../CanvasLayer/UI")
-bees_ratio = null
 
 [node name="Bees" type="CanvasGroup" parent="BeeManager"]
 z_index = 2

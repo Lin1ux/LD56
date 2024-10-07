@@ -291,7 +291,6 @@ bee_manager = NodePath("../../../BeeManager")
 script = ExtResource("6_ayyef")
 bee_prefab = ExtResource("1_ic6f1")
 bees_to_spawn = 3
-bees_ratio = null
 UI = NodePath("../CanvasLayer/UI")
 
 [node name="Bees" type="CanvasGroup" parent="BeeManager"]
