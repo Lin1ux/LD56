@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://br8gkj5owgbla"]
+[gd_scene load_steps=58 format=3 uid="uid://br8gkj5owgbla"]
 
 [ext_resource type="Script" path="res://finalplant/final_plant.gd" id="1_1qwfq"]
 [ext_resource type="Texture2D" uid="uid://uccjog3kg6b7" path="res://finalplant/plant-1.png" id="2_3qday"]
@@ -46,6 +46,14 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dlqt"]
 radius = 34.7851
+
+[sub_resource type="GDScript" id="GDScript_736lf"]
+script/source = "extends Node
+
+func death():
+	var callable = Callable(get_tree(),\"change_scene_to_file\")
+	callable.call_deferred(\"res://win_end_title.tscn\")
+"
 
 [sub_resource type="Animation" id="Animation_fxlyk"]
 length = 0.001
@@ -489,19 +497,23 @@ offset = Vector2(0, -28)
 [node name="Marker2D" type="Marker2D" parent="Node2D/Sprite2D"]
 position = Vector2(0, -51)
 
-[node name="CompHP" parent="Node2D" node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("41_qecgs")]
+[node name="CompHP" parent="Node2D" node_paths=PackedStringArray("parent", "parent_sprite", "hitbox", "death_callback") instance=ExtResource("41_qecgs")]
 rotation = -1.5708
 max_hp = 10
 parent = NodePath("../..")
 parent_sprite = NodePath("../Sprite2D")
 hitbox = NodePath("Area2D")
 vulnerable = false
+death_callback = NodePath("Death")
 
 [node name="Area2D" type="Area2D" parent="Node2D/CompHP"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CompHP/Area2D"]
 position = Vector2(30, -2)
 shape = SubResource("CircleShape2D_4dlqt")
+
+[node name="Death" type="Node" parent="Node2D/CompHP"]
+script = SubResource("GDScript_736lf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
