@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=24 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="6_7u8t0"]
 [ext_resource type="Script" path="res://bee/bee_manager.gd" id="6_ayyef"]
 [ext_resource type="Script" path="res://scripts/objects_manager.gd" id="7_1dilw"]
+[ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="7_2y1m6"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="8_bbrd4"]
 [ext_resource type="PackedScene" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
 [ext_resource type="PackedScene" uid="uid://brqfdgcoyn78m" path="res://enemies/Bird/bird.tscn" id="11_sfr2r"]
@@ -46,7 +47,7 @@ shader_parameter/screen_size = Vector2(640, 360)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7nmhm"]
 shader = ExtResource("1_oqf80")
-shader_parameter/line_thickness = 1
+shader_parameter/line_thickness = 2
 shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/screen_size = Vector2(640, 360)
 
@@ -110,6 +111,8 @@ offset_left = 71.0
 offset_top = 2.0
 offset_right = 71.0
 offset_bottom = 2.0
+
+[node name="Cursor" parent="CanvasLayer" instance=ExtResource("7_2y1m6")]
 
 [node name="Objects" type="Node2D" parent="." node_paths=PackedStringArray("Objects")]
 z_index = 1
