@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://br8gkj5owgbla"]
+[gd_scene load_steps=54 format=3 uid="uid://br8gkj5owgbla"]
 
 [ext_resource type="Script" path="res://finalplant/final_plant.gd" id="1_1qwfq"]
 [ext_resource type="Texture2D" uid="uid://uccjog3kg6b7" path="res://finalplant/plant-1.png" id="2_3qday"]
@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cf3sijldrgw3j" path="res://finalplant/plant-25.png" id="24_cmb1j"]
 [ext_resource type="Texture2D" uid="uid://b5fwol25ax4iv" path="res://finalplant/plant-26.png" id="25_ppxkr"]
 [ext_resource type="Texture2D" uid="uid://il4p78ensqex" path="res://finalplant/plant-27.png" id="26_ogc16"]
-[ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="27_8ajlm"]
+[ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="27_8ajlm"]
 [ext_resource type="Script" path="res://finalplant/sleep.gd" id="28_5qqed"]
 [ext_resource type="Script" path="res://finalplant/open.gd" id="29_cwuob"]
 [ext_resource type="Script" path="res://finalplant/prepare_cannon.gd" id="30_qabpe"]
@@ -40,6 +40,7 @@
 [ext_resource type="Script" path="res://finalplant/melee_charge.gd" id="38_ubvl5"]
 [ext_resource type="Script" path="res://finalplant/after_charge.gd" id="39_g3xoi"]
 [ext_resource type="Script" path="res://finalplant/charge.gd" id="39_guq6j"]
+[ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="41_qecgs"]
 
 [sub_resource type="Animation" id="Animation_fxlyk"]
 length = 0.001
@@ -469,8 +470,10 @@ _data = {
 "sleep": SubResource("Animation_rjhuj")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4dlqt"]
+radius = 34.7851
+
 [node name="FinalPlant" type="CharacterBody2D"]
-z_index = 2
 script = ExtResource("1_1qwfq")
 range = 400.0
 speed = 200
@@ -578,6 +581,18 @@ script = ExtResource("39_g3xoi")
 parent = NodePath("../..")
 anim = NodePath("../../AnimationPlayer")
 anim_name = "melee"
+
+[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("41_qecgs")]
+max_hp = 10
+parent = NodePath("..")
+parent_sprite = NodePath("../Sprite2D")
+hitbox = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="CompHP"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CompHP/Area2D"]
+position = Vector2(30, -2)
+shape = SubResource("CircleShape2D_4dlqt")
 
 [connection signal="timeout" from="CompStateMachine/Shot/Timer" to="CompStateMachine/Shot" method="_on_timer_timeout"]
 [connection signal="timeout" from="CompStateMachine/Defence/Timer" to="CompStateMachine/Defence" method="_on_timer_timeout"]
