@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=24 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://brqfdgcoyn78m" path="res://enemies/Bird/bird.tscn" id="11_sfr2r"]
 [ext_resource type="PackedScene" uid="uid://bhu8ftomn64sl" path="res://enemies/butterfly/butterfly.tscn" id="11_yfffk"]
 [ext_resource type="AudioStream" uid="uid://tkhv62xv7g4h" path="res://sounds/beedash.wav" id="17_inpkd"]
+[ext_resource type="PackedScene" uid="uid://cjb0oiy41e0kc" path="res://fly/fly.tscn" id="18_e2rhh"]
 
 [sub_resource type="Environment" id="Environment_i2q20"]
 background_mode = 3
@@ -279,6 +280,9 @@ spawn_range = 0.0
 [node name="Bird" parent="Objects/NPC" node_paths=PackedStringArray("bee_manager") instance=ExtResource("11_sfr2r")]
 position = Vector2(-19, 54)
 bee_manager = NodePath("../../../BeeManager")
+
+[node name="fly" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("18_e2rhh")]
+flower_manager = NodePath("../..")
 
 [node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]
 script = ExtResource("6_ayyef")
