@@ -15,7 +15,9 @@ extends Node2D
 
 var bees : Array[BeeControler]
 
-var selected_bees : Array[BeeControler]
+
+
+var cursour_folowing : Array[BeeControler]
 
 
 func _ready():
@@ -44,12 +46,21 @@ func statr_dash():
 	for i in range(bees_to_dash):
 		var dashing_bee = bees[arr[i]]
 		dashing_bee.dash()
+		dashing_bee.dash_finished.connect(dash_cleaup,ConnectFlags.CONNECT_ONE_SHOT)
+		cursour_folowing.erase(dashing_bee)
 		dashing_bees.append(dashing_bee)
+	for dashing_bee in dashing_bees:
+		cursour_folowing.erase(dashing_bee)
 	
+func dash_cleaup(bee : BeeControler):
+	dashing_bees.erase(bee)
+	cursour_folowing.append(bee)
+
 
 func end_dash():
 	for bee in dashing_bees:
 		bee.end_dash()
+		cursour_folowing.append(bee)
 	dashing_bees.clear()
 	
 
@@ -62,6 +73,7 @@ func spawn_bees(location : Vector2, count : int):
 	for i in range(count):
 		var bee :BeeControler= bee_prefab.instantiate()
 		bees.append(bee)
+		cursour_folowing.append(bee)
 		bee.position = location
 		bee.new_target(location)
 		bees_holder.add_child(bee)

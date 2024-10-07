@@ -2,6 +2,7 @@ extends Node2D
 class_name BeeControler
 
 
+signal dash_finished(BeeControler)
 
 var direction : Vector2
 @export_group("Movement")

@@ -11,6 +11,7 @@ func enter():
 	$"../../ParticleTrail".emitting = true
 	
 func exit():
+	bee.dash_finished.emit()
 	$"../../ParticleTrail".emitting = false
 	
 func update(delta):
