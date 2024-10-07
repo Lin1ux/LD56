@@ -30,6 +30,8 @@ func spawn_flower():
 		return
 	var f = flower.instantiate()
 	f.global_position = self.global_position
-	f.set_image(images[randi_range(0,len(images)-1)])
+	var num = randi_range(0,len(images)-1)
+	f.set_image(images[num])
+	f.texture_used = num + 1
 	flower_manager.add_new_child(f)
 	flower_manager.add_flower(f)
