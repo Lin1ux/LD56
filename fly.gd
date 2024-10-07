@@ -24,11 +24,12 @@ func is_rot_flower():
 	return ready_to_rot_flower
 	
 func rot_flower():
-	if not f.rotting:
-		f.rotting = true
-		f.get_node("CompHP").vulnerable = true
-		flower_manager.flower_list.erase(f)
-		var texture: CompressedTexture2D = load("res://flower/flower" + str(f.texture_used) + "_rotting.png")
-		f.set_image(texture)
-	return
+	if is_instance_valid(f):
+		if not f.rotting:
+			f.rotting = true
+			f.get_node("CompHP").vulnerable = true
+			flower_manager.flower_list.erase(f)
+			var texture: CompressedTexture2D = load("res://flower/flower" + str(f.texture_used) + "_rotting.png")
+			f.set_image(texture)
+		return
 	

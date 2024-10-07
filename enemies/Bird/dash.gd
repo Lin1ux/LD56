@@ -32,12 +32,12 @@ func update(delta: float) -> void:
 func correction():
 	if tween:
 		tween.kill()
-	tween = create_tween()
 	
 	if selected_target == null:
 		get_parent().change_state("AfterDash")
 		return
 	
+	tween = create_tween()
 	var angle = parent.get_angle_to(selected_target.global_position)
 	tween.tween_property(parent,"rotation",parent.global_rotation + angle,parent.get_correction())
 	tween.finished.connect(correction)	
