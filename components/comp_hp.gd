@@ -4,15 +4,23 @@ var hp : int
 @export var max_hp : int
 @export var parent : Node
 @export var progress_bar : Node
+@export var hitbox : Area2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	progress_bar = $ProgressBar
 	
 	hp = max_hp
 	progress_bar.max_value = hp
 	progress_bar.value = hp
 	
+	hitbox.area_entered.connect(got_hit)
+	
 	return
+
+
+func got_hit(area: Area2D):
+	
+	decrease_hp(1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

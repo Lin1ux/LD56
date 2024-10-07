@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://brqfdgcoyn78m"]
+[gd_scene load_steps=14 format=3 uid="uid://brqfdgcoyn78m"]
 
 [ext_resource type="Script" path="res://enemies/bird/bird.gd" id="1_pxqbr"]
 [ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="2_gh6kl"]
@@ -10,14 +10,17 @@
 [ext_resource type="Script" path="res://enemies/bird/fly_forward.gd" id="6_ggr46"]
 [ext_resource type="AudioStream" uid="uid://dhkpc5csgt4s" path="res://sounds/bird_spawn.wav" id="6_y88m0"]
 [ext_resource type="Script" path="res://enemies/bird/after_dash.gd" id="8_t1q0k"]
+[ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="11_lh1s4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjawy"]
 radius = 6.0
 height = 24.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8ybw"]
+radius = 12.0
+
 [node name="Bird" type="CharacterBody2D"]
 script = ExtResource("1_pxqbr")
-after_dash_range = 50.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -68,6 +71,16 @@ wait_time = 2.0
 [node name="Dash" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
 script = ExtResource("4_7u1hj")
 parent = NodePath("../..")
+
+[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "hitbox") instance=ExtResource("11_lh1s4")]
+max_hp = 5
+parent = NodePath("..")
+hitbox = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="CompHP"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CompHP/Area2D"]
+shape = SubResource("CircleShape2D_d8ybw")
 
 [connection signal="timeout" from="CompStateMachine/Spawned/Timer" to="CompStateMachine/Spawned" method="_on_timer_timeout"]
 [connection signal="timeout" from="CompStateMachine/FlyForward/Timer" to="CompStateMachine/FlyForward" method="_on_timer_timeout"]
