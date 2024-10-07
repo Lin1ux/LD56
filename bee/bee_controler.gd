@@ -21,22 +21,30 @@ var side_acceleration : float
 @export var backpack : Node		##Component of backpack
 
 var dashing : bool
+var dash_started: bool
 	
 func _integrate_forces(state : PhysicsDirectBodyState2D):
-	
-	
-	state.apply_impulse(direction * acceleration)
-	
-	var side_motion = direction.rotated(deg_to_rad(90))
-	state.apply_impulse(side_motion * side_acceleration)
-	
-	
-	if state.linear_velocity.length() > max_speed:
-		var dir = state.linear_velocity.normalized()
-		state.linear_velocity = dir * max_speed
-	
-	$Sprite2D.look_at(state.linear_velocity.rotated(PI/2))
-	
+	if dashing:
+		pass
+		
+	elif dash_started:
+		dashing = true
+		dash_started = false
+		state.linear_velocity *= 1.5
+	else:
+		
+		state.apply_impulse(direction * acceleration)
+		
+		var side_motion = direction.rotated(deg_to_rad(90))
+		state.apply_impulse(side_motion * side_acceleration)
+		
+		
+		if state.linear_velocity.length() > max_speed:
+			var dir = state.linear_velocity.normalized()
+			state.linear_velocity = dir * max_speed
+		
+		$Sprite2D.look_at(state.linear_velocity.rotated(PI/2))
+		
 		
 	
 	

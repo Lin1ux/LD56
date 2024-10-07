@@ -38,16 +38,15 @@ var dashing_bees : Array[BeeControler]
 
 func statr_dash():
 	
-	var bees_count = len(bees)
+	var bees_count = len(cursour_folowing)
 	var arr : Array = range(bees_count)
 	arr.shuffle()
 	var bees_to_dash = ceil(bees_count * bees_ratio)
 	
 	for i in range(bees_to_dash):
-		var dashing_bee = bees[arr[i]]
+		var dashing_bee = cursour_folowing[arr[i]]
 		dashing_bee.dash()
 		dashing_bee.dash_finished.connect(dash_cleaup,ConnectFlags.CONNECT_ONE_SHOT)
-		cursour_folowing.erase(dashing_bee)
 		dashing_bees.append(dashing_bee)
 	for dashing_bee in dashing_bees:
 		cursour_folowing.erase(dashing_bee)

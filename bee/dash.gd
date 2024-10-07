@@ -7,11 +7,13 @@ extends Node
 @export var dash_time : float = 0.7
 var current_time 
 func enter():
+	bee.dash_started = true
 	current_time = dash_time
 	$"../../ParticleTrail".emitting = true
 	
 func exit():
-	bee.dash_finished.emit()
+	bee.dashing = false
+	bee.dash_finished.emit(bee)
 	$"../../ParticleTrail".emitting = false
 	
 func update(delta):
