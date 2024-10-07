@@ -15,6 +15,8 @@ var start_pos : Vector2
 var target : BeeControler
 var next_action
 
+var attacking: bool = true
+
 func _ready():
 	start_pos = self.global_position
 
@@ -62,3 +64,8 @@ func spawn_roots(amount : int):
 		
 func set_vulnerable(mode : bool):
 	HP_component.set_vulnerable(mode)
+	
+	
+func can_deal_damage() -> bool:
+	return attacking
+	

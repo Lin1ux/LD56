@@ -70,6 +70,3 @@ func death():
 	else:
 		parent.queue_free()
 	return
-	
-func set_vulnerable(mode : bool):
-	vulnerable = mode
