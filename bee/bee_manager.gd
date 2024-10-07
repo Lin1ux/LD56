@@ -75,6 +75,7 @@ func spawn_bees(location : Vector2, count : int):
 		cursour_folowing.append(bee)
 		bee.position = location
 		bee.new_target(location)
+		bee.bee_dies.connect(destroy_bee,ConnectFlags.CONNECT_ONE_SHOT)
 		bees_holder.add_child(bee)
 	UI.set_bees_amount(get_amount_of_bees())
 		
@@ -89,3 +90,10 @@ func get_amount_of_pollen():
 	for i in bees:
 		sum += i.get_backpack().get_pollen_amount()
 	return sum
+
+
+func destroy_bee(bee: BeeControler):
+	bees.erase(bee)
+	cursour_folowing.erase(bee)
+	dashing_bees.erase(bee)
+	bee.queue_free()

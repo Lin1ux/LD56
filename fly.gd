@@ -26,8 +26,7 @@ func is_rot_flower():
 func rot_flower():
 	if not f.rotting:
 		f.rotting = true
-		
-		var texture: CompressedTexture2D = load("res://flower/flower_1_rotting.png")
+		var texture: CompressedTexture2D = load("res://flower/flower" + str(f.texture_used) + "_rotting.png")
 		f.set_image(texture)
 	return
 	

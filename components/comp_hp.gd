@@ -59,3 +59,5 @@ func death():
 	parent.queue_free()
 	return
 	
+func can_daeal_damage() -> bool:
+	return $"../StateMachine".state.name == "Dash"
