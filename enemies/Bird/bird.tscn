@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://brqfdgcoyn78m"]
 
-[ext_resource type="Script" path="res://enemies/bird/bird.gd" id="1_pxqbr"]
-[ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="2_gh6kl"]
-[ext_resource type="Texture2D" uid="uid://bbecg2ndb6mw0" path="res://sprites/bird.png" id="2_hnns3"]
-[ext_resource type="Script" path="res://enemies/bird/patrol.gd" id="3_5gs5t"]
-[ext_resource type="Script" path="res://enemies/bird/dash.gd" id="4_7u1hj"]
-[ext_resource type="Script" path="res://enemies/bird/spawned.gd" id="5_qcgap"]
-[ext_resource type="Script" path="res://enemies/bird/fly_forward.gd" id="6_ggr46"]
-[ext_resource type="AudioStream" uid="uid://dhkpc5csgt4s" path="res://sounds/bird_spawn.wav" id="6_y88m0"]
-[ext_resource type="Script" path="res://enemies/bird/after_dash.gd" id="8_t1q0k"]
-[ext_resource type="PackedScene" uid="uid://cwno5m4yph3p2" path="res://components/comp_hp.tscn" id="11_lh1s4"]
+[ext_resource type="Script" path="res://enemies/bird/bird.gd" id="1_34fkc"]
+[ext_resource type="Texture2D" uid="uid://bbecg2ndb6mw0" path="res://sprites/bird.png" id="2_s08et"]
+[ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="3_u672m"]
+[ext_resource type="Script" path="res://enemies/bird/spawned.gd" id="4_iwrol"]
+[ext_resource type="AudioStream" uid="uid://dhkpc5csgt4s" path="res://sounds/bird_spawn.wav" id="5_au87p"]
+[ext_resource type="Script" path="res://enemies/bird/patrol.gd" id="6_jyri1"]
+[ext_resource type="Script" path="res://enemies/bird/fly_forward.gd" id="7_yuqr1"]
+[ext_resource type="Script" path="res://enemies/bird/after_dash.gd" id="8_sxmcw"]
+[ext_resource type="Script" path="res://enemies/bird/dash.gd" id="9_p5ugu"]
+[ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="10_afevb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjawy"]
 radius = 6.0
@@ -24,11 +24,11 @@ radius = 8.0
 [node name="Bird" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_pxqbr")
+script = ExtResource("1_34fkc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource("2_hnns3")
+texture = ExtResource("2_s08et")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
@@ -39,41 +39,41 @@ position = Vector2(2, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kjawy")
 
-[node name="CompStateMachine" parent="." node_paths=PackedStringArray("state") instance=ExtResource("2_gh6kl")]
+[node name="CompStateMachine" parent="." node_paths=PackedStringArray("state") instance=ExtResource("3_u672m")]
 state_machine_name = "Bird"
 state = NodePath("Spawned")
 
 [node name="Spawned" type="Node" parent="CompStateMachine"]
-script = ExtResource("5_qcgap")
+script = ExtResource("4_iwrol")
 
 [node name="Timer" type="Timer" parent="CompStateMachine/Spawned"]
 
 [node name="Sound" type="AudioStreamPlayer" parent="CompStateMachine/Spawned"]
-stream = ExtResource("6_y88m0")
+stream = ExtResource("5_au87p")
 
 [node name="Rotate" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
-script = ExtResource("3_5gs5t")
+script = ExtResource("6_jyri1")
 parent = NodePath("../..")
 
 [node name="FlyForward" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
-script = ExtResource("6_ggr46")
+script = ExtResource("7_yuqr1")
 parent = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="CompStateMachine/FlyForward"]
 wait_time = 2.0
 
 [node name="AfterDash" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
-script = ExtResource("8_t1q0k")
+script = ExtResource("8_sxmcw")
 parent = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="CompStateMachine/AfterDash"]
 wait_time = 2.0
 
 [node name="Dash" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
-script = ExtResource("4_7u1hj")
+script = ExtResource("9_p5ugu")
 parent = NodePath("../..")
 
-[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("11_lh1s4")]
+[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("10_afevb")]
 max_hp = 5
 parent = NodePath("..")
 parent_sprite = NodePath("../Sprite2D")

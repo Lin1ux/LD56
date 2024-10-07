@@ -17,7 +17,6 @@ radius = 6.0
 
 [node name="Butterfly" type="CharacterBody2D" node_paths=PackedStringArray("backpack")]
 script = ExtResource("1_rvy4s")
-spawn_range = 50.0
 images = Array[CompressedTexture2D]([ExtResource("2_hcdcb"), ExtResource("3_ctbr6"), ExtResource("4_pwvr4")])
 flower = ExtResource("5_jacck")
 speed = 50
