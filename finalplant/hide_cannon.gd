@@ -11,7 +11,13 @@ func enter() -> void:
 	anim.animation_finished.connect(next_state,ConnectFlags.CONNECT_ONE_SHOT)
 
 func next_state(_x):
-	get_parent().change_state("Shot")
+	var action = parent.change_action()
+	if parent.actions.SHOT == action:
+		get_parent().change_state("PrepareCannon")
+	if parent.actions.MELEE == action:
+		get_parent().change_state("PrepareTeeth")
+	if parent.actions.DEFENCE == action:
+		get_parent().change_state("Close")
 
 func update(delta: float) -> void:
 	pass

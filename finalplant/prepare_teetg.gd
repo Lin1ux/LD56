@@ -11,7 +11,7 @@ func enter() -> void:
 	anim.animation_finished.connect(next_state,ConnectFlags.CONNECT_ONE_SHOT)
 
 func next_state(_x):
-	get_parent().change_state("Shot")
+	get_parent().change_state("Melee")
 
 func update(delta: float) -> void:
 	pass
