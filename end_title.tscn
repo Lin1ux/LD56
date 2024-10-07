@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dxlfm8ljiaomm"]
+[gd_scene load_steps=2 format=3 uid="uid://dxlfm8ljiaomm"]
+
+[ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="1_anhku"]
 
 [node name="EndTitle" type="Control"]
 layout_mode = 3
@@ -18,3 +20,7 @@ grow_vertical = 2
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Cursor" parent="CanvasLayer" instance=ExtResource("1_anhku")]
