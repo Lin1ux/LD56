@@ -15,6 +15,10 @@ func next_state(_x):
 	var action = parent.change_action()
 	if parent.actions.SHOT == action:
 		get_parent().change_state("PrepareCannon")
+	if parent.actions.MELEE == action:
+		get_parent().change_state("PrepareTeeth")
+	if parent.actions.DEFENCE == action:
+		get_parent().change_state("Close")
 
 func update(delta: float) -> void:
 	pass
