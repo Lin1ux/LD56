@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfwalf1sfdxhe"]
+[gd_scene load_steps=13 format=3 uid="uid://dfwalf1sfdxhe"]
 
 [ext_resource type="Texture2D" uid="uid://rj2lw13efhrp" path="res://hive/beehive.png" id="1_6smtp"]
 [ext_resource type="Script" path="res://hive/hive_data.gd" id="1_25ou0"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cet62j757pg67" path="res://sounds/honey.wav" id="7_t0btv"]
 [ext_resource type="AudioStream" uid="uid://br7p050wye74" path="res://sounds/beespawn.wav" id="8_vjs4f"]
 [ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="9_nwi5d"]
+[ext_resource type="Script" path="res://hive/ive_death_callback.gd" id="10_lx68i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7cgb0"]
 radius = 21.0
@@ -80,10 +81,12 @@ volume_db = -10.0
 [node name="BeeSpawnSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_vjs4f")
 
-[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "hitbox") instance=ExtResource("9_nwi5d")]
-max_hp = 3
+[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox", "death_callback") instance=ExtResource("9_nwi5d")]
+max_hp = 4
 parent = NodePath("..")
+parent_sprite = NodePath("../Sprites/Sprite2D")
 hitbox = NodePath("Area2D")
+death_callback = NodePath("../Node")
 
 [node name="Area2D" type="Area2D" parent="CompHP"]
 collision_layer = 0
@@ -92,5 +95,8 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CompHP/Area2D"]
 position = Vector2(1, 4)
 shape = SubResource("CapsuleShape2D_mochn")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("10_lx68i")
 
 [editable path="CompHP"]

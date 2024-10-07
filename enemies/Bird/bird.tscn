@@ -25,6 +25,8 @@ radius = 8.0
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_34fkc")
+speed = 90
+max_hp = 3
 
 [node name="Sprites" type="Node2D" parent="."]
 rotation = 1.5708
@@ -100,7 +102,7 @@ script = ExtResource("9_p5ugu")
 parent = NodePath("../..")
 
 [node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("10_afevb")]
-max_hp = 5
+max_hp = 3
 parent = NodePath("..")
 parent_sprite = NodePath("../Sprites")
 hitbox = NodePath("Area2D")
