@@ -17,7 +17,6 @@ offset_top = 2.0
 offset_right = 2.0
 offset_bottom = 2.0
 texture = ExtResource("3_r4ryt")
-text = "0"
 
 [node name="AmountBox2" parent="CanvasLayer" instance=ExtResource("2_d60pm")]
 offset_left = 36.0
@@ -25,4 +24,3 @@ offset_top = 2.0
 offset_right = 36.0
 offset_bottom = 2.0
 texture = ExtResource("4_7vbw3")
-text = "0"

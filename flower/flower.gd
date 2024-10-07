@@ -35,15 +35,12 @@ func gather_pollen(character : Node):
 		backpack.increase_pollen(1)
 		progress_bar.value = current_pollens
 		$Timer.start()
-		print("in area 3")
-		print("gathering")
 		$CollectSound.play()
 		
 		
 
 func _on_timer_timeout() -> void:
 	if max_pollens > current_pollens:
-		print("timeout")
 		current_pollens += 1
 		progress_bar.value = current_pollens
 		
