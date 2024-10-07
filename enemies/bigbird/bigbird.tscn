@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://df0rfyogsfqj2"]
+
+[ext_resource type="Script" path="res://enemies/bird/bird.gd" id="1_eob7b"]
+[ext_resource type="Texture2D" uid="uid://7x4r86ttfhck" path="res://enemies/bigbird/dreamberd.png" id="2_si1s8"]
+[ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="3_gbhvg"]
+[ext_resource type="Script" path="res://enemies/bird/spawned.gd" id="4_q5knr"]
+[ext_resource type="AudioStream" uid="uid://dhkpc5csgt4s" path="res://sounds/bird_spawn.wav" id="5_820o2"]
+[ext_resource type="Script" path="res://enemies/bird/patrol.gd" id="6_1srce"]
+[ext_resource type="Script" path="res://enemies/bird/fly_forward.gd" id="7_k8wm3"]
+[ext_resource type="Script" path="res://enemies/bird/after_dash.gd" id="8_myk3u"]
+[ext_resource type="Script" path="res://enemies/bird/dash.gd" id="9_t6j2b"]
+[ext_resource type="PackedScene" uid="uid://cwno5m4yph3p2" path="res://components/comp_hp.tscn" id="10_ykqpi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjawy"]
+radius = 6.0
+height = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8ybw"]
+radius = 33.1361
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0lcu5"]
+radius = 21.2132
+
+[node name="BigBird" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_eob7b")
+speed = 300
+max_hp = 35
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_si1s8")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+light_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kjawy")
+
+[node name="CompStateMachine" parent="." node_paths=PackedStringArray("state") instance=ExtResource("3_gbhvg")]
+state_machine_name = "Bird"
+state = NodePath("Spawned")
+
+[node name="Spawned" type="Node" parent="CompStateMachine"]
+script = ExtResource("4_q5knr")
+
+[node name="Timer" type="Timer" parent="CompStateMachine/Spawned"]
+
+[node name="Sound" type="AudioStreamPlayer" parent="CompStateMachine/Spawned"]
+stream = ExtResource("5_820o2")
+
+[node name="Rotate" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
+script = ExtResource("6_1srce")
+parent = NodePath("../..")
+
+[node name="FlyForward" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
+script = ExtResource("7_k8wm3")
+parent = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="CompStateMachine/FlyForward"]
+wait_time = 2.0
+
+[node name="AfterDash" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
+script = ExtResource("8_myk3u")
+parent = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="CompStateMachine/AfterDash"]
+wait_time = 2.0
+
+[node name="Dash" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
+script = ExtResource("9_t6j2b")
+parent = NodePath("../..")
+
+[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("10_ykqpi")]
+max_hp = 35
+parent = NodePath("..")
+parent_sprite = NodePath("../Sprite2D")
+hitbox = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="CompHP"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CompHP/Area2D"]
+shape = SubResource("CircleShape2D_d8ybw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0lcu5")
+
+[connection signal="timeout" from="CompStateMachine/Spawned/Timer" to="CompStateMachine/Spawned" method="_on_timer_timeout"]
+[connection signal="timeout" from="CompStateMachine/FlyForward/Timer" to="CompStateMachine/FlyForward" method="_on_timer_timeout"]
+[connection signal="timeout" from="CompStateMachine/AfterDash/Timer" to="CompStateMachine/AfterDash" method="_on_timer_timeout"]
