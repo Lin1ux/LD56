@@ -88,3 +88,11 @@ func bee_died():
 func can_deal_damage() -> bool:
 	return $StateMachine.state.name == "Dash"
 	
+
+
+func _on_tree_exiting() -> void:
+	manager.bees.erase(self)
+	manager.UI.set_bees_amount(manager.get_amount_of_bees())
+	manager.cursour_folowing.erase(self)
+	manager.dashing_bees.erase(self)
+	
