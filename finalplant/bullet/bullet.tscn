@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bew46r22ofb1a"]
+
+[ext_resource type="Script" path="res://finalplant/bullet/bullet.gd" id="1_gjtys"]
+[ext_resource type="Texture2D" uid="uid://bd3ipy1t4me6p" path="res://sprites/arrow.png" id="2_j655j"]
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_gjtys")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j655j")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -23,6 +23,8 @@ func next_state():
 func update(delta: float) -> void:
 	parent.velocity = fly_forward(delta)
 	parent.move_and_slide()
+	if target == null:
+		parent.get_new_target()
 	if distance() < change_state_distance * change_state_distance:
 		tween.kill()
 		get_parent().change_state("Charge")
@@ -40,6 +42,8 @@ func correction():
 	if tween:
 		tween.kill()
 	tween = create_tween()
+	if target == null:
+		parent.get_new_target()
 	var angle = parent.get_angle_to(target.global_position)
 	tween.tween_property(parent,"rotation",parent.global_rotation + angle,0.2)
 	tween.finished.connect(correction)	

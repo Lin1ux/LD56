@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://scripts/objects_manager.gd" id="7_1dilw"]
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="7_2y1m6"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="8_bbrd4"]
-[ext_resource type="PackedScene" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
+[ext_resource type="PackedScene" uid="uid://oyb10us6hrpt" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
 [ext_resource type="PackedScene" uid="uid://brqfdgcoyn78m" path="res://enemies/Bird/bird.tscn" id="11_sfr2r"]
 [ext_resource type="PackedScene" uid="uid://bhu8ftomn64sl" path="res://enemies/butterfly/butterfly.tscn" id="11_yfffk"]
 [ext_resource type="PackedScene" uid="uid://br8gkj5owgbla" path="res://finalplant/final_plant.tscn" id="15_tjyia"]
@@ -283,16 +283,19 @@ position = Vector2(-19, 54)
 bee_manager = NodePath("../../../BeeManager")
 after_dash_range = 50.0
 
-[node name="FinalPlant" parent="Objects/NPC" node_paths=PackedStringArray("bee_manager") instance=ExtResource("15_tjyia")]
+[node name="FinalPlant" parent="Objects/NPC" node_paths=PackedStringArray("bee_manager", "bullet_container") instance=ExtResource("15_tjyia")]
 position = Vector2(-105, 147)
 bee_manager = NodePath("../../../BeeManager")
+bullet_container = NodePath("../../../BulletContainer")
+
+[node name="BulletContainer" type="Node2D" parent="."]
 
 [node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]
 script = ExtResource("6_ayyef")
 bee_prefab = ExtResource("1_ic6f1")
 bees_to_spawn = 3
-bees_ratio = null
 UI = NodePath("../CanvasLayer/UI")
+bees_ratio = null
 
 [node name="Bees" type="CanvasGroup" parent="BeeManager"]
 z_index = 2

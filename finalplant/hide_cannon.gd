@@ -11,6 +11,9 @@ func enter() -> void:
 	anim.animation_finished.connect(next_state,ConnectFlags.CONNECT_ONE_SHOT)
 
 func next_state(_x):
+	if parent.should_sleep():
+		get_parent().change_state("Close")
+		return
 	var action = parent.change_action()
 	if parent.actions.SHOT == action:
 		get_parent().change_state("PrepareCannon")
