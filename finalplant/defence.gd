@@ -10,6 +10,7 @@ func enter() -> void:
 	is_active = true
 	anim.play(anim_name)
 	parent.set_vulnerable(false)
+	parent.set_attacking(false)
 	parent.spawn_roots(10)
 	
 	#anim.animation_finished.connect(next_state,ConnectFlags.CONNECT_ONE_SHOT)

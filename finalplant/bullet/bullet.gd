@@ -22,3 +22,6 @@ func set_rot(rot : float):
 
 func _on_timer_timeout() -> void:
 	self.queue_free()
+	
+func can_deal_damage():
+	return true
