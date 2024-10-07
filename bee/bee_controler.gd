@@ -46,17 +46,17 @@ func _integrate_forces(state : PhysicsDirectBodyState2D):
 			var dir = state.linear_velocity.normalized()
 			state.linear_velocity = dir * max_speed
 		
-		$Sprite2D.look_at(state.linear_velocity.rotated(PI/2))
+		$Sprites.look_at(state.linear_velocity.rotated(PI/2))
 		
 func _physics_process(delta):
 		
 		
 	if $StateMachine.state.name == "Dash":
-		$Sprite2D.modulate = Color(100.0, 100.0, 100.0)
+		$Sprites.modulate = Color(100.0, 100.0, 100.0)
 	elif $CompBackpack.is_full():
-		$Sprite2D.modulate = Color.YELLOW
+		$Sprites.modulate = Color.YELLOW
 	else:
-		$Sprite2D.modulate = Color.WHITE
+		$Sprites.modulate = Color.WHITE
 		
 	
 func provide_new_target_location(target: Vector2):

@@ -41,21 +41,48 @@ func _ready() -> void:
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ekm7m"]
 shader = ExtResource("1_oqf80")
-shader_parameter/line_thickness = 2
+shader_parameter/line_thickness = 0
 shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/screen_size = Vector2(640, 360)
+shader_parameter/screen_size = null
+
+[sub_resource type="GDScript" id="GDScript_wwcls"]
+script/source = "@tool
+extends CanvasGroup
+
+func _process(delta: float) -> void:
+	material.set(\"shader_parameter/screen_size\", get_viewport().size)
+	material.set(\"shader_parameter/line_thickness\", 0 * (get_viewport().size.x / 640))
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7nmhm"]
 shader = ExtResource("1_oqf80")
-shader_parameter/line_thickness = 2
+shader_parameter/line_thickness = 0
 shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/screen_size = Vector2(640, 360)
+shader_parameter/screen_size = null
+
+[sub_resource type="GDScript" id="GDScript_lw4ag"]
+script/source = "@tool
+extends CanvasGroup
+
+func _process(delta: float) -> void:
+	material.set(\"shader_parameter/screen_size\", get_viewport().size)
+	material.set(\"shader_parameter/line_thickness\", 0 * (get_viewport().size.x / 640))
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b5yfb"]
 shader = ExtResource("1_oqf80")
-shader_parameter/line_thickness = 2
+shader_parameter/line_thickness = 0
 shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/screen_size = Vector2(640, 360)
+shader_parameter/screen_size = null
+
+[sub_resource type="GDScript" id="GDScript_8c8r1"]
+script/source = "@tool
+extends CanvasGroup
+
+func _process(delta: float) -> void:
+	material.set(\"shader_parameter/screen_size\", get_viewport().size)
+	material.set(\"shader_parameter/line_thickness\", 0 * (get_viewport().size.x / 640))
+"
 
 [node name="Node2D" type="Node2D"]
 
@@ -248,6 +275,7 @@ position = Vector2(-327, 226)
 
 [node name="Objects" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_ekm7m")
+script = SubResource("GDScript_wwcls")
 
 [node name="Flower" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
 position = Vector2(121, 58)
@@ -258,6 +286,7 @@ bee_controller = NodePath("../../../BeeManager")
 
 [node name="NPC" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_7nmhm")
+script = SubResource("GDScript_lw4ag")
 
 [node name="Wasp" parent="Objects/NPC" node_paths=PackedStringArray("hive") instance=ExtResource("18_lmx14")]
 hive = NodePath("../../Objects/Hive")
@@ -283,6 +312,7 @@ bees_ratio = null
 z_index = 2
 material = SubResource("ShaderMaterial_b5yfb")
 position = Vector2(0, 1)
+script = SubResource("GDScript_8c8r1")
 
 [node name="DashSound" type="AudioStreamPlayer" parent="BeeManager"]
 stream = ExtResource("17_inpkd")

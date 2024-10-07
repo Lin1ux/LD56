@@ -19,7 +19,11 @@ func _ready():
 	progress_bar.value = current_pollens
 	
 func _process(delta: float) -> void:
-	$Sprite2D.texture = image
+	$Sprites/Sprite2D.texture = image
+	$Sprites/Sprite2D2.texture = image
+	$Sprites/Sprite2D3.texture = image
+	$Sprites/Sprite2D4.texture = image
+	$Sprites/Sprite2D5.texture = image
 	
 	if Engine.is_editor_hint():
 		return
