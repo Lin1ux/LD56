@@ -11,14 +11,17 @@ func get_new_position():
 	var pos_type = randi_range(0,10)
 	var pos = self.global_position
 	f = flower_manager.get_random_flower()
-	flower_position = f.get_position()
-	if pos_type >= 0 and not f.rotting:
+	if f == null:
+		return Vector2.ZERO
+	else:
+		flower_position = f.get_position()
+		if pos_type >= 5 and not f.rotting:
 	#if pos_type > 9:
-		ready_to_rot_flower = true
-		return flower_position
+			ready_to_rot_flower = true
+			return flower_position
 	
-	ready_to_rot_flower = false
-	return flower_position
+		ready_to_rot_flower = false
+		return flower_position
 	
 func is_rot_flower():
 	return ready_to_rot_flower

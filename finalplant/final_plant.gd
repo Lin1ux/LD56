@@ -1,8 +1,15 @@
 extends Enemy
 
 enum actions {DEFENCE,SHOT,MELEE} 
+@export_group("Targets")
 @export var bee_manager : Node				##Bee manager to pick target from
-@export var range : float 					##How far can it go 
+@export_group("Ranges")
+@export var range : float 					##How far can it go
+@export var fight_range : float = 1000			##How far target have to be to stop fighting
+@export_group("spawn things") 
+@export var bullet_container : Node 		##Place where bullets is spawned
+@export var bullet : PackedScene			##Bullet  which is used to shoot
+@export var root : PackedScene				##Spawning roots
 var start_pos : Vector2
 var target : BeeControler
 var next_action
@@ -21,8 +28,8 @@ func _process(delta):
 	pass
 	
 func change_action():
-	#next_action = actions.MELEE
-	next_action = randi_range(0,2)
+	next_action = actions.SHOT
+	#next_action = randi_range(0,2)
 	print("Next Action")
 	return next_action
 
@@ -34,3 +41,18 @@ func get_start_pos():
 	
 func should_fall_back():
 	return start_pos.distance_squared_to(self.global_position) > range*range
+	
+func should_sleep():
+	return start_pos.distance_squared_to(target.global_position) > fight_range*fight_range
+	
+func spawn_bullet():
+	var b = bullet.instantiate()
+	b.set_pos($Sprite2D/Marker2D.global_position)
+	b.set_rot($Sprite2D/Marker2D.global_rotation + deg_to_rad(-90))
+	bullet_container.add_child(b)
+	
+func spawn_roots(amount : int):
+	for i in range(amount):
+		var r = root.instantiate()
+		r.set_rand_pos(self.global_position)
+		bullet_container.add_child(r)

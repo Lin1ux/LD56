@@ -9,6 +9,7 @@ func enter() -> void:
 	$Timer.start()
 	is_active = true
 	anim.play(anim_name)
+	parent.spawn_roots(10)
 	
 	#anim.animation_finished.connect(next_state,ConnectFlags.CONNECT_ONE_SHOT)
 
