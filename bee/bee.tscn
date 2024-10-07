@@ -1,13 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://bk8yhj7gqf6qe"]
+[gd_scene load_steps=15 format=3 uid="uid://bk8yhj7gqf6qe"]
 
 [ext_resource type="Script" path="res://bee/bee_controler.gd" id="1_47a2a"]
-[ext_resource type="Texture2D" uid="uid://bsmd63vrtvx1k" path="res://bee/Bee2.png" id="2_2k58a"]
+[ext_resource type="Texture2D" uid="uid://bsmd63vrtvx1k" path="res://bee/bee2.png" id="2_2k58a"]
 [ext_resource type="PackedScene" uid="uid://bslpyvdn4cyi5" path="res://components/comp_interaction_area.tscn" id="2_lhk1w"]
-[ext_resource type="PackedScene" path="res://bee/comp_backpack.tscn" id="3_ci57g"]
+[ext_resource type="PackedScene" uid="uid://dl8ufx8gscd88" path="res://bee/comp_backpack.tscn" id="3_ci57g"]
 [ext_resource type="Script" path="res://bee/fly_towards.gd" id="3_djx18"]
 [ext_resource type="Script" path="res://bee/bee_state_machine.gd" id="3_kdsfa"]
 [ext_resource type="Script" path="res://bee/dash.gd" id="7_eeuru"]
-[ext_resource type="PackedScene" path="res://components/comp_hp.tscn" id="8_u766l"]
+[ext_resource type="PackedScene" uid="uid://cwno5m4yph3p2" path="res://components/comp_hp.tscn" id="8_u766l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ub2sv"]
 size = Vector2(3, 7)
@@ -28,6 +28,16 @@ initial_velocity_min = 1.0
 initial_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_w053d")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sqv7s"]
+radius = 3.0
+
+[sub_resource type="GDScript" id="GDScript_q6haa"]
+script/source = "extends Node
+
+func death():
+	get_parent().bee_died()
+"
 
 [node name="Bee" type="RigidBody2D" node_paths=PackedStringArray("backpack")]
 collision_mask = 0
@@ -71,4 +81,17 @@ script = ExtResource("3_djx18")
 script = ExtResource("7_eeuru")
 dash_time = 1.0
 
-[node name="CompHP" parent="." instance=ExtResource("8_u766l")]
+[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox", "death_callback") instance=ExtResource("8_u766l")]
+max_hp = 1
+parent = NodePath("..")
+parent_sprite = NodePath("../Sprite2D")
+hitbox = NodePath("Area2D")
+death_callback = NodePath("../Death")
+
+[node name="Area2D" type="Area2D" parent="CompHP"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CompHP/Area2D"]
+shape = SubResource("CircleShape2D_sqv7s")
+
+[node name="Death" type="Node" parent="."]
+script = SubResource("GDScript_q6haa")
