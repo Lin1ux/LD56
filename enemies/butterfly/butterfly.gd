@@ -13,7 +13,7 @@ func empty_backpack():
 func get_new_position():
 	var pos_type = randi_range(0,10)
 	var pos = self.global_position
-	if pos_type > 8:
+	if pos_type > 5:
 	#if pos_type > 9:
 		flower_position = Vector2(randf_range(pos.x-spawn_range,pos.x+spawn_range),randf_range(pos.y-spawn_range,pos.y+spawn_range))
 		ready_to_spawn_flower = true

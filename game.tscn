@@ -1,26 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://w24gbxobovvk"]
+[gd_scene load_steps=2 format=3 uid="uid://w24gbxobovvk"]
 
 [ext_resource type="PackedScene" uid="uid://d2573kfpvse0r" path="res://world.tscn" id="1_3oa8l"]
-[ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="2_d60pm"]
-[ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/Bee1.png" id="3_r4ryt"]
-[ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="4_7vbw3"]
 
 [node name="game" type="Node2D"]
 
 [node name="World" parent="." instance=ExtResource("1_3oa8l")]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="AmountBox" parent="CanvasLayer" instance=ExtResource("2_d60pm")]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 2.0
-offset_bottom = 2.0
-texture = ExtResource("3_r4ryt")
-
-[node name="AmountBox2" parent="CanvasLayer" instance=ExtResource("2_d60pm")]
-offset_left = 36.0
-offset_top = 2.0
-offset_right = 36.0
-offset_bottom = 2.0
-texture = ExtResource("4_7vbw3")
