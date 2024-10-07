@@ -31,8 +31,8 @@ func _process(delta):
 	pass
 	
 func change_action():
-	#next_action = actions.SHOT
-	next_action = randi_range(0,2)
+	next_action = actions.SHOT
+	#next_action = randi_range(0,2)
 	print("Next Action")
 	return next_action
 
@@ -65,6 +65,8 @@ func spawn_roots(amount : int):
 func set_vulnerable(mode : bool):
 	HP_component.set_vulnerable(mode)
 	
+func set_attacking(can_attack : bool):
+	attacking = can_attack
 	
 func can_deal_damage() -> bool:
 	return attacking

@@ -9,6 +9,7 @@ var attack_counter : int = 0
 var is_active : bool
 
 func enter() -> void:
+	parent.set_attacking(true)
 	$Timer.start()
 	is_active = true
 	anim.play(anim_name)
