@@ -5,8 +5,10 @@ extends Node2D
 @export var texture_used : int = 1
 @export var image : CompressedTexture2D		##texture of object
 @export var max_pollens : int = 5			##max amount of pollens which can be stored at once
+@export var rotten_image : CompressedTexture2D
 var progress_bar : Node
 var current_pollens : int
+
 
 var rotting : bool = false
 func _ready():
@@ -58,3 +60,16 @@ func get_flower_position():
 	
 func set_image(texture :CompressedTexture2D):
 	image = texture
+
+func start_rot_timer():
+	$Rottimer.start()
+
+func _on_rottimer_timeout() -> void:
+	print("(fin ) timer")
+	rotting = true
+	$CompHP.vulnerable = true
+	set_image(rotten_image)
+	
+func set_rand_pos(start_pos : Vector2):
+	self.position = Vector2(randf_range(start_pos.x-400,start_pos.y+400),randf_range(start_pos.y-400,start_pos.y+400))
+	

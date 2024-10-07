@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://uccjog3kg6b7" path="res://finalplant/plant-1.png" id="2_3qday"]
 [ext_resource type="PackedScene" uid="uid://bew46r22ofb1a" path="res://finalplant/bullet/bullet.tscn" id="2_fkqej"]
 [ext_resource type="Texture2D" uid="uid://o5ua4w3oxeib" path="res://finalplant/plant-2.png" id="3_12l6h"]
-[ext_resource type="PackedScene" uid="uid://b5dk7x2qcey4m" path="res://finalplant/root/root.tscn" id="3_nesvu"]
+[ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="3_vlmc1"]
 [ext_resource type="Texture2D" uid="uid://bsx34ej4wtgu7" path="res://finalplant/plant-3.png" id="4_rjib4"]
 [ext_resource type="Texture2D" uid="uid://v0ehiufv2h2c" path="res://finalplant/plant-4.png" id="5_2ggyb"]
 [ext_resource type="Texture2D" uid="uid://b8r2aokv3gaei" path="res://finalplant/plant-6.png" id="6_ty8ig"]
@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cf3sijldrgw3j" path="res://finalplant/plant-25.png" id="24_cmb1j"]
 [ext_resource type="Texture2D" uid="uid://b5fwol25ax4iv" path="res://finalplant/plant-26.png" id="25_ppxkr"]
 [ext_resource type="Texture2D" uid="uid://il4p78ensqex" path="res://finalplant/plant-27.png" id="26_ogc16"]
-[ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="27_8ajlm"]
+[ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="27_8ajlm"]
 [ext_resource type="Script" path="res://finalplant/sleep.gd" id="28_5qqed"]
 [ext_resource type="Script" path="res://finalplant/open.gd" id="29_cwuob"]
 [ext_resource type="Script" path="res://finalplant/prepare_cannon.gd" id="30_qabpe"]
@@ -475,7 +475,7 @@ script = ExtResource("1_1qwfq")
 HP_component = NodePath("Node2D/CompHP")
 range = 400.0
 bullet = ExtResource("2_fkqej")
-root = ExtResource("3_nesvu")
+root = ExtResource("3_vlmc1")
 speed = 200
 max_hp = 100
 engage_range = 100.0

@@ -9,6 +9,7 @@ var attack_counter : int = 0
 var is_active : bool
 
 func enter() -> void:
+	parent.set_attacking(true)
 	$Timer.start()
 	is_active = true
 	anim.play(anim_name)
@@ -29,6 +30,7 @@ func next_state():
 func update(delta: float) -> void:
 	if target == null:
 		parent.get_new_target()
+		return
 	print("(Final",target.global_position)
 	parent.look_at(target.global_position)
 	#$"../../Sprite2D".rotation = 90

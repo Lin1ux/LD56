@@ -9,6 +9,7 @@ func enter() -> void:
 	is_active = true
 	anim.play(anim_name)
 	parent.set_vulnerable(false)
+	parent.set_attacking(false)
 	
 
 func next_state():

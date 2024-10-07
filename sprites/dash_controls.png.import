@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cexvh4akbw14t"
-path="res://.godot/imported/bird_test.png-e9d66a2b7b9f54df5e95abd690cb3948.ctex"
+uid="uid://b7dc56yvwr8bl"
+path="res://.godot/imported/dash_controls.png-fcc91d3f03c4188b98ef4751e515aa31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/bird/bird_test.png"
-dest_files=["res://.godot/imported/bird_test.png-e9d66a2b7b9f54df5e95abd690cb3948.ctex"]
+source_file="res://sprites/dash_controls.png"
+dest_files=["res://.godot/imported/dash_controls.png-fcc91d3f03c4188b98ef4751e515aa31.ctex"]
 
 [params]
 

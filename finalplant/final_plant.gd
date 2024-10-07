@@ -31,7 +31,7 @@ func _process(delta):
 	pass
 	
 func change_action():
-	#next_action = actions.SHOT
+	#next_action = actions.DEFENCE
 	next_action = randi_range(0,2)
 	print("Next Action")
 	return next_action
@@ -52,19 +52,23 @@ func should_sleep():
 	
 func spawn_bullet():
 	var b = bullet.instantiate()
-	b.set_pos($Sprite2D/Marker2D.global_position)
-	b.set_rot($Sprite2D/Marker2D.global_rotation + deg_to_rad(-90))
+	b.set_pos($Node2D/Sprite2D/Marker2D.global_position)
+	b.set_rot($Node2D/Sprite2D/Marker2D.global_rotation + deg_to_rad(-90))
 	bullet_container.add_child(b)
 	
 func spawn_roots(amount : int):
+	return
 	for i in range(amount):
 		var r = root.instantiate()
 		r.set_rand_pos(self.global_position)
+		r.start_rot_timer()
 		bullet_container.add_child(r)
 		
 func set_vulnerable(mode : bool):
 	HP_component.set_vulnerable(mode)
 	
+func set_attacking(can_attack : bool):
+	attacking = can_attack
 	
 func can_deal_damage() -> bool:
 	return attacking

@@ -9,6 +9,7 @@ var is_active : bool
 func enter() -> void:
 	is_active = true
 	parent.set_vulnerable(true)
+	parent.set_attacking(false)
 	anim.play(anim_name)
 	anim.animation_finished.connect(next_state,ConnectFlags.CONNECT_ONE_SHOT)
 	if tween:
