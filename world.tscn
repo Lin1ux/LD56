@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=24 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="7_2y1m6"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="8_bbrd4"]
 [ext_resource type="PackedScene" uid="uid://oyb10us6hrpt" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
+[ext_resource type="PackedScene" uid="uid://br8gkj5owgbla" path="res://finalplant/final_plant.tscn" id="15_tjyia"]
 [ext_resource type="AudioStream" uid="uid://tkhv62xv7g4h" path="res://sounds/beedash.wav" id="17_inpkd"]
 [ext_resource type="PackedScene" uid="uid://b207xegfvb5um" path="res://enemy_spawninator/enemy_spawninator.tscn" id="18_f6rh2"]
 [ext_resource type="PackedScene" uid="uid://b0g1l6aggyf33" path="res://enemies/wasp/wasp.tscn" id="18_lmx14"]
@@ -243,6 +244,8 @@ position = Vector2(-329, 104)
 [node name="GrassPatch42" parent="Objects" instance=ExtResource("8_bbrd4")]
 position = Vector2(-327, 226)
 
+[node name="Bullet Container" type="Node2D" parent="Objects"]
+
 [node name="Objects" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_ekm7m")
 
@@ -258,6 +261,11 @@ material = SubResource("ShaderMaterial_7nmhm")
 
 [node name="Wasp" parent="Objects/NPC" node_paths=PackedStringArray("hive") instance=ExtResource("18_lmx14")]
 hive = NodePath("../../Objects/Hive")
+
+[node name="FinalPlant" parent="Objects/NPC" node_paths=PackedStringArray("bee_manager", "bullet_container") instance=ExtResource("15_tjyia")]
+position = Vector2(3, -15)
+bee_manager = NodePath("../../../BeeManager")
+bullet_container = NodePath("../../Bullet Container")
 
 [node name="EnemySpawninator" parent="." node_paths=PackedStringArray("enemy_container", "flower_manager", "bee_manager") instance=ExtResource("18_f6rh2")]
 enemy_container = NodePath("../Objects/NPC")

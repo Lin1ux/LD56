@@ -8,6 +8,7 @@ var is_active : bool
 func enter() -> void:
 	is_active = true
 	anim.play(anim_name)
+	parent.set_vulnerable(true)
 	anim.animation_finished.connect(next_state,ConnectFlags.CONNECT_ONE_SHOT)
 
 func next_state(_x):

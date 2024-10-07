@@ -3,6 +3,7 @@ extends Enemy
 enum actions {DEFENCE,SHOT,MELEE} 
 @export_group("Targets")
 @export var bee_manager : Node				##Bee manager to pick target from
+@export var HP_component : Node
 @export_group("Ranges")
 @export var range : float 					##How far can it go
 @export var fight_range : float = 1000			##How far target have to be to stop fighting
@@ -28,8 +29,8 @@ func _process(delta):
 	pass
 	
 func change_action():
-	next_action = actions.SHOT
-	#next_action = randi_range(0,2)
+	#next_action = actions.SHOT
+	next_action = randi_range(0,2)
 	print("Next Action")
 	return next_action
 
@@ -43,6 +44,8 @@ func should_fall_back():
 	return start_pos.distance_squared_to(self.global_position) > range*range
 	
 func should_sleep():
+	if target == null:
+		get_new_target()
 	return start_pos.distance_squared_to(target.global_position) > fight_range*fight_range
 	
 func spawn_bullet():
@@ -56,3 +59,6 @@ func spawn_roots(amount : int):
 		var r = root.instantiate()
 		r.set_rand_pos(self.global_position)
 		bullet_container.add_child(r)
+		
+func set_vulnerable(mode : bool):
+	HP_component.set_vulnerable(mode)

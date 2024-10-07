@@ -8,6 +8,7 @@ var is_active : bool
 func enter() -> void:
 	is_active = true
 	anim.play(anim_name)
+	parent.set_vulnerable(false)
 	
 
 func next_state():
