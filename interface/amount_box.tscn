@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://blj7ti13fmh85"]
+[gd_scene load_steps=7 format=3 uid="uid://blj7ti13fmh85"]
 
 [ext_resource type="Script" path="res://interface/amount_box.gd" id="1_07bpx"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="1_g3n21"]
@@ -9,6 +9,15 @@ shader = ExtResource("1_g3n21")
 shader_parameter/line_thickness = 2
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/screen_size = Vector2(640, 360)
+
+[sub_resource type="GDScript" id="GDScript_0qw3v"]
+script/source = "@tool
+extends CanvasGroup
+
+func _process(delta: float) -> void:
+	material.set(\"shader_parameter/screen_size\", get_viewport().size)
+	material.set(\"shader_parameter/line_thickness\", 2 * (get_viewport().size.x / 640))
+"
 
 [sub_resource type="Theme" id="Theme_vronr"]
 Label/colors/font_color = Color(0, 0, 0, 1)
@@ -25,6 +34,7 @@ text = "0"
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 material = SubResource("ShaderMaterial_u2i3f")
+script = SubResource("GDScript_0qw3v")
 
 [node name="Icon" type="Sprite2D" parent="CanvasGroup"]
 position = Vector2(18, 18)
