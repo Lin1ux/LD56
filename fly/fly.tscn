@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjb0oiy41e0kc"]
+[gd_scene load_steps=10 format=3 uid="uid://cjb0oiy41e0kc"]
 
 [ext_resource type="Script" path="res://fly.gd" id="1_3kitr"]
 [ext_resource type="PackedScene" uid="uid://bslpyvdn4cyi5" path="res://components/comp_interaction_area.tscn" id="1_4nkai"]
@@ -6,9 +6,13 @@
 [ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="4_w45d6"]
 [ext_resource type="Script" path="res://fly/circle.gd" id="6_omugo"]
 [ext_resource type="Script" path="res://enemies/butterfly/move_towards.gd" id="6_xbpnc"]
+[ext_resource type="PackedScene" uid="uid://cwno5m4yph3p2" path="res://components/comp_hp.tscn" id="7_fpai4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xlput"]
 radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0ve3"]
+radius = 7.28011
 
 [node name="fly" type="CharacterBody2D"]
 script = ExtResource("1_3kitr")
@@ -35,3 +39,14 @@ parent = NodePath("../..")
 [node name="moveTowards" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
 script = ExtResource("6_xbpnc")
 parent = NodePath("../..")
+
+[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("7_fpai4")]
+max_hp = 1
+parent = NodePath("..")
+parent_sprite = NodePath("../Sprite2D")
+hitbox = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="CompHP"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CompHP/Area2D"]
+shape = SubResource("CircleShape2D_f0ve3")

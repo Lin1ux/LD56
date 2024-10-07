@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_40j4h"]
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="2_r4q2d"]
 [ext_resource type="Script" path="res://interface/ui.gd" id="2_v5xqu"]
-[ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/Bee1.png" id="3_0jiou"]
+[ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/bee1.png" id="3_0jiou"]
 [ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="4_sa2sh"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="6_6feqe"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="7_xcnc1"]
@@ -253,7 +253,6 @@ material = SubResource("ShaderMaterial_ekm7m")
 
 [node name="Flower" parent="Objects2" instance=ExtResource("8_odms2")]
 position = Vector2(-76, 60)
-texture_used = 1
 max_pollens = 3
 
 [node name="Arrow" type="Sprite2D" parent="Objects2"]
