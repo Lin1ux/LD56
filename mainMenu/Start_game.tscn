@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cwrs8pdr8ohy8"]
 
-[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://UI/square.png" id="1_gaqal"]
+[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://ui/square.png" id="1_gaqal"]
 [ext_resource type="PackedScene" uid="uid://cxew2wf8xbr5r" path="res://components/comp_in_area.tscn" id="3_ktweu"]
 [ext_resource type="PackedScene" uid="uid://ceagu34mf0ohi" path="res://mainMenu/comp_start_game.tscn" id="3_tx8br"]
 [ext_resource type="AudioStream" uid="uid://cet62j757pg67" path="res://sounds/honey.wav" id="4_6w0iv"]

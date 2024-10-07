@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bk8yhj7gqf6qe"]
+[gd_scene load_steps=13 format=3 uid="uid://bk8yhj7gqf6qe"]
 
 [ext_resource type="Script" path="res://bee/bee_controler.gd" id="1_47a2a"]
 [ext_resource type="Texture2D" uid="uid://bsmd63vrtvx1k" path="res://bee/Bee2.png" id="2_2k58a"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://bee/fly_towards.gd" id="3_djx18"]
 [ext_resource type="Script" path="res://bee/bee_state_machine.gd" id="3_kdsfa"]
 [ext_resource type="Script" path="res://bee/dash.gd" id="7_eeuru"]
+[ext_resource type="PackedScene" path="res://components/comp_hp.tscn" id="8_u766l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ub2sv"]
 size = Vector2(3, 7)
@@ -69,3 +70,5 @@ script = ExtResource("3_djx18")
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("7_eeuru")
 dash_time = 1.0
+
+[node name="CompHP" parent="." instance=ExtResource("8_u766l")]

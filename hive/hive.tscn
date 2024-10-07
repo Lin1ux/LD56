@@ -48,4 +48,3 @@ volume_db = -10.0
 
 [node name="BeeSpawnSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_vjs4f")
-volume_db = -10.0

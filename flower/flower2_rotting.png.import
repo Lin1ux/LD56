@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck462lpbyyebc"
-path="res://.godot/imported/flower_1_rotting.png-31f7c45d53cf8210a58a9b008a40b36b.ctex"
+uid="uid://dgw2shw15sboq"
+path="res://.godot/imported/flower2_rotting.png-e59ff4334c48168f4df74a7bef8da435.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://flower/flower_1_rotting.png"
-dest_files=["res://.godot/imported/flower_1_rotting.png-31f7c45d53cf8210a58a9b008a40b36b.ctex"]
+source_file="res://flower/flower2_rotting.png"
+dest_files=["res://.godot/imported/flower2_rotting.png-e59ff4334c48168f4df74a7bef8da435.ctex"]
 
 [params]
 

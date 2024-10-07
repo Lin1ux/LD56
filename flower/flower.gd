@@ -2,11 +2,13 @@
 class_name Flower
 extends Node2D
 
+@export var texture_used : int = 1
 @export var image : CompressedTexture2D		##texture of object
 @export var max_pollens : int = 5			##max amount of pollens which can be stored at once
 var progress_bar : Node
 var current_pollens : int
-	
+
+var rotting : bool = false
 func _ready():
 	if Engine.is_editor_hint():
 		return
@@ -24,6 +26,8 @@ func _process(delta: float) -> void:
 	
 func gather_pollen(character : Node):
 	#checking is character have backpack component
+	if rotting:
+		return
 	if not character.has_method("get_backpack"):
 		return
 	var backpack = character.get_backpack()
@@ -40,9 +44,10 @@ func gather_pollen(character : Node):
 		
 
 func _on_timer_timeout() -> void:
-	if max_pollens > current_pollens:
-		current_pollens += 1
-		progress_bar.value = current_pollens
+	if not rotting:
+		if max_pollens > current_pollens:
+			current_pollens += 1
+			progress_bar.value = current_pollens
 		
 func get_flower_position():
 	return global_position
