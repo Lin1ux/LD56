@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://brqfdgcoyn78m"]
+[gd_scene load_steps=12 format=3 uid="uid://brqfdgcoyn78m"]
 
 [ext_resource type="Script" path="res://enemies/bird/bird.gd" id="1_pxqbr"]
 [ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="2_gh6kl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://enemies/bird/dash.gd" id="4_7u1hj"]
 [ext_resource type="Script" path="res://enemies/bird/spawned.gd" id="5_qcgap"]
 [ext_resource type="Script" path="res://enemies/bird/fly_forward.gd" id="6_ggr46"]
+[ext_resource type="AudioStream" uid="uid://dhkpc5csgt4s" path="res://sounds/bird_spawn.wav" id="6_y88m0"]
 [ext_resource type="Script" path="res://enemies/bird/after_dash.gd" id="8_t1q0k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjawy"]
@@ -15,7 +16,6 @@ radius = 6.0
 height = 24.0
 
 [node name="Bird" type="CharacterBody2D"]
-z_index = 2
 script = ExtResource("1_pxqbr")
 after_dash_range = 50.0
 
@@ -43,6 +43,9 @@ state = NodePath("Spawned")
 script = ExtResource("5_qcgap")
 
 [node name="Timer" type="Timer" parent="CompStateMachine/Spawned"]
+
+[node name="Sound" type="AudioStreamPlayer" parent="CompStateMachine/Spawned"]
+stream = ExtResource("6_y88m0")
 
 [node name="Rotate" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
 script = ExtResource("3_5gs5t")

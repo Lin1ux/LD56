@@ -4,14 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
 [ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="1_l8oh7"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="1_oqf80"]
-[ext_resource type="Texture2D" uid="uid://cdyrisukkr3rc" path="res://flower/flower3.png" id="2_7f44n"]
 [ext_resource type="Script" path="res://interface/ui.gd" id="4_5dwdf"]
 [ext_resource type="PackedScene" uid="uid://dfwalf1sfdxhe" path="res://hive/hive.tscn" id="4_6haew"]
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="4_djjkn"]
-[ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/Bee1.png" id="5_t563b"]
+[ext_resource type="Texture2D" uid="uid://bjmt6ctuaba35" path="res://sprites/honey_drop.png" id="4_l4yp6"]
 [ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="6_7u8t0"]
 [ext_resource type="Script" path="res://bee/bee_manager.gd" id="6_ayyef"]
 [ext_resource type="Script" path="res://scripts/objects_manager.gd" id="7_1dilw"]
+[ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="7_2y1m6"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="8_bbrd4"]
 [ext_resource type="PackedScene" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
 [ext_resource type="PackedScene" uid="uid://brqfdgcoyn78m" path="res://enemies/Bird/bird.tscn" id="11_sfr2r"]
@@ -46,7 +46,7 @@ shader_parameter/screen_size = Vector2(640, 360)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7nmhm"]
 shader = ExtResource("1_oqf80")
-shader_parameter/line_thickness = 1
+shader_parameter/line_thickness = 2
 shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/screen_size = Vector2(640, 360)
 
@@ -79,7 +79,6 @@ texture = ExtResource("1_hs1qf")
 stretch_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 script = SubResource("GDScript_d7nw4")
 
 [node name="UI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("bees_info", "pollen_info")]
@@ -92,24 +91,26 @@ bees_info = NodePath("BeesInfo")
 pollen_info = NodePath("PollenInfo")
 
 [node name="BeesInfo" parent="CanvasLayer/UI" instance=ExtResource("4_djjkn")]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 2.0
-offset_bottom = 2.0
-texture = ExtResource("5_t563b")
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 24.0
 
 [node name="PollenInfo" parent="CanvasLayer/UI" instance=ExtResource("4_djjkn")]
-offset_left = 36.0
-offset_top = 2.0
-offset_right = 36.0
-offset_bottom = 2.0
-texture = ExtResource("6_7u8t0")
+offset_left = 24.0
+offset_top = 67.0
+offset_right = 24.0
+offset_bottom = 67.0
+texture = ExtResource("4_l4yp6")
 
 [node name="LvlBar" parent="CanvasLayer" instance=ExtResource("9_ghk2f")]
+visible = false
 offset_left = 71.0
 offset_top = 2.0
 offset_right = 71.0
 offset_bottom = 2.0
+
+[node name="Cursor" parent="CanvasLayer" instance=ExtResource("7_2y1m6")]
 
 [node name="Objects" type="Node2D" parent="." node_paths=PackedStringArray("Objects")]
 z_index = 1
@@ -246,25 +247,7 @@ position = Vector2(-327, 226)
 material = SubResource("ShaderMaterial_ekm7m")
 
 [node name="Flower" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(145, 69)
-image = ExtResource("6_7u8t0")
-
-[node name="Flower4" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(36, 143)
-
-[node name="Flower6" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(-135, -35)
-
-[node name="Flower5" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(117, -39)
-image = ExtResource("2_7f44n")
-
-[node name="Flower2" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(-144, 108)
-image = ExtResource("2_7f44n")
-
-[node name="Flower3" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(13, -128)
+position = Vector2(121, 58)
 image = ExtResource("6_7u8t0")
 
 [node name="Hive" parent="Objects/Objects" node_paths=PackedStringArray("bee_controller") instance=ExtResource("4_6haew")]
@@ -274,7 +257,22 @@ bee_controller = NodePath("../../../BeeManager")
 material = SubResource("ShaderMaterial_7nmhm")
 
 [node name="Butterfly" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
-position = Vector2(-85, -79)
+position = Vector2(-21, 111)
+flower_manager = NodePath("../..")
+spawn_range = 0.0
+
+[node name="Butterfly4" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
+position = Vector2(100, -27)
+flower_manager = NodePath("../..")
+spawn_range = 0.0
+
+[node name="Butterfly2" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
+position = Vector2(-119, 42)
+flower_manager = NodePath("../..")
+spawn_range = 0.0
+
+[node name="Butterfly3" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
+position = Vector2(-22, -76)
 flower_manager = NodePath("../..")
 spawn_range = 0.0
 
