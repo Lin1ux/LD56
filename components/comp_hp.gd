@@ -41,10 +41,11 @@ func _process(delta: float) -> void:
 	progress_bar.visible = hp != max_hp
 
 func _physics_process(delta: float) -> void:
-	if $InvincibilityFrames.time_left > 0:
-		parent_sprite.visible = !parent_sprite.visible
-	else:
-		parent_sprite.visible = true
+	if parent_sprite != null:
+		if $InvincibilityFrames.time_left > 0:
+			parent_sprite.visible = !parent_sprite.visible
+		else:
+			parent_sprite.visible = true
 
 
 func get_hp() -> int:

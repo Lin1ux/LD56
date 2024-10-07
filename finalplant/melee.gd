@@ -29,6 +29,7 @@ func next_state():
 func update(delta: float) -> void:
 	if target == null:
 		parent.get_new_target()
+		return
 	print("(Final",target.global_position)
 	parent.look_at(target.global_position)
 	#$"../../Sprite2D".rotation = 90
