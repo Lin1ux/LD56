@@ -33,11 +33,13 @@ func got_hit(body: Node2D):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	progress_bar.visible = hp != max_hp
 
 func _physics_process(delta: float) -> void:
 	if $InvincibilityFrames.time_left > 0:
 		parent_sprite.visible = !parent_sprite.visible
+	else:
+		parent_sprite.visible = true
 
 
 func get_hp() -> int:
@@ -58,6 +60,3 @@ func increase_hp(value : int):
 func death():
 	parent.queue_free()
 	return
-	
-func can_daeal_damage() -> bool:
-	return $"../StateMachine".state.name == "Dash"

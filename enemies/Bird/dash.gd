@@ -10,11 +10,20 @@ var tween : Tween
 # Called when the node enters the scene tree for the first time.
 func enter() -> void:
 	selected_target = parent.get_target()
+	
+	if selected_target == null:
+		get_parent().change_state("AfterDash")
+		return
+	
 	correction()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func update(delta: float) -> void:
+	if selected_target == null:
+		get_parent().change_state("AfterDash")
+		return
+	
 	parent.velocity = fly_forward(delta)
 	parent.move_and_slide()
 	if distance() < parent.after_dash_range_sqr():
@@ -25,6 +34,11 @@ func correction():
 	if tween:
 		tween.kill()
 	tween = create_tween()
+	
+	if selected_target == null:
+		get_parent().change_state("AfterDash")
+		return
+	
 	var angle = parent.get_angle_to(selected_target.global_position)
 	tween.tween_property(parent,"rotation",parent.global_rotation + angle,parent.get_correction())
 	tween.finished.connect(correction)	

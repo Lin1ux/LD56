@@ -23,3 +23,6 @@ func after_dash_range_sqr():
 
 func get_correction():
 	return correction
+
+func can_deal_damage():
+	return true
