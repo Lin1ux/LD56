@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://interface/ui.gd" id="4_5dwdf"]
 [ext_resource type="PackedScene" uid="uid://dfwalf1sfdxhe" path="res://hive/hive.tscn" id="4_6haew"]
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="4_djjkn"]
-[ext_resource type="Texture2D" uid="uid://dykiyj0fj6tqw" path="res://bee/Bee1.png" id="5_t563b"]
+[ext_resource type="Texture2D" uid="uid://bjmt6ctuaba35" path="res://sprites/honey_drop.png" id="4_l4yp6"]
 [ext_resource type="Texture2D" uid="uid://85mbremji074" path="res://flower/flower2.png" id="6_7u8t0"]
 [ext_resource type="Script" path="res://bee/bee_manager.gd" id="6_ayyef"]
 [ext_resource type="Script" path="res://scripts/objects_manager.gd" id="7_1dilw"]
@@ -80,7 +80,6 @@ texture = ExtResource("1_hs1qf")
 stretch_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 script = SubResource("GDScript_d7nw4")
 
 [node name="UI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("bees_info", "pollen_info")]
@@ -93,20 +92,20 @@ bees_info = NodePath("BeesInfo")
 pollen_info = NodePath("PollenInfo")
 
 [node name="BeesInfo" parent="CanvasLayer/UI" instance=ExtResource("4_djjkn")]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 2.0
-offset_bottom = 2.0
-texture = ExtResource("5_t563b")
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 24.0
 
 [node name="PollenInfo" parent="CanvasLayer/UI" instance=ExtResource("4_djjkn")]
-offset_left = 36.0
-offset_top = 2.0
-offset_right = 36.0
-offset_bottom = 2.0
-texture = ExtResource("6_7u8t0")
+offset_left = 24.0
+offset_top = 67.0
+offset_right = 24.0
+offset_bottom = 67.0
+texture = ExtResource("4_l4yp6")
 
 [node name="LvlBar" parent="CanvasLayer" instance=ExtResource("9_ghk2f")]
+visible = false
 offset_left = 71.0
 offset_top = 2.0
 offset_right = 71.0

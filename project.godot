@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PollenManager="*res://scripts/pollen_manager.gd"
+MusicManager="*res://music_manager/music_manager.tscn"
 
 [display]
 

@@ -11,5 +11,5 @@ func set_text(new_text : String):
 	text = new_text
 	
 func _process(delta: float) -> void:
-	$Icon.texture = texture
+	$CanvasGroup/Icon.texture = texture
 	$Value.text = text
