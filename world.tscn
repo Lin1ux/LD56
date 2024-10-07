@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=23 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
 [ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="1_l8oh7"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="1_oqf80"]
-[ext_resource type="Texture2D" uid="uid://cdyrisukkr3rc" path="res://flower/flower3.png" id="2_7f44n"]
 [ext_resource type="Script" path="res://interface/ui.gd" id="4_5dwdf"]
 [ext_resource type="PackedScene" uid="uid://dfwalf1sfdxhe" path="res://hive/hive.tscn" id="4_6haew"]
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="4_djjkn"]
@@ -248,25 +247,7 @@ position = Vector2(-327, 226)
 material = SubResource("ShaderMaterial_ekm7m")
 
 [node name="Flower" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(145, 69)
-image = ExtResource("6_7u8t0")
-
-[node name="Flower4" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(36, 143)
-
-[node name="Flower6" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(-135, -35)
-
-[node name="Flower5" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(117, -39)
-image = ExtResource("2_7f44n")
-
-[node name="Flower2" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(-144, 108)
-image = ExtResource("2_7f44n")
-
-[node name="Flower3" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
-position = Vector2(13, -128)
+position = Vector2(121, 58)
 image = ExtResource("6_7u8t0")
 
 [node name="Hive" parent="Objects/Objects" node_paths=PackedStringArray("bee_controller") instance=ExtResource("4_6haew")]
@@ -276,7 +257,22 @@ bee_controller = NodePath("../../../BeeManager")
 material = SubResource("ShaderMaterial_7nmhm")
 
 [node name="Butterfly" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
-position = Vector2(-85, -79)
+position = Vector2(-21, 111)
+flower_manager = NodePath("../..")
+spawn_range = 0.0
+
+[node name="Butterfly4" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
+position = Vector2(100, -27)
+flower_manager = NodePath("../..")
+spawn_range = 0.0
+
+[node name="Butterfly2" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
+position = Vector2(-119, 42)
+flower_manager = NodePath("../..")
+spawn_range = 0.0
+
+[node name="Butterfly3" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("11_yfffk")]
+position = Vector2(-22, -76)
 flower_manager = NodePath("../..")
 spawn_range = 0.0
 
