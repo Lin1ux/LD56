@@ -31,8 +31,8 @@ func _process(delta):
 	pass
 	
 func change_action():
-	next_action = actions.SHOT
-	#next_action = randi_range(0,2)
+	#next_action = actions.DEFENCE
+	next_action = randi_range(0,2)
 	print("Next Action")
 	return next_action
 
@@ -57,9 +57,11 @@ func spawn_bullet():
 	bullet_container.add_child(b)
 	
 func spawn_roots(amount : int):
+	return
 	for i in range(amount):
 		var r = root.instantiate()
 		r.set_rand_pos(self.global_position)
+		r.start_rot_timer()
 		bullet_container.add_child(r)
 		
 func set_vulnerable(mode : bool):
