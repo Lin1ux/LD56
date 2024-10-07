@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=26 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
@@ -14,10 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="7_2y1m6"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="8_bbrd4"]
 [ext_resource type="PackedScene" uid="uid://oyb10us6hrpt" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
-[ext_resource type="PackedScene" uid="uid://brqfdgcoyn78m" path="res://enemies/Bird/bird.tscn" id="11_sfr2r"]
+[ext_resource type="PackedScene" uid="uid://brqfdgcoyn78m" path="res://enemies/bird/bird.tscn" id="11_sfr2r"]
 [ext_resource type="PackedScene" uid="uid://bhu8ftomn64sl" path="res://enemies/butterfly/butterfly.tscn" id="11_yfffk"]
 [ext_resource type="PackedScene" uid="uid://br8gkj5owgbla" path="res://finalplant/final_plant.tscn" id="15_tjyia"]
 [ext_resource type="AudioStream" uid="uid://tkhv62xv7g4h" path="res://sounds/beedash.wav" id="17_inpkd"]
+[ext_resource type="PackedScene" uid="uid://df0rfyogsfqj2" path="res://enemies/bigbird/bigbird.tscn" id="17_nmxlv"]
+[ext_resource type="PackedScene" uid="uid://cjb0oiy41e0kc" path="res://fly/fly.tscn" id="18_e2rhh"]
 
 [sub_resource type="Environment" id="Environment_i2q20"]
 background_mode = 3
@@ -284,6 +286,14 @@ after_dash_range = 50.0
 
 [node name="FinalPlant" parent="Objects/NPC" node_paths=PackedStringArray("bee_manager") instance=ExtResource("15_tjyia")]
 position = Vector2(-105, 147)
+bee_manager = NodePath("../../../BeeManager")
+
+[node name="fly" parent="Objects/NPC" node_paths=PackedStringArray("flower_manager") instance=ExtResource("18_e2rhh")]
+position = Vector2(15, 67)
+flower_manager = NodePath("../..")
+
+[node name="Bird2" parent="Objects/NPC" node_paths=PackedStringArray("bee_manager") instance=ExtResource("17_nmxlv")]
+position = Vector2(658, 289)
 bee_manager = NodePath("../../../BeeManager")
 
 [node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]

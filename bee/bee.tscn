@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://bk8yhj7gqf6qe"]
 
 [ext_resource type="Script" path="res://bee/bee_controler.gd" id="1_47a2a"]
-[ext_resource type="Texture2D" uid="uid://bsmd63vrtvx1k" path="res://bee/Bee2.png" id="2_2k58a"]
+[ext_resource type="Texture2D" uid="uid://bsmd63vrtvx1k" path="res://bee/bee2.png" id="2_2k58a"]
 [ext_resource type="PackedScene" uid="uid://bslpyvdn4cyi5" path="res://components/comp_interaction_area.tscn" id="2_lhk1w"]
-[ext_resource type="PackedScene" path="res://bee/comp_backpack.tscn" id="3_ci57g"]
+[ext_resource type="PackedScene" uid="uid://dl8ufx8gscd88" path="res://bee/comp_backpack.tscn" id="3_ci57g"]
 [ext_resource type="Script" path="res://bee/fly_towards.gd" id="3_djx18"]
 [ext_resource type="Script" path="res://bee/bee_state_machine.gd" id="3_kdsfa"]
 [ext_resource type="Script" path="res://bee/dash.gd" id="7_eeuru"]
-[ext_resource type="PackedScene" path="res://components/comp_hp.tscn" id="8_u766l"]
+[ext_resource type="PackedScene" uid="uid://cwno5m4yph3p2" path="res://components/comp_hp.tscn" id="8_u766l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ub2sv"]
 size = Vector2(3, 7)
