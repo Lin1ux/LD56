@@ -71,4 +71,8 @@ script = ExtResource("3_djx18")
 script = ExtResource("7_eeuru")
 dash_time = 1.0
 
-[node name="CompHP" parent="." instance=ExtResource("8_u766l")]
+[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("8_u766l")]
+max_hp = 1
+parent = NodePath("..")
+parent_sprite = NodePath("../Sprite2D")
+hitbox = NodePath("../CompInteractionArea")
