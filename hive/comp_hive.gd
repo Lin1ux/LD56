@@ -18,8 +18,8 @@ func spawn_bees():
 		print("Bee spawned")
 		number_of_pollen -= bee_cost
 		parent.get_bee_controller().spawn_bees(parent.global_position, 1)
-		if parent.get_update_pollen:
-			PollenManager.set_pollen(parent.get_bee_controller().get_amount_of_pollen())
+		#if parent.get_update_pollen:
+		#	PollenManager.set_pollen(parent.get_bee_controller().get_amount_of_pollen())
 		
 		
 func add_pollen(pollens : int):
@@ -27,6 +27,7 @@ func add_pollen(pollens : int):
 		$"../CollectSound".play()
 	number_of_pollen += pollens
 	update_progress_bar()
+	PollenManager.add_pollen(pollens)
 	
 	
 func give_pollen(character : Node):

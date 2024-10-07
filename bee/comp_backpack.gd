@@ -17,8 +17,8 @@ func increase_pollen(amount : int):
 		pollen_amount += amount
 	if pollen_amount > max_pollen_amount:
 		pollen_amount = max_pollen_amount
-	if belong_to_player:
-		PollenManager.add_pollen(pollen_amount-pollen_before)
+	#if belong_to_player:
+	#	PollenManager.add_pollen(pollen_amount-pollen_before)
 	
 		
 func decrease_pollen(amount : int):
@@ -26,14 +26,14 @@ func decrease_pollen(amount : int):
 	pollen_amount -= amount
 	if pollen_amount < 0:
 		pollen_amount = 0
-	if belong_to_player:
-		PollenManager.remove_pollen(pollen_before)
+	#if belong_to_player:
+	#	PollenManager.remove_pollen(pollen_before)
 
 #remove pollens and returns value before cleaning up	
 func remove_pollen():
 	var pollens = pollen_amount
 	pollen_amount = 0
-	if belong_to_player:
-		PollenManager.remove_pollen(pollens)
+	#if belong_to_player:
+	#	PollenManager.remove_pollen(pollens)
 	return pollens
 	
