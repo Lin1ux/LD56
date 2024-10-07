@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://enemies/bird/fly_forward.gd" id="7_yuqr1"]
 [ext_resource type="Script" path="res://enemies/bird/after_dash.gd" id="8_sxmcw"]
 [ext_resource type="Script" path="res://enemies/bird/dash.gd" id="9_p5ugu"]
-[ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="10_afevb"]
+[ext_resource type="PackedScene" uid="uid://cwno5m4yph3p2" path="res://components/comp_hp.tscn" id="10_afevb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjawy"]
 radius = 6.0

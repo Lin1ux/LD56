@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bs22ls8bmffct"
-path="res://.godot/imported/wasp.png-ae5f2f51721d1f0379b92f1f2518c1c7.ctex"
+path="res://.godot/imported/wasp.png-e7333cfac8cf120895c9e4c9e591ff87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/wasp.png"
-dest_files=["res://.godot/imported/wasp.png-ae5f2f51721d1f0379b92f1f2518c1c7.ctex"]
+source_file="res://enemies/wasp/wasp.png"
+dest_files=["res://.godot/imported/wasp.png-e7333cfac8cf120895c9e4c9e591ff87.ctex"]
 
 [params]
 

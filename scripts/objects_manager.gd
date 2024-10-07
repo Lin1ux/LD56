@@ -13,8 +13,11 @@ func _ready() -> void:
 			hive_list.append(i)
 
 func get_random_flower():
-	return flower_list[randi_range(0,len(flower_list)-1)]
-	
+	if len(flower_list) > 0:
+		return flower_list[randi_range(0,len(flower_list)-1)]
+	else:
+		return null
+
 func add_flower(new_flower : Flower):
 	flower_list.append(new_flower)
 	
