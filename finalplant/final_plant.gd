@@ -52,8 +52,8 @@ func should_sleep():
 	
 func spawn_bullet():
 	var b = bullet.instantiate()
-	b.set_pos($Sprite2D/Marker2D.global_position)
-	b.set_rot($Sprite2D/Marker2D.global_rotation + deg_to_rad(-90))
+	b.set_pos($Node2D/Sprite2D/Marker2D.global_position)
+	b.set_rot($Node2D/Sprite2D/Marker2D.global_rotation + deg_to_rad(-90))
 	bullet_container.add_child(b)
 	
 func spawn_roots(amount : int):
