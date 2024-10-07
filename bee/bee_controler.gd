@@ -3,6 +3,7 @@ class_name BeeControler
 
 
 signal dash_finished(BeeControler)
+signal bee_dies(BeeControler)
 
 var direction : Vector2
 @export_group("Movement")
@@ -82,3 +83,6 @@ func dash():
 	
 func end_dash():
 	$StateMachine/Dash.end_dash_prematurely()
+	
+func bee_died():
+	bee_dies.emit(self)
