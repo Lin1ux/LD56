@@ -1,33 +1,17 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=17 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
-[ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
 [ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="1_l8oh7"]
 [ext_resource type="Script" path="res://interface/ui.gd" id="4_5dwdf"]
 [ext_resource type="PackedScene" uid="uid://dfwalf1sfdxhe" path="res://hive/hive.tscn" id="4_6haew"]
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="4_djjkn"]
 [ext_resource type="Texture2D" uid="uid://bjmt6ctuaba35" path="res://sprites/honey_drop.png" id="4_l4yp6"]
-[ext_resource type="Script" path="res://bee/bee_manager.gd" id="6_ayyef"]
 [ext_resource type="Script" path="res://scripts/objects_manager.gd" id="7_1dilw"]
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="7_2y1m6"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="8_bbrd4"]
-[ext_resource type="PackedScene" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
+[ext_resource type="PackedScene" uid="uid://udutv2qvts45" path="res://bee/bee_manager.tscn" id="14_7ftfr"]
 [ext_resource type="Shader" path="res://outline2.gdshader" id="15_g8ibx"]
-[ext_resource type="AudioStream" uid="uid://tkhv62xv7g4h" path="res://sounds/beedash.wav" id="17_inpkd"]
 [ext_resource type="PackedScene" uid="uid://b207xegfvb5um" path="res://enemy_spawninator/enemy_spawninator.tscn" id="18_f6rh2"]
-
-[sub_resource type="Environment" id="Environment_i2q20"]
-background_mode = 3
-glow_enabled = true
-glow_levels/1 = 14.71
-glow_levels/2 = 1.1
-glow_levels/3 = 11.8
-glow_levels/4 = 3.95
-glow_levels/5 = 14.27
-glow_levels/6 = 8.35
-glow_levels/7 = 3.4
-glow_hdr_threshold = 0.0
-glow_hdr_scale = 3.7
 
 [sub_resource type="GDScript" id="GDScript_d7nw4"]
 script/source = "extends CanvasLayer
@@ -35,6 +19,11 @@ script/source = "extends CanvasLayer
 func _ready() -> void:
 	visible = true
 "
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1vwho"]
+shader = ExtResource("15_g8ibx")
+shader_parameter/line_colour = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8dfmc"]
 shader = ExtResource("15_g8ibx")
@@ -46,19 +35,9 @@ shader = ExtResource("15_g8ibx")
 shader_parameter/line_colour = Color(0, 0, 0, 1)
 shader_parameter/line_thickness = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ix8h"]
-shader = ExtResource("15_g8ibx")
-shader_parameter/line_colour = Color(0, 0, 0, 1)
-shader_parameter/line_thickness = 2
-
 [node name="Node2D" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_i2q20")
-
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -98,147 +77,145 @@ offset_right = 24.0
 offset_bottom = 67.0
 texture = ExtResource("4_l4yp6")
 
-[node name="LvlBar" parent="CanvasLayer" instance=ExtResource("9_ghk2f")]
-visible = false
-offset_left = 71.0
-offset_top = 2.0
-offset_right = 71.0
-offset_bottom = 2.0
-
 [node name="Cursor" parent="CanvasLayer" instance=ExtResource("7_2y1m6")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Objects" type="Node2D" parent="." node_paths=PackedStringArray("Objects")]
 z_index = 1
 script = ExtResource("7_1dilw")
 Objects = NodePath("Objects")
 
-[node name="GrassPatch" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="Grass" type="CanvasGroup" parent="Objects"]
+
+[node name="GrassPatch" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(34, -31)
 
-[node name="GrassPatch2" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch2" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-27, -67)
 
-[node name="GrassPatch3" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch3" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-49, -26)
 
-[node name="GrassPatch4" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch4" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(63, 49)
 
-[node name="GrassPatch5" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch5" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-78, 39)
 
-[node name="GrassPatch6" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch6" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-10, 104)
 
-[node name="GrassPatch7" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch7" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-71, 99)
 
-[node name="GrassPatch8" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch8" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-126, 62)
 
-[node name="GrassPatch9" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch9" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-185, 4)
 
-[node name="GrassPatch10" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch10" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-168, -88)
 
-[node name="GrassPatch11" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch11" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-88, -83)
 
-[node name="GrassPatch12" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch12" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-47, -142)
 
-[node name="GrassPatch13" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch13" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(64, -94)
 
-[node name="GrassPatch14" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch14" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(166, -88)
 
-[node name="GrassPatch15" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch15" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(172, -10)
 
-[node name="GrassPatch16" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch16" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(124, 25)
 
-[node name="GrassPatch17" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch17" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(220, 83)
 
-[node name="GrassPatch18" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch18" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(133, 154)
 
-[node name="GrassPatch19" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch19" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(72, 110)
 
-[node name="GrassPatch20" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch20" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(18, 213)
 
-[node name="GrassPatch21" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch21" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-42, 162)
 
-[node name="GrassPatch22" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch22" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-139, 169)
 
-[node name="GrassPatch23" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch23" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-200, 78)
 
-[node name="GrassPatch24" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch24" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-252, -54)
 
-[node name="GrassPatch25" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch25" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-137, -180)
 
-[node name="GrassPatch26" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch26" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(66, -152)
 
-[node name="GrassPatch27" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch27" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(225, -75)
 
-[node name="GrassPatch28" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch28" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(270, 13)
 
-[node name="GrassPatch29" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch29" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(233, 175)
 
-[node name="GrassPatch30" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch30" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(167, -170)
 
-[node name="GrassPatch31" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch31" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-227, -148)
 
-[node name="GrassPatch32" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch32" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-273, 35)
 
-[node name="GrassPatch33" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch33" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-244, 175)
 
-[node name="GrassPatch34" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch34" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-97, 228)
 
-[node name="GrassPatch35" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch35" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(147, 229)
 
-[node name="GrassPatch36" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch36" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(336, 123)
 
-[node name="GrassPatch37" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch37" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(331, -67)
 
-[node name="GrassPatch38" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch38" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(281, -153)
 
-[node name="GrassPatch39" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch39" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-339, -128)
 
-[node name="GrassPatch40" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch40" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-326, -23)
 
-[node name="GrassPatch41" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch41" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-329, 104)
 
-[node name="GrassPatch42" parent="Objects" instance=ExtResource("8_bbrd4")]
+[node name="GrassPatch42" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(-327, 226)
 
-[node name="Bullet Container" type="Node2D" parent="Objects"]
+[node name="Bullet Container" type="CanvasGroup" parent="Objects"]
+material = SubResource("ShaderMaterial_1vwho")
 
 [node name="Objects" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_8dfmc")
@@ -246,8 +223,7 @@ material = SubResource("ShaderMaterial_8dfmc")
 [node name="Flower" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
 position = Vector2(121, 58)
 
-[node name="Hive" parent="Objects/Objects" node_paths=PackedStringArray("bee_controller") instance=ExtResource("4_6haew")]
-bee_controller = NodePath("../../../BeeManager")
+[node name="Hive" parent="Objects/Objects" instance=ExtResource("4_6haew")]
 
 [node name="NPC" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_gwtth")
@@ -259,18 +235,5 @@ bee_manager = NodePath("../BeeManager")
 hive = NodePath("../Objects/Objects/Hive")
 bullet_container = NodePath("../Objects/Bullet Container")
 
-[node name="BeeManager" type="Node2D" parent="." node_paths=PackedStringArray("UI")]
-script = ExtResource("6_ayyef")
-bee_prefab = ExtResource("1_ic6f1")
-bees_to_spawn = 3
-UI = NodePath("../CanvasLayer/UI")
-bees_ratio = null
-
-[node name="Bees" type="CanvasGroup" parent="BeeManager"]
-z_index = 2
-material = SubResource("ShaderMaterial_3ix8h")
-position = Vector2(0, 1)
-
-[node name="DashSound" type="AudioStreamPlayer" parent="BeeManager"]
-stream = ExtResource("17_inpkd")
-volume_db = -10.0
+[node name="BeeManager" parent="." instance=ExtResource("14_7ftfr")]
+bees_ratio = 0.5

@@ -79,7 +79,9 @@ func spawn_bees(location : Vector2, count : int):
 		bee.bee_dies.connect(destroy_bee,ConnectFlags.CONNECT_ONE_SHOT)
 		bees_holder.add_child(bee)
 		bee.manager = self
-	UI.set_bees_amount(get_amount_of_bees())
+		
+	if UI:
+		UI.set_bees_amount(get_amount_of_bees())
 		
 func get_amount_of_bees():
 	return len(bees)
@@ -102,7 +104,8 @@ func destroy_bee(bee: BeeControler):
 	cursour_folowing.erase(bee)
 	dashing_bees.erase(bee)
 	bee.queue_free()
-	UI.set_bees_amount(get_amount_of_bees())
+	if UI:
+		UI.set_bees_amount(get_amount_of_bees())
 	if len(bees) == 0:
 		var callable = Callable(get_tree(),"change_scene_to_file")
 		callable.call_deferred("res://end_title.tscn")

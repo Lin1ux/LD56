@@ -27,9 +27,6 @@ func get_new_target():
 	target = bee_manager.get_random_bee()
 	return target
 	
-func _process(delta):
-	pass
-	
 func change_action():
 	#next_action = actions.DEFENCE
 	next_action = randi_range(0,2)

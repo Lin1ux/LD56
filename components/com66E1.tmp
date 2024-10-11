@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://gumua4x16fpt"]
+
+[ext_resource type="Script" path="res://components/comp_hp.gd" id="1_qdryq"]
+[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://ui/square.png" id="2_rnawo"]
+
+[node name="CompHP" type="Node2D" node_paths=PackedStringArray("progress_bar")]
+script = ExtResource("1_qdryq")
+progress_bar = NodePath("ProgressBar")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -8.0
+offset_top = 24.0
+offset_right = 8.0
+offset_bottom = 29.0
+value = 20.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_rnawo")
+texture_progress = ExtResource("2_rnawo")
+tint_under = Color(0.101961, 0.054902, 0.0784314, 1)
+tint_progress = Color(0.74902, 0.168627, 0.160784, 1)
+
+[node name="InvincibilityFrames" type="Timer" parent="."]
+one_shot = true

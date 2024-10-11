@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 var hp : int
 @export var max_hp : int
@@ -39,6 +39,8 @@ func got_hit(body: Node2D):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	progress_bar.visible = hp != max_hp
+	
+	set_global_rotation(0)
 
 func _physics_process(delta: float) -> void:
 	if parent_sprite != null:

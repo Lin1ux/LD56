@@ -5,9 +5,6 @@ extends Enemy
 @export var correction : float = 0.4		##how often dash have correction
 var target : BeeControler
 
-func _process(delta: float) -> void:
-	$CompHP.rotation = -$Sprites.global_rotation + PI/2
-
 func get_target():
 	return target
 	
