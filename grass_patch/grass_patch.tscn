@@ -44,6 +44,7 @@ _data = {
 script = ExtResource("1_sl866")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
 texture = ExtResource("1_4yq4c")
 offset = Vector2(0, -8)
 

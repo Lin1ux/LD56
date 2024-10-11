@@ -62,30 +62,6 @@ shape = SubResource("RectangleShape2D_ub2sv")
 
 [node name="Sprites" type="Node2D" parent="."]
 
-[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
-modulate = Color(0, 0, 0, 1)
-z_index = -1
-position = Vector2(-2, 0)
-texture = ExtResource("2_2k58a")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
-modulate = Color(0, 0, 0, 1)
-z_index = -1
-position = Vector2(2, 0)
-texture = ExtResource("2_2k58a")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Sprites"]
-modulate = Color(0, 0, 0, 1)
-z_index = -1
-position = Vector2(0, -2)
-texture = ExtResource("2_2k58a")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Sprites"]
-modulate = Color(0, 0, 0, 1)
-z_index = -1
-position = Vector2(0, 2)
-texture = ExtResource("2_2k58a")
-
 [node name="Sprite2D" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_2k58a")
 

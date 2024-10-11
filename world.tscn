@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=21 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="1_ic6f1"]
 [ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="1_l8oh7"]
-[ext_resource type="Shader" path="res://outline.gdshader" id="1_oqf80"]
 [ext_resource type="Script" path="res://interface/ui.gd" id="4_5dwdf"]
 [ext_resource type="PackedScene" uid="uid://dfwalf1sfdxhe" path="res://hive/hive.tscn" id="4_6haew"]
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="4_djjkn"]
@@ -13,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="7_2y1m6"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="8_bbrd4"]
 [ext_resource type="PackedScene" path="res://interface/lvlBar.tscn" id="9_ghk2f"]
+[ext_resource type="Shader" path="res://outline2.gdshader" id="15_g8ibx"]
 [ext_resource type="AudioStream" uid="uid://tkhv62xv7g4h" path="res://sounds/beedash.wav" id="17_inpkd"]
 [ext_resource type="PackedScene" uid="uid://b207xegfvb5um" path="res://enemy_spawninator/enemy_spawninator.tscn" id="18_f6rh2"]
 
@@ -36,50 +36,20 @@ func _ready() -> void:
 	visible = true
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekm7m"]
-shader = ExtResource("1_oqf80")
-shader_parameter/line_thickness = 0
-shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/screen_size = null
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dfmc"]
+shader = ExtResource("15_g8ibx")
+shader_parameter/line_colour = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 2
 
-[sub_resource type="GDScript" id="GDScript_wwcls"]
-script/source = "@tool
-extends CanvasGroup
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwtth"]
+shader = ExtResource("15_g8ibx")
+shader_parameter/line_colour = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 2
 
-func _process(delta: float) -> void:
-	material.set(\"shader_parameter/screen_size\", get_viewport().size)
-	material.set(\"shader_parameter/line_thickness\", 0 * (get_viewport().size.x / 640))
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nmhm"]
-shader = ExtResource("1_oqf80")
-shader_parameter/line_thickness = 0
-shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/screen_size = null
-
-[sub_resource type="GDScript" id="GDScript_lw4ag"]
-script/source = "@tool
-extends CanvasGroup
-
-func _process(delta: float) -> void:
-	material.set(\"shader_parameter/screen_size\", get_viewport().size)
-	material.set(\"shader_parameter/line_thickness\", 0 * (get_viewport().size.x / 640))
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5yfb"]
-shader = ExtResource("1_oqf80")
-shader_parameter/line_thickness = 0
-shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/screen_size = null
-
-[sub_resource type="GDScript" id="GDScript_8c8r1"]
-script/source = "@tool
-extends CanvasGroup
-
-func _process(delta: float) -> void:
-	material.set(\"shader_parameter/screen_size\", get_viewport().size)
-	material.set(\"shader_parameter/line_thickness\", 0 * (get_viewport().size.x / 640))
-"
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ix8h"]
+shader = ExtResource("15_g8ibx")
+shader_parameter/line_colour = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 2
 
 [node name="Node2D" type="Node2D"]
 
@@ -271,8 +241,7 @@ position = Vector2(-327, 226)
 [node name="Bullet Container" type="Node2D" parent="Objects"]
 
 [node name="Objects" type="CanvasGroup" parent="Objects"]
-material = SubResource("ShaderMaterial_ekm7m")
-script = SubResource("GDScript_wwcls")
+material = SubResource("ShaderMaterial_8dfmc")
 
 [node name="Flower" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
 position = Vector2(121, 58)
@@ -281,8 +250,7 @@ position = Vector2(121, 58)
 bee_controller = NodePath("../../../BeeManager")
 
 [node name="NPC" type="CanvasGroup" parent="Objects"]
-material = SubResource("ShaderMaterial_7nmhm")
-script = SubResource("GDScript_lw4ag")
+material = SubResource("ShaderMaterial_gwtth")
 
 [node name="EnemySpawninator" parent="." node_paths=PackedStringArray("enemy_container", "flower_manager", "bee_manager", "hive", "bullet_container") instance=ExtResource("18_f6rh2")]
 enemy_container = NodePath("../Objects/NPC")
@@ -300,9 +268,8 @@ bees_ratio = null
 
 [node name="Bees" type="CanvasGroup" parent="BeeManager"]
 z_index = 2
-material = SubResource("ShaderMaterial_b5yfb")
+material = SubResource("ShaderMaterial_3ix8h")
 position = Vector2(0, 1)
-script = SubResource("GDScript_8c8r1")
 
 [node name="DashSound" type="AudioStreamPlayer" parent="BeeManager"]
 stream = ExtResource("17_inpkd")

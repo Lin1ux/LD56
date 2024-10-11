@@ -28,30 +28,6 @@ parent = NodePath("..")
 [node name="Sprites" type="Node2D" parent="."]
 rotation = 1.5708
 
-[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
-modulate = Color(0, 0, 0, 1)
-z_index = -1
-position = Vector2(-2, 0)
-texture = ExtResource("3_2syh3")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
-modulate = Color(0, 0, 0, 1)
-z_index = -1
-position = Vector2(2, 0)
-texture = ExtResource("3_2syh3")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Sprites"]
-modulate = Color(0, 0, 0, 1)
-z_index = -1
-position = Vector2(0, -2)
-texture = ExtResource("3_2syh3")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Sprites"]
-modulate = Color(0, 0, 0, 1)
-z_index = -1
-position = Vector2(0, 2)
-texture = ExtResource("3_2syh3")
-
 [node name="Sprite2D" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("3_2syh3")
 
