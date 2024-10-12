@@ -1,11 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://b207xegfvb5um"]
+[gd_scene load_steps=5 format=3 uid="uid://b207xegfvb5um"]
 
 [ext_resource type="Script" path="res://enemy_spawninator/enemy_spawninator.gd" id="1_wdtb5"]
+[ext_resource type="AudioStream" uid="uid://17vk40krq2sf" path="res://sounds/fly_spawn.wav" id="2_elk12"]
+[ext_resource type="AudioStream" uid="uid://dhkpc5csgt4s" path="res://sounds/bird_spawn.wav" id="3_nluh1"]
+[ext_resource type="AudioStream" uid="uid://vstyoxtk1trv" path="res://sounds/butterfly_spawn.wav" id="4_aiq85"]
 
 [node name="EnemySpawninator" type="Node2D"]
 script = ExtResource("1_wdtb5")
 
 [node name="WaveTimer" type="Timer" parent="."]
 wait_time = 20.0
+
+[node name="WaspSpawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_elk12")
+pitch_scale = 0.85
+
+[node name="BirdSpawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nluh1")
+
+[node name="BigBirdSpawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nluh1")
+pitch_scale = 0.4
+
+[node name="FlySpawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_elk12")
+pitch_scale = 1.25
+
+[node name="ButterflySpawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_aiq85")
 
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

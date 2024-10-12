@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhu8ftomn64sl"]
+[gd_scene load_steps=13 format=3 uid="uid://bhu8ftomn64sl"]
 
 [ext_resource type="Script" path="res://enemies/butterfly/butterfly.gd" id="1_rvy4s"]
 [ext_resource type="PackedScene" uid="uid://bslpyvdn4cyi5" path="res://components/comp_interaction_area.tscn" id="1_tgc1r"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="5_jacck"]
 [ext_resource type="Script" path="res://enemies/butterfly/circle.gd" id="5_uhwnu"]
 [ext_resource type="Script" path="res://enemies/butterfly/move_towards.gd" id="7_wtlg8"]
-[ext_resource type="AudioStream" uid="uid://vstyoxtk1trv" path="res://sounds/butterfly_spawn.wav" id="12_mrsug"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wp5r3"]
 radius = 6.0
@@ -51,6 +50,3 @@ parent = NodePath("../..")
 [node name="moveTowards" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
 script = ExtResource("7_wtlg8")
 parent = NodePath("../..")
-
-[node name="SpawnSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_mrsug")

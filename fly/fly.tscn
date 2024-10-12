@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjb0oiy41e0kc"]
+[gd_scene load_steps=10 format=3 uid="uid://cjb0oiy41e0kc"]
 
 [ext_resource type="Script" path="res://fly.gd" id="1_3kitr"]
 [ext_resource type="PackedScene" uid="uid://bslpyvdn4cyi5" path="res://components/comp_interaction_area.tscn" id="1_4nkai"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://fly/circle.gd" id="6_omugo"]
 [ext_resource type="Script" path="res://enemies/butterfly/move_towards.gd" id="6_xbpnc"]
 [ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="7_fpai4"]
-[ext_resource type="AudioStream" uid="uid://17vk40krq2sf" path="res://sounds/fly_spawn.wav" id="8_w6b44"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xlput"]
 radius = 6.0
@@ -53,6 +52,3 @@ hitbox = NodePath("Area2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CompHP/Area2D"]
 shape = SubResource("CircleShape2D_f0ve3")
-
-[node name="SpawnSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_w6b44")

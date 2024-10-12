@@ -32,34 +32,41 @@ func spawn(enemy):
 			f.global_position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * 700
 			f.flower_manager = flower_manager
 			enemy_container.add_child(f)
+			$FlySpawn.play()
 		ENEMY.BIRD:
 			var b = bird.instantiate()
 			b.global_position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * 700
 			b.bee_manager = bee_manager
 			enemy_container.add_child(b)
+			$BirdSpawn.play()
 		ENEMY.BIG_BIRD:
 			var bb = big_bird.instantiate()
 			bb.global_position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * 700
 			bb.bee_manager = bee_manager
 			enemy_container.add_child(bb)
+			$BigBirdSpawn.play()
 		ENEMY.BUTTERFLY:
 			var b = butterfly.instantiate()
 			b.global_position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * 100
 			b.flower_manager = flower_manager
 			enemy_container.add_child(b)
+			$ButterflySpawn.play()
 		ENEMY.WASP:
 			var b = wasp.instantiate()
 			b.global_position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * 500
 			b.hive = hive
 			enemy_container.add_child(b)
+			$WaspSpawn.play()
 		ENEMY.FINAL:
 			var b = final.instantiate()
 			b.global_position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * 0
 			b.bee_manager = bee_manager
 			b.bullet_container = bullet_container
 			enemy_container.add_child(b)
+			
 
 var wave_map = [
+	[ENEMY.BUTTERFLY],[ENEMY.FLY],[ENEMY.WASP],[ENEMY.BIRD],[ENEMY.BIG_BIRD],
 	[ENEMY.BUTTERFLY, ENEMY.BUTTERFLY, ENEMY.FLY,ENEMY.WASP],
 	[ENEMY.BUTTERFLY,ENEMY.WASP, ENEMY.FLY,ENEMY.BIRD],
 	[ENEMY.WASP,ENEMY.WASP,ENEMY.FLY,ENEMY.FLY],

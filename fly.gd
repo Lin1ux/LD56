@@ -35,7 +35,4 @@ func rot_flower():
 			var texture: CompressedTexture2D = load("res://flower/flower" + str(f.texture_used) + "_rotting.png")
 			f.set_image(texture)
 		return
-		
-func _ready() -> void:
-	$SpawnSound.play()
 	

@@ -3,7 +3,6 @@ extends Node
 
 func enter() -> void:
 	$Timer.start()
-	$Sound.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func update(delta: float) -> void:

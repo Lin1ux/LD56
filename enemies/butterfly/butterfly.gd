@@ -35,7 +35,3 @@ func spawn_flower():
 	f.texture_used = num + 1
 	flower_manager.add_new_child(f)
 	flower_manager.add_flower(f)
-
-func _ready() -> void:
-	$SpawnSound.play()
-	
