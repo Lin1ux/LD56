@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://brqfdgcoyn78m"]
+[gd_scene load_steps=15 format=3 uid="uid://brqfdgcoyn78m"]
 
 [ext_resource type="Script" path="res://enemies/bird/bird.gd" id="1_34fkc"]
 [ext_resource type="Texture2D" uid="uid://bbecg2ndb6mw0" path="res://sprites/bird.png" id="2_s08et"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://enemies/bird/fly_forward.gd" id="7_yuqr1"]
 [ext_resource type="Script" path="res://enemies/bird/after_dash.gd" id="8_sxmcw"]
 [ext_resource type="Script" path="res://enemies/bird/dash.gd" id="9_p5ugu"]
+[ext_resource type="PackedScene" uid="uid://dpy36m31oqt6m" path="res://offscreen_indicator/offscreen_indicator.tscn" id="10_3121e"]
 [ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="10_afevb"]
+[ext_resource type="Texture2D" uid="uid://cnkiudhkcnujt" path="res://sprites/enemy_indicator.png" id="11_h8kwd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjawy"]
 radius = 6.0
@@ -87,6 +89,10 @@ shape = SubResource("CircleShape2D_d8ybw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0lcu5")
+
+[node name="OffscreenIndicator" parent="." instance=ExtResource("10_3121e")]
+sprite = ExtResource("11_h8kwd")
+sprite_rotation = 1.5708
 
 [connection signal="timeout" from="CompStateMachine/Spawned/Timer" to="CompStateMachine/Spawned" method="_on_timer_timeout"]
 [connection signal="timeout" from="CompStateMachine/FlyForward/Timer" to="CompStateMachine/FlyForward" method="_on_timer_timeout"]

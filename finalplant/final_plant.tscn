@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://br8gkj5owgbla"]
+[gd_scene load_steps=60 format=3 uid="uid://br8gkj5owgbla"]
 
 [ext_resource type="Script" path="res://finalplant/final_plant.gd" id="1_1qwfq"]
 [ext_resource type="Texture2D" uid="uid://uccjog3kg6b7" path="res://finalplant/plant-1.png" id="2_3qday"]
@@ -43,6 +43,8 @@
 [ext_resource type="Script" path="res://finalplant/after_charge.gd" id="39_g3xoi"]
 [ext_resource type="Script" path="res://finalplant/charge.gd" id="39_guq6j"]
 [ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="41_qecgs"]
+[ext_resource type="PackedScene" uid="uid://dpy36m31oqt6m" path="res://offscreen_indicator/offscreen_indicator.tscn" id="44_8k14a"]
+[ext_resource type="Texture2D" uid="uid://cnkiudhkcnujt" path="res://sprites/enemy_indicator.png" id="45_igxgv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dlqt"]
 radius = 34.7851
@@ -615,6 +617,10 @@ anim_name = "melee"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -30)
 shape = SubResource("CircleShape2D_5gow2")
+
+[node name="OffscreenIndicator" parent="." instance=ExtResource("44_8k14a")]
+sprite = ExtResource("45_igxgv")
+sprite_rotation = 1.5708
 
 [connection signal="timeout" from="CompStateMachine/Shot/Timer" to="CompStateMachine/Shot" method="_on_timer_timeout"]
 [connection signal="timeout" from="CompStateMachine/Defence/Timer" to="CompStateMachine/Defence" method="_on_timer_timeout"]
