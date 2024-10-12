@@ -16,3 +16,7 @@ func can_deal_damage()-> bool:
 
 func enemy_atacked():
 	queue_free()
+
+func _ready() -> void:
+	$SpawnSound.play()
+	

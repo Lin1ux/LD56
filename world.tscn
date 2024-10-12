@@ -223,7 +223,8 @@ material = SubResource("ShaderMaterial_8dfmc")
 [node name="Flower" parent="Objects/Objects" instance=ExtResource("1_l8oh7")]
 position = Vector2(121, 58)
 
-[node name="Hive" parent="Objects/Objects" instance=ExtResource("4_6haew")]
+[node name="Hive" parent="Objects/Objects" node_paths=PackedStringArray("bee_controller") instance=ExtResource("4_6haew")]
+bee_controller = NodePath("../../../BeeManager")
 
 [node name="NPC" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_gwtth")
@@ -235,5 +236,6 @@ bee_manager = NodePath("../BeeManager")
 hive = NodePath("../Objects/Objects/Hive")
 bullet_container = NodePath("../Objects/Bullet Container")
 
-[node name="BeeManager" parent="." instance=ExtResource("14_7ftfr")]
+[node name="BeeManager" parent="." node_paths=PackedStringArray("UI") instance=ExtResource("14_7ftfr")]
+UI = NodePath("../CanvasLayer/UI")
 bees_ratio = 0.5

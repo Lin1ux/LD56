@@ -54,6 +54,7 @@ script = ExtResource("4_q5knr")
 
 [node name="Sound" type="AudioStreamPlayer" parent="CompStateMachine/Spawned"]
 stream = ExtResource("5_820o2")
+pitch_scale = 0.4
 
 [node name="Rotate" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
 script = ExtResource("6_1srce")
