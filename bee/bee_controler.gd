@@ -1,5 +1,5 @@
 extends Node2D
-class_name BeeControler
+#class_name BeeControler
 
 
 signal dash_finished(BeeControler)

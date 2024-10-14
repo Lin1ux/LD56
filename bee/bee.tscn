@@ -39,13 +39,14 @@ func death():
 	get_parent().bee_died()
 "
 
-[node name="Bee" type="CharacterBody2D"]
+[node name="Bee" type="CharacterBody2D" node_paths=PackedStringArray("backpack")]
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_kbgrk")
+backpack = NodePath("CompBackpack")
 
 [node name="CompInteractionArea" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_lhk1w")]
-parent = NodePath("")
+parent = NodePath("..")
 
 [node name="CompBackpack" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_ci57g")]
 parent = NodePath("")

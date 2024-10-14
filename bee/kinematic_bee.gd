@@ -29,15 +29,15 @@ var dash_started: bool
 
 func _physics_process(delta):
 	print(direction)
-	velocity = lerp(velocity,direction * max_speed ,0.2)
-	
+	velocity = lerp(velocity,direction * max_speed ,0.5)
+	print(velocity)
 	if $StateMachine.state.name == "Dash":
 		$Sprites.modulate = Color(100.0, 100.0, 100.0)
 	elif $CompBackpack.is_full():
 		$Sprites.modulate = Color.YELLOW
 	else:
 		$Sprites.modulate = Color.WHITE
-		
+	move_and_slide()	
 	
 func provide_new_target_location(target: Vector2):
 	$StateMachine/FlyTowards.set_new_target_location(target)
