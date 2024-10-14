@@ -17,7 +17,7 @@ func exit():
 func enter():
 	set_new_destination()
 
-func update(delta : float):
+func update(_delta : float):
 	if final_position.distance_squared_to(bee.position) < REDIRECT_DISTANCE:
 		#print("to close to the coursor")
 		enter()

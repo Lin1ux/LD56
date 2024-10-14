@@ -21,6 +21,15 @@ config/windows_native_icon="res://promo/icon.ico"
 PollenManager="*res://scripts/pollen_manager.gd"
 MusicManager="*res://music_manager/music_manager.tscn"
 
+[debug]
+
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_local_constant=0
+gdscript/warnings/unused_private_class_variable=0
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_signal=0
+gdscript/warnings/shadowed_variable=2
+
 [display]
 
 window/size/viewport_width=640

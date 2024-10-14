@@ -1,5 +1,5 @@
-extends Node2D
-#class_name BeeControler
+extends CharacterBody2D
+class_name BeeControler
 
 
 signal dash_finished(BeeControler)
@@ -26,38 +26,18 @@ var side_acceleration : float
 var dashing : bool
 var dash_started: bool
 	
-func _integrate_forces(state : PhysicsDirectBodyState2D):
-	if dashing:
-		state.linear_velocity *= 0.975
-		
-	elif dash_started:
-		dashing = true
-		dash_started = false
-		state.linear_velocity *= 2.3
-	else:
-		
-		state.apply_impulse(direction * acceleration)
-		
-		var side_motion = direction.rotated(deg_to_rad(90))
-		state.apply_impulse(side_motion * side_acceleration)
-		
-		
-		if state.linear_velocity.length() > max_speed:
-			var dir = state.linear_velocity.normalized()
-			state.linear_velocity = dir * max_speed
-		
-		$Sprites.look_at(state.linear_velocity.rotated(PI/2))
-		
+
 func _physics_process(delta):
-		
-		
+	print(direction)
+	velocity = lerp(velocity,direction * max_speed ,0.5)
+	print(velocity)
 	if $StateMachine.state.name == "Dash":
 		$Sprites.modulate = Color(100.0, 100.0, 100.0)
 	elif $CompBackpack.is_full():
 		$Sprites.modulate = Color.YELLOW
 	else:
 		$Sprites.modulate = Color.WHITE
-		
+	move_and_slide()	
 	
 func provide_new_target_location(target: Vector2):
 	$StateMachine/FlyTowards.set_new_target_location(target)

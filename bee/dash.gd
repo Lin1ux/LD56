@@ -22,7 +22,7 @@ func update(delta):
 	current_time -= delta
 	if current_time <=0 :
 		state_machine.change_state("FlyTowards")
-	$"../../ParticleTrail".process_material.direction = Vector3($"../..".linear_velocity.x, $"../..".linear_velocity.y, 0.0)
+	$"../../ParticleTrail".process_material.direction = Vector3($"../..".velocity.x, $"../..".velocity.y, 0.0)
 	$"../../ParticleTrail".process_material.color = Color(100.0, 100.0, 100.0)
 	
 		
