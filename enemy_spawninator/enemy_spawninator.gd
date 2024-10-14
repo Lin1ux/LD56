@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var enemy_container: Node2D
+@export var friendly_container: Node2D
+
 @export var flower_manager: Node2D
 @export var bee_manager: Node2D
 @export var hive : Node2D
@@ -49,7 +51,7 @@ func spawn(enemy):
 			var b = butterfly.instantiate()
 			b.global_position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * 100
 			b.flower_manager = flower_manager
-			enemy_container.add_child(b)
+			friendly_container.add_child(b)
 			$ButterflySpawn.play()
 		ENEMY.WASP:
 			var b = wasp.instantiate()
