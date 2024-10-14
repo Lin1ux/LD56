@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://bee/kinematic_bee.gd" id="1_kbgrk"]
 [ext_resource type="Texture2D" uid="uid://bsmd63vrtvx1k" path="res://bee/Bee2.png" id="2_2k58a"]
 [ext_resource type="PackedScene" uid="uid://bslpyvdn4cyi5" path="res://components/comp_interaction_area.tscn" id="2_lhk1w"]
-[ext_resource type="PackedScene" path="res://bee/comp_backpack.tscn" id="3_ci57g"]
+[ext_resource type="PackedScene" uid="uid://dl8ufx8gscd88" path="res://bee/comp_backpack.tscn" id="3_ci57g"]
 [ext_resource type="Script" path="res://bee/fly_towards.gd" id="3_djx18"]
 [ext_resource type="Script" path="res://bee/bee_state_machine.gd" id="3_kdsfa"]
 [ext_resource type="Script" path="res://bee/dash.gd" id="7_eeuru"]
@@ -48,8 +48,7 @@ backpack = NodePath("CompBackpack")
 [node name="CompInteractionArea" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_lhk1w")]
 parent = NodePath("..")
 
-[node name="CompBackpack" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_ci57g")]
-parent = NodePath("")
+[node name="CompBackpack" parent="." instance=ExtResource("3_ci57g")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
@@ -78,9 +77,8 @@ script = ExtResource("3_djx18")
 script = ExtResource("7_eeuru")
 dash_time = 1.0
 
-[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox", "death_callback") instance=ExtResource("8_u766l")]
+[node name="CompHP" parent="." node_paths=PackedStringArray("parent_sprite", "hitbox", "death_callback") instance=ExtResource("8_u766l")]
 max_hp = 1
-parent = NodePath("")
 parent_sprite = NodePath("../Sprites/Sprite2D")
 hitbox = NodePath("Area2D")
 death_callback = NodePath("../Death")
