@@ -9,7 +9,7 @@ extends Node
 func _ready():
 	state.enter()
 
-func _process(delta):
+func _physics_process(delta):
 	state.update(delta)
 	
 	

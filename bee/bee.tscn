@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://bk8yhj7gqf6qe"]
 
-[ext_resource type="Script" path="res://bee/bee_controler.gd" id="1_47a2a"]
-[ext_resource type="Texture2D" uid="uid://bsmd63vrtvx1k" path="res://bee/bee2.png" id="2_2k58a"]
+[ext_resource type="Script" path="res://bee/kinematic_bee.gd" id="1_kbgrk"]
+[ext_resource type="Texture2D" uid="uid://bsmd63vrtvx1k" path="res://bee/Bee2.png" id="2_2k58a"]
 [ext_resource type="PackedScene" uid="uid://bslpyvdn4cyi5" path="res://components/comp_interaction_area.tscn" id="2_lhk1w"]
-[ext_resource type="PackedScene" uid="uid://dl8ufx8gscd88" path="res://bee/comp_backpack.tscn" id="3_ci57g"]
+[ext_resource type="PackedScene" path="res://bee/comp_backpack.tscn" id="3_ci57g"]
 [ext_resource type="Script" path="res://bee/fly_towards.gd" id="3_djx18"]
 [ext_resource type="Script" path="res://bee/bee_state_machine.gd" id="3_kdsfa"]
 [ext_resource type="Script" path="res://bee/dash.gd" id="7_eeuru"]
@@ -39,22 +39,16 @@ func death():
 	get_parent().bee_died()
 "
 
-[node name="Bee" type="RigidBody2D" node_paths=PackedStringArray("backpack")]
+[node name="Bee" type="CharacterBody2D"]
 collision_mask = 0
-mass = 0.01
-gravity_scale = 0.0
-lock_rotation = true
-script = ExtResource("1_47a2a")
-acceleration = 20.0
-max_speed = 250.0
-random_shpere_radius = 25.0
-backpack = NodePath("CompBackpack")
+motion_mode = 1
+script = ExtResource("1_kbgrk")
 
 [node name="CompInteractionArea" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_lhk1w")]
-parent = NodePath("..")
+parent = NodePath("")
 
 [node name="CompBackpack" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_ci57g")]
-parent = NodePath("..")
+parent = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
@@ -85,7 +79,7 @@ dash_time = 1.0
 
 [node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox", "death_callback") instance=ExtResource("8_u766l")]
 max_hp = 1
-parent = NodePath("..")
+parent = NodePath("")
 parent_sprite = NodePath("../Sprites/Sprite2D")
 hitbox = NodePath("Area2D")
 death_callback = NodePath("../Death")
