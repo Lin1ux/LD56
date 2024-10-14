@@ -26,7 +26,7 @@ radius = 8.0
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_34fkc")
-speed = 90
+speed = 45
 max_hp = 3
 
 [node name="Sprites" type="Node2D" parent="."]
