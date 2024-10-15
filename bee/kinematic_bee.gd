@@ -28,9 +28,7 @@ var dash_started: bool
 	
 
 func _physics_process(delta):
-	print(direction)
 	velocity = lerp(velocity,direction * max_speed ,0.5)
-	print(velocity)
 	
 	$Sprites.look_at(velocity.rotated(PI/2))
 	if $StateMachine.state.name == "Dash":

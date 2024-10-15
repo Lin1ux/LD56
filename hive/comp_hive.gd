@@ -20,7 +20,11 @@ func spawn_bees():
 		parent.get_bee_controller().spawn_bees(parent.global_position, 1)
 		#if parent.get_update_pollen:
 		#	PollenManager.set_pollen(parent.get_bee_controller().get_amount_of_pollen())
-		
+
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ESCAPE:
+			parent.get_bee_controller().spawn_bees(parent.global_position, 10)
 		
 func add_pollen(pollens : int):
 	if pollens:
