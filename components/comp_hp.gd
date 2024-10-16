@@ -10,6 +10,8 @@ var hp : int
 
 @export_range(-10, 10) var invincibility_frames : float = 0.5
 
+signal hp_changed(current_hp)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -52,9 +54,13 @@ func _physics_process(delta: float) -> void:
 
 func get_hp() -> int:
 	return hp
+	
+func get_max_hp() -> int:
+	return max_hp
 
 func decrease_hp(value : int):
 	hp = hp - value
+	hp_changed.emit(hp)
 	progress_bar.value = hp
 	if hp <= 0:
 		death()
@@ -62,6 +68,7 @@ func decrease_hp(value : int):
 
 func increase_hp(value : int):
 	hp = min(hp + value,max_hp)
+	hp_changed.emit(hp)
 	progress_bar.value = hp
 	return
 

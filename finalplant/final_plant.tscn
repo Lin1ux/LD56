@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cf3sijldrgw3j" path="res://finalplant/plant-25.png" id="24_cmb1j"]
 [ext_resource type="Texture2D" uid="uid://b5fwol25ax4iv" path="res://finalplant/plant-26.png" id="25_ppxkr"]
 [ext_resource type="Texture2D" uid="uid://il4p78ensqex" path="res://finalplant/plant-27.png" id="26_ogc16"]
-[ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="27_8ajlm"]
+[ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="27_8ajlm"]
 [ext_resource type="Script" path="res://finalplant/sleep.gd" id="28_5qqed"]
 [ext_resource type="Script" path="res://finalplant/open.gd" id="29_cwuob"]
 [ext_resource type="Script" path="res://finalplant/prepare_cannon.gd" id="30_qabpe"]
@@ -52,7 +52,10 @@ radius = 34.7851
 [sub_resource type="GDScript" id="GDScript_736lf"]
 script/source = "extends Node
 
+@export var parent : Node
+
 func death():
+	parent.get_boss_bar().show_bar(false)
 	var callable = Callable(get_tree(),\"change_scene_to_file\")
 	callable.call_deferred(\"res://win_end_title.tscn\")
 "
@@ -486,6 +489,7 @@ HP_component = NodePath("Node2D/CompHP")
 range = 400.0
 bullet = ExtResource("2_fkqej")
 root = ExtResource("3_vlmc1")
+enemy_name = "Plant Of Terror"
 speed = 200
 max_hp = 100
 engage_range = 100.0
@@ -514,8 +518,9 @@ death_callback = NodePath("Death")
 position = Vector2(30, -2)
 shape = SubResource("CircleShape2D_4dlqt")
 
-[node name="Death" type="Node" parent="Node2D/CompHP"]
+[node name="Death" type="Node" parent="Node2D/CompHP" node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_736lf")
+parent = NodePath("../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

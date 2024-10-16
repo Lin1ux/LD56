@@ -1,6 +1,7 @@
 extends Node
 class_name Enemy
 
+@export var enemy_name : String				##Creature's name
 @export var speed : int = 100 				##speed of enemy
 @export var max_hp : int = 10 				##max amount of hp
 @export var rotation_speed : float = 100 	##how fast enemy rotates

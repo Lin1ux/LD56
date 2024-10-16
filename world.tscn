@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=21 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="1_l8oh7"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dfwalf1sfdxhe" path="res://hive/hive.tscn" id="4_6haew"]
 [ext_resource type="PackedScene" uid="uid://blj7ti13fmh85" path="res://interface/amount_box.tscn" id="4_djjkn"]
 [ext_resource type="Texture2D" uid="uid://bjmt6ctuaba35" path="res://sprites/honey_drop.png" id="4_l4yp6"]
+[ext_resource type="PackedScene" uid="uid://c2uu132ckyitj" path="res://interface/boss_bar.tscn" id="5_u8sx4"]
 [ext_resource type="Script" path="res://scripts/objects_manager.gd" id="7_1dilw"]
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="7_2y1m6"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="8_bbrd4"]
+[ext_resource type="PackedScene" uid="uid://br8gkj5owgbla" path="res://finalplant/final_plant.tscn" id="12_qc3a3"]
 [ext_resource type="PackedScene" uid="uid://udutv2qvts45" path="res://bee/bee_manager.tscn" id="14_7ftfr"]
 [ext_resource type="Shader" path="res://outline2.gdshader" id="15_g8ibx"]
 [ext_resource type="PackedScene" uid="uid://b207xegfvb5um" path="res://enemy_spawninator/enemy_spawninator.tscn" id="18_f6rh2"]
@@ -82,7 +84,7 @@ stretch_mode = 1
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = SubResource("GDScript_d7nw4")
 
-[node name="UI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("bees_info", "pollen_info")]
+[node name="UI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("bees_info", "pollen_info", "boss_bar")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -90,6 +92,7 @@ offset_bottom = 40.0
 script = ExtResource("4_5dwdf")
 bees_info = NodePath("BeesInfo")
 pollen_info = NodePath("PollenInfo")
+boss_bar = NodePath("Boss Bar")
 
 [node name="BeesInfo" parent="CanvasLayer/UI" instance=ExtResource("4_djjkn")]
 offset_left = 24.0
@@ -103,6 +106,13 @@ offset_top = 67.0
 offset_right = 24.0
 offset_bottom = 67.0
 texture = ExtResource("4_l4yp6")
+
+[node name="Boss Bar" parent="CanvasLayer/UI" instance=ExtResource("5_u8sx4")]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 309.0
+offset_right = 583.0
+offset_bottom = 349.0
 
 [node name="Cursor" parent="CanvasLayer" instance=ExtResource("7_2y1m6")]
 
@@ -255,6 +265,12 @@ bee_controller = NodePath("../../../BeeManager")
 
 [node name="EnemyNPC" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_6d62s")
+
+[node name="FinalPlant" parent="Objects/EnemyNPC" node_paths=PackedStringArray("bee_manager", "bullet_container", "UI") instance=ExtResource("12_qc3a3")]
+position = Vector2(2, -7)
+bee_manager = NodePath("../../../BeeManager")
+bullet_container = NodePath("../../Bullet Container")
+UI = NodePath("../../../CanvasLayer/UI")
 
 [node name="FriendlyNPC" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_gwtth")

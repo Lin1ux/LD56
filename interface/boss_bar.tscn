@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2uu132ckyitj"]
+
+[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://UI/square.png" id="1_021yk"]
+[ext_resource type="Script" path="res://interface/boss_bar.gd" id="2_am2bn"]
+
+[node name="Boss Bar" type="TextureProgressBar"]
+self_modulate = Color(1, 1, 1, 0.392157)
+offset_right = 518.0
+offset_bottom = 40.0
+value = 20.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_021yk")
+texture_progress = ExtResource("1_021yk")
+tint_under = Color(0.101961, 0.054902, 0.0784314, 1)
+tint_progress = Color(0.74902, 0.168627, 0.160784, 1)
+script = ExtResource("2_am2bn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 519.0
+offset_bottom = 40.0
+text = "Boss Name"
+horizontal_alignment = 1
+vertical_alignment = 1
