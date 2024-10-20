@@ -43,6 +43,7 @@ func death():
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_kbgrk")
+max_speed = 600.0
 backpack = NodePath("CompBackpack")
 
 [node name="CompInteractionArea" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_lhk1w")]
