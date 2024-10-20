@@ -20,6 +20,7 @@ config/windows_native_icon="res://promo/icon.ico"
 
 PollenManager="*res://scripts/pollen_manager.gd"
 MusicManager="*res://music_manager/music_manager.tscn"
+Console="*res://addons/console_plugin/console.gd"
 
 [debug]
 
@@ -40,6 +41,10 @@ window/stretch/aspect="keep_height"
 [editor]
 
 export/custom_image=""
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/console_plugin/plugin.cfg")
 
 [layer_names]
 
