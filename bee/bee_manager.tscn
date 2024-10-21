@@ -14,7 +14,6 @@ shader_parameter/line_thickness = 2
 script = ExtResource("1_lpqgk")
 bee_prefab = ExtResource("2_5y36g")
 bees_to_spawn = 3
-bees_ratio = null
 
 [node name="Bees" type="CanvasGroup" parent="."]
 z_index = 2

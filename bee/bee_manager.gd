@@ -22,6 +22,7 @@ var cursour_folowing : Array[BeeControler]
 
 func _ready():
 	spawn_bees(Vector2.ZERO, bees_to_spawn)
+	Console.add_comand("spawnbees",spawn_bees, ["vector2","int"])
 	
 	
 func _input(event):
@@ -69,7 +70,8 @@ func _process(delta):
 		if bee != null:
 			bee.provide_new_target_location(get_global_mouse_position())
 
-func spawn_bees(location : Vector2, count : int):
+func spawn_bees(location : Vector2 = Vector2.ZERO, count : int = 5):
+	print (count);
 	for i in range(count):
 		var bee :BeeControler= bee_prefab.instantiate()
 		bees.append(bee)
@@ -82,6 +84,8 @@ func spawn_bees(location : Vector2, count : int):
 		
 	if UI:
 		UI.set_bees_amount(get_amount_of_bees())
+		
+	return "spawned bees"
 		
 func get_amount_of_bees():
 	return len(bees)

@@ -1,5 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://d2573kfpvse0r"]
 
+[ext_resource type="Script" path="res://world.gd" id="1_cgy7h"]
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
 [ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="1_l8oh7"]
 [ext_resource type="Script" path="res://interface/ui.gd" id="4_5dwdf"]
@@ -10,7 +11,6 @@
 [ext_resource type="Script" path="res://scripts/objects_manager.gd" id="7_1dilw"]
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="7_2y1m6"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="8_bbrd4"]
-[ext_resource type="PackedScene" uid="uid://br8gkj5owgbla" path="res://finalplant/final_plant.tscn" id="12_qc3a3"]
 [ext_resource type="PackedScene" uid="uid://udutv2qvts45" path="res://bee/bee_manager.tscn" id="14_7ftfr"]
 [ext_resource type="Shader" path="res://outline2.gdshader" id="15_g8ibx"]
 [ext_resource type="PackedScene" uid="uid://b207xegfvb5um" path="res://enemy_spawninator/enemy_spawninator.tscn" id="18_f6rh2"]
@@ -65,6 +65,7 @@ shader_parameter/line_colour = Color(0, 0, 0, 1)
 shader_parameter/line_thickness = 2
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_cgy7h")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -266,12 +267,6 @@ bee_controller = NodePath("../../../BeeManager")
 [node name="EnemyNPC" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_6d62s")
 
-[node name="FinalPlant" parent="Objects/EnemyNPC" node_paths=PackedStringArray("bee_manager", "bullet_container", "UI") instance=ExtResource("12_qc3a3")]
-position = Vector2(2, -7)
-bee_manager = NodePath("../../../BeeManager")
-bullet_container = NodePath("../../Bullet Container")
-UI = NodePath("../../../CanvasLayer/UI")
-
 [node name="FriendlyNPC" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_gwtth")
 
@@ -285,4 +280,3 @@ bullet_container = NodePath("../Objects/Bullet Container")
 
 [node name="BeeManager" parent="." node_paths=PackedStringArray("UI") instance=ExtResource("14_7ftfr")]
 UI = NodePath("../CanvasLayer/UI")
-bees_ratio = 0.5
