@@ -19,8 +19,13 @@ var bees : Array[BeeControler]
 
 var cursour_folowing : Array[BeeControler]
 
+var number_of_bees : int
+
 
 func _ready():
+	Watcher.add_watched_variable(self,"number_of_bees")
+	Watcher.add_watched_variable(self,"x")
+	number_of_bees = len(bees)
 	spawn_bees(Vector2.ZERO, bees_to_spawn)
 	Console.add_comand("spawnbees",spawn_bees, ["vector2","int"])
 	
@@ -38,7 +43,6 @@ var dashing_bees : Array[BeeControler]
 
 
 func statr_dash():
-	
 	var bees_count = len(cursour_folowing)
 	var arr : Array = range(bees_count)
 	arr.shuffle()
@@ -64,8 +68,9 @@ func end_dash():
 	dashing_bees.clear()
 	
 
-
+var x: float
 func _process(delta):
+	
 	for bee in bees:
 		if bee != null:
 			bee.provide_new_target_location(get_global_mouse_position())

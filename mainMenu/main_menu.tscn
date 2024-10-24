@@ -277,7 +277,6 @@ texture = ExtResource("17_jgch5")
 
 [node name="BeeManager" parent="." instance=ExtResource("10_yhrr2")]
 bees_to_spawn = 1
-bees_ratio = 0.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = SubResource("GDScript_d7nw4")

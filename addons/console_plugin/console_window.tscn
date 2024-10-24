@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5vhg2um2kv0v"]
 
-[ext_resource type="Script" path="res://addons/console_plugin/input_line.gd" id="1_p5swq"]
+[ext_resource type="Script" path="res://addons/console_plugin/input_line.gd" id="1_p7wc7"]
 
 [node name="Window" type="Window"]
 process_mode = 3
@@ -24,4 +24,4 @@ scroll_following = true
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 10
-script = ExtResource("1_p5swq")
+script = ExtResource("1_p7wc7")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://br0kad247uebq"]
+
+[ext_resource type="Script" path="res://addons/console_plugin/variable_entry.gd" id="1_0kw3h"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0kw3h")
+
+[node name="name" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Variable Name"
+
+[node name="value" type="LineEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[connection signal="focus_entered" from="value" to="." method="_on_value_focus_entered"]
+[connection signal="focus_exited" from="value" to="." method="_on_value_focus_exited"]
+[connection signal="text_submitted" from="value" to="." method="_on_value_text_submitted"]

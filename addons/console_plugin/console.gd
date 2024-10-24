@@ -3,7 +3,7 @@ extends Node
 
 var aveilable_commands ={}
 
-const WINDOW = preload("res://addons/console_plugin/window.tscn")
+const WINDOW = preload("res://addons/console_plugin/console_window.tscn")
 
 
 var text_output : RichTextLabel
@@ -99,7 +99,7 @@ func process_command(command:String):
 	var words  = command.split(" ",false)
 	
 	
-	text_output.append_text(command + "\n")
+	text_output.append_text(command + ">\n")
 	print(command);
 	if words[0] in aveilable_commands:
 		var msg = call_function(aveilable_commands[words[0]],words)
@@ -122,9 +122,10 @@ func add_comand(command : String, function : Callable, parameters :Array[String]
 	
 		
 func list_comands() -> String:	
-	var x : String = ""
+	var x : String = "-----------\n"
 	for key in aveilable_commands.keys():
 		x += key + "\n"
+	x+= "-----------\n"
 	return x
 	
 func clear()->String:
