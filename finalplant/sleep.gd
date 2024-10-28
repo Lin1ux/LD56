@@ -16,7 +16,8 @@ func next_state():
 	get_parent().change_state("Open")
 
 func update(delta: float) -> void:
-	if parent.get_new_target().global_position.distance_squared_to(parent.global_position) < parent.engage_range_sqr():
+	var target = parent.get_new_target()
+	if target.global_position.distance_squared_to(parent.global_position) < parent.engage_range_sqr():
 		next_state()
 	
 func exit() -> void:

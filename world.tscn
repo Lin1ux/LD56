@@ -109,6 +109,7 @@ offset_bottom = 67.0
 texture = ExtResource("4_l4yp6")
 
 [node name="Boss Bar" parent="CanvasLayer/UI" instance=ExtResource("5_u8sx4")]
+visible = false
 layout_mode = 0
 offset_left = 65.0
 offset_top = 309.0
@@ -270,13 +271,14 @@ material = SubResource("ShaderMaterial_6d62s")
 [node name="FriendlyNPC" type="CanvasGroup" parent="Objects"]
 material = SubResource("ShaderMaterial_gwtth")
 
-[node name="EnemySpawninator" parent="." node_paths=PackedStringArray("enemy_container", "friendly_container", "flower_manager", "bee_manager", "hive", "bullet_container") instance=ExtResource("18_f6rh2")]
+[node name="EnemySpawninator" parent="." node_paths=PackedStringArray("enemy_container", "friendly_container", "flower_manager", "bee_manager", "hive", "bullet_container", "UI") instance=ExtResource("18_f6rh2")]
 enemy_container = NodePath("../Objects/EnemyNPC")
 friendly_container = NodePath("../Objects/FriendlyNPC")
 flower_manager = NodePath("../Objects")
 bee_manager = NodePath("../BeeManager")
 hive = NodePath("../Objects/Objects/Hive")
 bullet_container = NodePath("../Objects/Bullet Container")
+UI = NodePath("../CanvasLayer/UI")
 
 [node name="BeeManager" parent="." node_paths=PackedStringArray("UI") instance=ExtResource("14_7ftfr")]
 UI = NodePath("../CanvasLayer/UI")

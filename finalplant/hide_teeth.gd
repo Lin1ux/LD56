@@ -10,6 +10,7 @@ func enter() -> void:
 	anim.play(anim_name)
 	parent.set_vulnerable(true)
 	anim.animation_finished.connect(next_state,ConnectFlags.CONNECT_ONE_SHOT)
+	#$"../../Node2D/Sprite2D".rotation = deg_to_rad(0)
 
 func next_state(_x):
 	if parent.should_sleep():

@@ -33,8 +33,8 @@ func update(delta: float) -> void:
 		return
 	print("(Final",target.global_position)
 	parent.look_at(target.global_position)
+	$"../../Node2D/Sprite2D".rotation = deg_to_rad(90)
 	#$"../../Sprite2D".rotation = 90
-	
 func exit() -> void:
 	is_active = false
 	$Timer.stop()
