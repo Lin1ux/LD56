@@ -87,9 +87,11 @@ script = SubResource("GDScript_d7nw4")
 
 [node name="UI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("bees_info", "pollen_info", "boss_bar")]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("4_5dwdf")
 bees_info = NodePath("BeesInfo")
 pollen_info = NodePath("PollenInfo")
@@ -110,11 +112,18 @@ texture = ExtResource("4_l4yp6")
 
 [node name="Boss Bar" parent="CanvasLayer/UI" instance=ExtResource("5_u8sx4")]
 visible = false
-layout_mode = 0
-offset_left = 65.0
-offset_top = 309.0
-offset_right = 583.0
-offset_bottom = 349.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -259.0
+offset_top = -64.0
+offset_right = 259.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Cursor" parent="CanvasLayer" instance=ExtResource("7_2y1m6")]
 

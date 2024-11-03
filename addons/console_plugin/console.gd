@@ -34,7 +34,6 @@ func _input(event):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	get_viewport().gui_embed_subwindows = false
 	window = WINDOW.instantiate()
 	add_child(window)
