@@ -15,6 +15,8 @@ func _ready():
 	if Engine.is_editor_hint():
 		return
 	
+	$AnimationPlayer.play("spawn")
+	
 	progress_bar = $ProgressBar
 	current_pollens = max_pollens
 	progress_bar.max_value = current_pollens

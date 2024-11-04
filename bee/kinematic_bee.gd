@@ -34,7 +34,7 @@ func _physics_process(delta):
 	if $StateMachine.state.name == "Dash":
 		$Sprites.modulate = Color(100.0, 100.0, 100.0)
 	elif $CompBackpack.is_full():
-		$Sprites.modulate = Color.YELLOW
+		$Sprites.modulate = Color(255.0/255.0, 189.0/255.0, 64.0/256.0)
 	else:
 		$Sprites.modulate = Color.WHITE
 	move_and_slide()	

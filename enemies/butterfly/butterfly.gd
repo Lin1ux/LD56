@@ -7,6 +7,9 @@ extends Enemy
 var flower_position : Vector2
 var ready_to_spawn_flower : bool = true
 
+func _ready() -> void:
+	$AnimationPlayer.play("spawn")
+
 func empty_backpack():
 	get_backpack().remove_pollen()
 	

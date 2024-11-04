@@ -7,11 +7,13 @@ extends Node2D
 @export var bee_manager: Node2D
 @export var hive : Node2D
 @export var bullet_container : Node2D
+@export var UI : Node
 var wave_number: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$WaveTimer.start()
+	#spawn(ENEMY.FINAL)	#Do testów NPC
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,9 +66,9 @@ func spawn(enemy):
 			b.global_position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * 0
 			b.bee_manager = bee_manager
 			b.bullet_container = bullet_container
+			b.UI = UI
 			enemy_container.add_child(b)
 			
-
 var wave_map = [
 	[ENEMY.BUTTERFLY, ENEMY.BUTTERFLY, ENEMY.FLY,ENEMY.WASP],
 	[ENEMY.BUTTERFLY,ENEMY.WASP, ENEMY.FLY,ENEMY.BIRD],
@@ -87,8 +89,10 @@ var wave_map = [
 
 func _on_wave_timer_timeout() -> void:
 	
+	if wave_number >= wave_map.size():							#zapobiega maratonowi bossów
+		return
 	for enemy in wave_map[wave_number]:
 		spawn(enemy)
 	
 	wave_number += 1
-	wave_number = min(wave_number, wave_map.size() - 1)
+	#wave_number = min(wave_number, wave_map.size() - 1)		#Nieskończone fale
