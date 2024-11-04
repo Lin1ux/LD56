@@ -41,18 +41,22 @@ func _input(event):
 
 var dashing_bees : Array[BeeControler]
 
+func sort_by_distance_to_cursor(a: Vector2, b: Vector2):
+	return a.distance_to(get_global_mouse_position()) < b.distance_to(get_global_mouse_position())
 
 func statr_dash():
 	var bees_count = len(cursour_folowing)
 	var arr : Array = range(bees_count)
-	arr.shuffle()
+	arr.sort_custom(sort_by_distance_to_cursor)
 	var bees_to_dash = ceil(bees_count * bees_ratio)
 	
 	for i in range(bees_to_dash):
 		var dashing_bee = cursour_folowing[arr[i]]
+		
 		dashing_bee.dash()
 		dashing_bee.dash_finished.connect(dash_cleaup,ConnectFlags.CONNECT_ONE_SHOT)
 		dashing_bees.append(dashing_bee)
+		
 	for dashing_bee in dashing_bees:
 		cursour_folowing.erase(dashing_bee)
 	

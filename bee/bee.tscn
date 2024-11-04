@@ -74,7 +74,7 @@ script = ExtResource("3_kdsfa")
 [node name="FlyTowards" type="Node" parent="StateMachine"]
 script = ExtResource("3_djx18")
 
-[node name="Dash" type="Node" parent="StateMachine"]
+[node name="Dash" type="Node2D" parent="StateMachine"]
 script = ExtResource("7_eeuru")
 dash_time = 1.0
 

@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @onready var bee = $"../.."
 @onready var state_machine = $".."
@@ -7,6 +7,10 @@ extends Node
 @export var dash_time : float = 0.7
 var current_time 
 func enter():
+	
+	bee.velocity = (get_global_mouse_position() - bee.global_position).normalized()
+	bee.direction = bee.velocity.normalized()
+	
 	bee.dash_started = true
 	current_time = dash_time
 	$"../../ParticleTrail".emitting = true
