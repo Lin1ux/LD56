@@ -40,6 +40,12 @@ const PROPERTY = preload("res://addons/console_plugin/Variable_field.tscn")
 
 var window
 
+func _input(event):
+	if event is InputEventKey:
+		if event.keycode == KEY_F1 and event.is_pressed():
+			print("pressed")
+			change_state()
+
 
 func _ready():
 	get_viewport().gui_embed_subwindows = false
@@ -69,6 +75,13 @@ func add_watched_variable(ovner : Object, property : String):
 	
 	
 	window.get_node("VariableHolder").add_child(vf)
-	
+
+func change_state():
+	print("x")
+	if window.visible:
+		window.visible = false
+	else:
+		window.show()
+
 func window_close_request():
 	window.visible = false;

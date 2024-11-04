@@ -57,6 +57,8 @@ func get_backpack():
 	
 	
 func dash():
+	if direction_tween:
+		direction_tween.kill()
 	$StateMachine.do_dash()
 	
 func end_dash():
