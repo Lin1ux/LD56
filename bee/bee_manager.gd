@@ -7,7 +7,7 @@ extends Node2D
 @export_group("Other")
 @export var UI : Node
 
-@export var BEE_LIMIT: int = 5
+@export var BEE_LIMIT: int = 50
 
 @export var bees_ratio: float = 0.5
 
@@ -103,7 +103,10 @@ func spawn_bees(location : Vector2 = Vector2.ZERO, count : int = 5):
 	return "spawned bees"
 		
 func get_amount_of_bees():
-	return len(bees)
+	var bee_count := 0
+	for bee in bees:
+		bee_count += bee.get_node("CompHP").hp
+	return bee_count
 	
 func get_random_bee():
 	if len(bees)> 0:
