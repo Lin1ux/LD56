@@ -52,7 +52,7 @@ func _ready():
 	window = WINDOW.instantiate()
 	add_child(window)
 	window.visible = true
-	window.always_on_top = true
+	window.always_on_top = false
 	window.position = Vector2(1800,500)
 	window.size = Vector2(640,460)
 	window.title = "Watcher"
