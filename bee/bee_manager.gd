@@ -7,7 +7,7 @@ extends Node2D
 @export_group("Other")
 @export var UI : Node
 
-
+@export var BEE_LIMIT: int = 5
 
 @export var bees_ratio: float = 0.5
 
@@ -80,16 +80,22 @@ func _process(delta):
 			bee.provide_new_target_location(get_global_mouse_position())
 
 func spawn_bees(location : Vector2 = Vector2.ZERO, count : int = 5):
-	print (count);
+
 	for i in range(count):
-		var bee :BeeControler= bee_prefab.instantiate()
-		bees.append(bee)
-		cursour_folowing.append(bee)
-		bee.position = location
-		bee.new_target(location)
-		bee.bee_dies.connect(destroy_bee,ConnectFlags.CONNECT_ONE_SHOT)
-		bees_holder.add_child(bee)
-		bee.manager = self
+		
+		if bees.size() >= BEE_LIMIT:
+			var combined_bee = bees.pick_random()
+			combined_bee.get_node("CompHP").max_hp += 1
+			combined_bee.get_node("CompHP").hp += 1
+		else:
+			var bee :BeeControler= bee_prefab.instantiate()
+			bees.append(bee)
+			cursour_folowing.append(bee)
+			bee.position = location
+			bee.new_target(location)
+			bee.bee_dies.connect(destroy_bee,ConnectFlags.CONNECT_ONE_SHOT)
+			bees_holder.add_child(bee)
+			bee.manager = self
 		
 	if UI:
 		UI.set_bees_amount(get_amount_of_bees())

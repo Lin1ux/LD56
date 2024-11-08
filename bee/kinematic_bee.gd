@@ -25,7 +25,8 @@ var side_acceleration : float
 
 var dashing : bool
 var dash_started: bool
-	
+
+@onready var bee_count_sprites = [$"Sprites/1", $"Sprites/2", $"Sprites/3", $"Sprites/4", $"Sprites/5"]
 
 func _physics_process(delta):
 	velocity = lerp(velocity,direction * max_speed ,0.5)
@@ -37,6 +38,20 @@ func _physics_process(delta):
 		$Sprites.modulate = Color(255.0/255.0, 189.0/255.0, 64.0/256.0)
 	else:
 		$Sprites.modulate = Color.WHITE
+		
+	
+	bee_count_sprites[1].visible = $CompHP.hp > 1
+	bee_count_sprites[2].visible = $CompHP.hp > 2
+	bee_count_sprites[3].visible = $CompHP.hp > 3
+	bee_count_sprites[4].visible = $CompHP.hp > 4
+	
+	# Randomize sprite positions
+	if Engine.get_physics_frames() % Engine.physics_ticks_per_second == 0:
+		bee_count_sprites[1].position = Vector2(randf_range(-5, 5), randf_range(-5, 5))
+		bee_count_sprites[2].position = Vector2(randf_range(-5, 5), randf_range(-5, 5))
+		bee_count_sprites[3].position = Vector2(randf_range(-5, 5), randf_range(-5, 5))
+		bee_count_sprites[4].position = Vector2(randf_range(-5, 5), randf_range(-5, 5))
+	
 	move_and_slide()	
 	
 func provide_new_target_location(target: Vector2):

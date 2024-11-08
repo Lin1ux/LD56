@@ -57,7 +57,27 @@ shape = SubResource("RectangleShape2D_ub2sv")
 
 [node name="Sprites" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+[node name="1" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("2_2k58a")
+
+[node name="2" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(5, 2)
+texture = ExtResource("2_2k58a")
+
+[node name="3" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(-5, 2)
+texture = ExtResource("2_2k58a")
+
+[node name="4" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(-4, -5)
+texture = ExtResource("2_2k58a")
+
+[node name="5" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(4, -5)
 texture = ExtResource("2_2k58a")
 
 [node name="ParticleTrail" type="GPUParticles2D" parent="."]
@@ -80,8 +100,9 @@ dash_time = 1.0
 
 [node name="CompHP" parent="." node_paths=PackedStringArray("parent_sprite", "hitbox", "death_callback") instance=ExtResource("8_u766l")]
 max_hp = 1
-parent_sprite = NodePath("../Sprites/Sprite2D")
+parent_sprite = NodePath("../Sprites/1")
 hitbox = NodePath("Area2D")
+hide_bar = true
 death_callback = NodePath("../Death")
 
 [node name="Area2D" type="Area2D" parent="CompHP"]

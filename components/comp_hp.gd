@@ -8,6 +8,8 @@ var hp : int
 @export var hitbox : Area2D
 @export var vulnerable :  bool = true
 
+@export var hide_bar : bool = false
+
 @export_range(-10, 10) var invincibility_frames : float = 0.5
 
 signal hp_changed(current_hp)
@@ -40,7 +42,7 @@ func got_hit(body: Node2D):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	progress_bar.visible = hp != max_hp
+	progress_bar.visible = hp != max_hp and not hide_bar
 	
 	set_global_rotation(0)
 
