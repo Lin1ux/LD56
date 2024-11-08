@@ -3,6 +3,7 @@ extends Control
 var target := preload("res://cursor/cursor_target.tscn")
 
 func _ready() -> void:
+	visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _process(_delta: float) -> void:

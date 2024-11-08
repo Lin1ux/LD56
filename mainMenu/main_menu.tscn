@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://c3u7ikrbedrms"]
+[gd_scene load_steps=25 format=3 uid="uid://c3u7ikrbedrms"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_40j4h"]
 [ext_resource type="Shader" path="res://outline2.gdshader" id="3_u7asb"]
+[ext_resource type="Texture2D" uid="uid://de62ttyo31ql" path="res://flower/flower1.png" id="6_4aq35"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="6_6feqe"]
+[ext_resource type="Texture2D" uid="uid://cdyrisukkr3rc" path="res://flower/flower3.png" id="7_m4e1b"]
 [ext_resource type="Texture2D" uid="uid://bd3ipy1t4me6p" path="res://sprites/arrow.png" id="8_i3pid"]
 [ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="8_odms2"]
 [ext_resource type="PackedScene" uid="uid://udutv2qvts45" path="res://bee/bee_manager.tscn" id="10_yhrr2"]
@@ -80,6 +82,53 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_ew34c"),
 "sway": SubResource("Animation_u2x20")
+}
+
+[sub_resource type="GDScript" id="GDScript_eq2v3"]
+script/source = "extends Sprite2D
+
+func _ready() -> void:
+	$AnimationPlayer.play(\"anim\")
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	$AnimationPlayer.play(\"anim\")
+"
+
+[sub_resource type="Animation" id="Animation_75gyc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gclnk"]
+resource_name = "anim"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.46667, 2.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-20, 0), Vector2(10, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ipmux"]
+_data = {
+"RESET": SubResource("Animation_75gyc"),
+"anim": SubResource("Animation_gclnk")
 }
 
 [sub_resource type="GDScript" id="GDScript_d7nw4"]
@@ -247,7 +296,7 @@ position = Vector2(-329, 104)
 position = Vector2(-327, 226)
 
 [node name="Logo" type="Sprite2D" parent="Objects2"]
-position = Vector2(-1, -84)
+position = Vector2(0, -106)
 texture = ExtResource("13_kowkj")
 script = SubResource("GDScript_6ylym")
 
@@ -257,22 +306,40 @@ libraries = {
 }
 
 [node name="Flower" parent="Objects2" instance=ExtResource("8_odms2")]
-position = Vector2(-112, 67)
+position = Vector2(-241, 51)
+image = ExtResource("6_4aq35")
+max_pollens = 3
+
+[node name="Flower2" parent="Objects2" instance=ExtResource("8_odms2")]
+position = Vector2(-215, 39)
+texture_used = 2
+max_pollens = 3
+
+[node name="Flower3" parent="Objects2" instance=ExtResource("8_odms2")]
+position = Vector2(-218, 69)
+texture_used = 3
+image = ExtResource("7_m4e1b")
 max_pollens = 3
 
 [node name="Arrow" type="Sprite2D" parent="Objects2"]
-position = Vector2(-10, 70)
+position = Vector2(-123, 60)
 texture = ExtResource("8_i3pid")
+script = SubResource("GDScript_eq2v3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects2/Arrow"]
+libraries = {
+"": SubResource("AnimationLibrary_ipmux")
+}
 
 [node name="StartGame" parent="Objects2" instance=ExtResource("13_p41sl")]
-position = Vector2(116, 69)
+position = Vector2(-12, 58)
 
 [node name="Controls" type="Sprite2D" parent="Objects2"]
-position = Vector2(-221, 98)
+position = Vector2(131, 58)
 texture = ExtResource("16_6af5c")
 
 [node name="DashControls" type="Sprite2D" parent="Objects2"]
-position = Vector2(237, 101)
+position = Vector2(250, 59)
 texture = ExtResource("17_jgch5")
 
 [node name="BeeManager" parent="." instance=ExtResource("10_yhrr2")]
@@ -281,4 +348,16 @@ bees_to_spawn = 1
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = SubResource("GDScript_d7nw4")
 
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 9.0
+offset_top = 316.0
+offset_right = 416.0
+offset_bottom = 365.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 12
+text = "Nectarmancer 1.1, 2024
+falubaz, igorekkedziorek, Liniux, shamotte, Zedgame"
+
 [node name="Cursor" parent="CanvasLayer" instance=ExtResource("15_elfjy")]
+
+[connection signal="animation_finished" from="Objects2/Arrow/AnimationPlayer" to="Objects2/Arrow" method="_on_animation_player_animation_finished"]

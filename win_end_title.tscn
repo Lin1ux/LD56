@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvepbb8nlwece"]
+[gd_scene load_steps=4 format=3 uid="uid://bvepbb8nlwece"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_7fjes"]
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="4_kqts5"]
+
+[sub_resource type="GDScript" id="GDScript_qw8in"]
+script/source = "extends Timer
+
+func _on_timeout() -> void:
+	get_tree().change_scene_to_file(\"res://mainMenu/main_menu.tscn\")
+"
 
 [node name="EndTitle" type="Control"]
 layout_mode = 3
@@ -52,3 +59,11 @@ offset_right = 592.0
 offset_bottom = 233.0
 theme_override_font_sizes/font_size = 100
 text = "YOU WIN! :)"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+script = SubResource("GDScript_qw8in")
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
