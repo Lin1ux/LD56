@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2573kfpvse0r"]
+[gd_scene load_steps=22 format=3 uid="uid://d2573kfpvse0r"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_cgy7h"]
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_hs1qf"]
@@ -21,6 +21,11 @@ script/source = "extends CanvasLayer
 func _ready() -> void:
 	visible = true
 "
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bb0qe"]
+shader = ExtResource("15_g8ibx")
+shader_parameter/line_colour = Color(0.447059, 0.796078, 0.145098, 1)
+shader_parameter/line_thickness = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1vwho"]
 shader = ExtResource("15_g8ibx")
@@ -56,7 +61,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6d62s"]
 shader = SubResource("Shader_1wm2x")
-shader_parameter/line_colour = Color(0.333311, 3.76021e-07, 7.21961e-08, 1)
+shader_parameter/line_colour = Color(0.439216, 0.156863, 0.168627, 1)
 shader_parameter/line_thickness = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gwtth"]
@@ -135,6 +140,7 @@ script = ExtResource("7_1dilw")
 Objects = NodePath("Objects")
 
 [node name="Grass" type="CanvasGroup" parent="Objects"]
+material = SubResource("ShaderMaterial_bb0qe")
 
 [node name="GrassPatch" parent="Objects/Grass" instance=ExtResource("8_bbrd4")]
 position = Vector2(34, -31)

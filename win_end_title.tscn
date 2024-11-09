@@ -1,7 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvepbb8nlwece"]
+[gd_scene load_steps=9 format=3 uid="uid://bvepbb8nlwece"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_7fjes"]
+[ext_resource type="Texture2D" uid="uid://dwqmaksqjorri" path="res://promo/youbeeatthegame.png" id="2_xc8rw"]
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="4_kqts5"]
+
+[sub_resource type="GDScript" id="GDScript_4nvr6"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$AnimationPlayer.play(\"sway\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_ew34c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u2x20"]
+resource_name = "sway"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5, 7.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2otur"]
+_data = {
+"RESET": SubResource("Animation_ew34c"),
+"sway": SubResource("Animation_u2x20")
+}
 
 [sub_resource type="GDScript" id="GDScript_qw8in"]
 script/source = "extends Timer
@@ -50,15 +103,17 @@ z_index = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Objects"]
 
-[node name="Cursor" parent="Objects/CanvasLayer" instance=ExtResource("4_kqts5")]
+[node name="Logo" type="Sprite2D" parent="Objects/CanvasLayer"]
+position = Vector2(310, 164)
+texture = ExtResource("2_xc8rw")
+script = SubResource("GDScript_4nvr6")
 
-[node name="Label" type="Label" parent="Objects/CanvasLayer"]
-offset_left = 38.0
-offset_top = 96.0
-offset_right = 592.0
-offset_bottom = 233.0
-theme_override_font_sizes/font_size = 100
-text = "YOU WIN! :)"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/CanvasLayer/Logo"]
+libraries = {
+"": SubResource("AnimationLibrary_2otur")
+}
+
+[node name="Cursor" parent="Objects/CanvasLayer" instance=ExtResource("4_kqts5")]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

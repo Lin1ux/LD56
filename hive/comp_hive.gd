@@ -29,6 +29,9 @@ func _unhandled_input(event):
 func add_pollen(pollens : int):
 	if pollens:
 		$"../CollectSound".play()
+		$"../AnimationPlayer".stop()
+		$"../AnimationPlayer".play("pulse")
+		
 	number_of_pollen += pollens
 	update_progress_bar()
 	PollenManager.add_pollen(pollens)

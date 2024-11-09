@@ -39,11 +39,15 @@ func gather_pollen(character : Node):
 		return
 	#moving pollen from object to backpack
 	if current_pollens > 0 and not backpack.is_full():
+		
 		current_pollens -= 1
 		backpack.increase_pollen(1)
 		progress_bar.value = current_pollens
 		$Timer.start()
 		$CollectSound.play()
+		
+		$"AnimationPlayer".stop()
+		$"AnimationPlayer".play("pulse")
 		
 		
 
