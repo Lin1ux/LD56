@@ -9,7 +9,7 @@ func enter() -> void:
 	tween = create_tween()
 	tween.finished.connect(correction_angle)
 	var degree = rad_to_deg(parent.get_angle_to(point_to_move))
-	print("Degree = ",rad_to_deg(degree))
+	#print("Degree = ",rad_to_deg(degree))
 	degree += 360
 	#if degree < 0:
 	var time = degree/144

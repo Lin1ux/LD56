@@ -15,7 +15,7 @@ func _ready() -> void:
 func spawn_bees():
 	if number_of_pollen >= bee_cost:
 		$"../BeeSpawnSound".play()
-		print("Bee spawned")
+
 		number_of_pollen -= bee_cost
 		parent.get_bee_controller().spawn_bees(parent.global_position, 1)
 		#if parent.get_update_pollen:

@@ -14,7 +14,7 @@ func _physics_process(delta):
 	
 	
 func change_state(new_state : String):
-	print("(",state_machine_name,") state: ",new_state)
+	#print("(",state_machine_name,") state: ",new_state)
 	var new = get_node_or_null(new_state)
 	if new:
 		state.exit()

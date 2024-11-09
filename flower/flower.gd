@@ -67,7 +67,7 @@ func start_rot_timer():
 	$Rottimer.start()
 
 func _on_rottimer_timeout() -> void:
-	print("(fin ) timer")
+	#print("(fin ) timer")
 	rotting = true
 	$CompHP.vulnerable = true
 	set_image(rotten_image)

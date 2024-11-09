@@ -80,7 +80,7 @@ func _process(delta):
 			bee.provide_new_target_location(get_global_mouse_position())
 
 func spawn_bees(location : Vector2 = Vector2.ZERO, count : int = 5):
-	print (count);
+
 	for i in range(count):
 		var bee :BeeControler= bee_prefab.instantiate()
 		bees.append(bee)

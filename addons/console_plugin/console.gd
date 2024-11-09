@@ -26,6 +26,8 @@ func window_closed():
 
 
 func _input(event):
+	if not OS.is_debug_build(): return
+	
 	if event is InputEventKey:
 		if event.key_label == KEY_QUOTELEFT and event.is_pressed():
 			change_window_state()
@@ -34,6 +36,8 @@ func _input(event):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if not OS.is_debug_build(): return
+	
 	get_viewport().gui_embed_subwindows = false
 	window = WINDOW.instantiate()
 	add_child(window)
@@ -80,6 +84,7 @@ func parse_parameter(type : String, value : String= ""):
 
 
 func call_function(function : function_data, parameters) -> String:
+	
 	var argv : Array
 	for i in range(1,len(parameters)):
 		argv.append(parse_parameter(function.types[i-1],parameters[i]))
@@ -100,7 +105,7 @@ func process_command(command:String):
 	
 	
 	text_output.append_text(command + ">\n")
-	print(command);
+
 	if words[0] in aveilable_commands:
 		var msg = call_function(aveilable_commands[words[0]],words)
 		if msg:
@@ -111,6 +116,8 @@ func process_command(command:String):
 
 
 func add_comand(command : String, function : Callable, parameters :Array[String] = []):
+	if not OS.is_debug_build(): return
+	
 	command = command.to_lower()
 	var data : function_data = function_data.new()
 	data.function = function
@@ -118,7 +125,7 @@ func add_comand(command : String, function : Callable, parameters :Array[String]
 	
 	
 	aveilable_commands[command] = data
-	print("command " + command + " added succesfully")
+	print("command " + command + "  registered")
 	
 		
 func list_comands() -> String:	
