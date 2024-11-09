@@ -61,23 +61,21 @@ shape = SubResource("RectangleShape2D_ub2sv")
 texture = ExtResource("2_2k58a")
 
 [node name="2" type="Sprite2D" parent="Sprites"]
-visible = false
-position = Vector2(5, 2)
 texture = ExtResource("2_2k58a")
 
 [node name="3" type="Sprite2D" parent="Sprites"]
-visible = false
-position = Vector2(-5, 2)
 texture = ExtResource("2_2k58a")
 
 [node name="4" type="Sprite2D" parent="Sprites"]
-visible = false
-position = Vector2(-4, -5)
 texture = ExtResource("2_2k58a")
 
 [node name="5" type="Sprite2D" parent="Sprites"]
-visible = false
-position = Vector2(4, -5)
+texture = ExtResource("2_2k58a")
+
+[node name="6" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("2_2k58a")
+
+[node name="7" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_2k58a")
 
 [node name="ParticleTrail" type="GPUParticles2D" parent="."]

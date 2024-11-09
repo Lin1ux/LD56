@@ -26,7 +26,7 @@ var side_acceleration : float
 var dashing : bool
 var dash_started: bool
 
-@onready var bee_count_sprites = [$"Sprites/1", $"Sprites/2", $"Sprites/3", $"Sprites/4", $"Sprites/5"]
+@onready var bee_count_sprites = [$"Sprites/1", $"Sprites/2", $"Sprites/3", $"Sprites/4", $"Sprites/5", $"Sprites/6", $"Sprites/7"]
 
 func _physics_process(delta):
 	velocity = lerp(velocity,direction * max_speed ,0.5)
@@ -40,17 +40,19 @@ func _physics_process(delta):
 		$Sprites.modulate = Color.WHITE
 		
 	
-	bee_count_sprites[1].visible = $CompHP.hp > 1
-	bee_count_sprites[2].visible = $CompHP.hp > 2
-	bee_count_sprites[3].visible = $CompHP.hp > 3
-	bee_count_sprites[4].visible = $CompHP.hp > 4
-	
-	# Randomize sprite positions
-	if Engine.get_physics_frames() % Engine.physics_ticks_per_second == 0:
-		bee_count_sprites[1].position = Vector2(randf_range(-5, 5), randf_range(-5, 5))
-		bee_count_sprites[2].position = Vector2(randf_range(-5, 5), randf_range(-5, 5))
-		bee_count_sprites[3].position = Vector2(randf_range(-5, 5), randf_range(-5, 5))
-		bee_count_sprites[4].position = Vector2(randf_range(-5, 5), randf_range(-5, 5))
+	for i in range(bee_count_sprites.size()):
+		if $CompHP.hp > i:
+			bee_count_sprites[i].visible = true
+			
+			# Randomize fake bee location to look less predictable
+			var update_rate := 4
+			if Engine.get_physics_frames() % (Engine.physics_ticks_per_second / update_rate) == 0 and i > 1:
+				var pos_tween = create_tween()
+				pos_tween.tween_property(bee_count_sprites[i], "position", Vector2(randf_range(-10, 10), randf_range(-10, 10)), 1 / float(update_rate))
+				pos_tween.set_trans(Tween.TRANS_LINEAR)
+				#bee_count_sprites[i].position = Vector2(randf_range(-10, 10), randf_range(-10, 10))
+		else:
+			bee_count_sprites[i].visible = false
 	
 	move_and_slide()	
 	
@@ -65,7 +67,7 @@ func new_target(target_position : Vector2):
 
 	direction_tween = create_tween()
 	direction_tween.tween_property(self,"direction",new_direction,tween_duration)
-	direction_tween.set_trans(Tween.TRANS_SPRING)	
+	direction_tween.set_trans(Tween.TRANS_SPRING)
 	
 func get_backpack():
 	return backpack
