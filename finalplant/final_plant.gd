@@ -55,7 +55,7 @@ func should_sleep():
 func change_action():
 	#next_action = actions.MELEE
 	next_action = randi_range(0,2)
-	print("Next Action")
+	#print("Next Action")
 	return next_action
 	
 func spawn_bullet():

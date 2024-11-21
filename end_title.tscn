@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://x4en77p5a4dr"]
+[gd_scene load_steps=9 format=3 uid="uid://x4en77p5a4dr"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_3v0kr"]
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="1_anhku"]
@@ -56,6 +56,13 @@ _data = {
 "sway": SubResource("Animation_u2x20")
 }
 
+[sub_resource type="GDScript" id="GDScript_cf86q"]
+script/source = "extends Timer
+
+func _on_timeout() -> void:
+	get_tree().change_scene_to_file(\"res://mainMenu/main_menu.tscn\")
+"
+
 [node name="EndTitle" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -107,3 +114,11 @@ libraries = {
 }
 
 [node name="Cursor" parent="Objects/CanvasLayer" instance=ExtResource("1_anhku")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+script = SubResource("GDScript_cf86q")
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

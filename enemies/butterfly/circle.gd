@@ -22,7 +22,7 @@ func update(delta: float) -> void:
 func exit() -> void:
 	if parent.is_spawn_flower():
 		parent.spawn_flower()
-		print("Spawn flower")
+		#print("Spawn flower")
 
 func fly_forward(delta: float):
 	return Vector2.RIGHT.rotated(parent.rotation) * parent.get_speed() * delta * 100 * speed_multiplayer

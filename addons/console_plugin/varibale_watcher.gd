@@ -41,13 +41,16 @@ const PROPERTY = preload("res://addons/console_plugin/Variable_field.tscn")
 var window
 
 func _input(event):
+	if not OS.is_debug_build(): return
+	
 	if event is InputEventKey:
 		if event.keycode == KEY_F1 and event.is_pressed():
-			print("pressed")
 			change_state()
 
 
 func _ready():
+	if not OS.is_debug_build(): return
+	
 	get_viewport().gui_embed_subwindows = false
 	window = WINDOW.instantiate()
 	add_child(window)
@@ -65,6 +68,8 @@ func _process(delta):
 
 
 func add_watched_variable(ovner : Object, property : String):
+	if not OS.is_debug_build(): return
+	
 	var wv = WachedVariable.new()
 	wv.ovner = ovner
 	wv.variable = property
@@ -77,7 +82,7 @@ func add_watched_variable(ovner : Object, property : String):
 	window.get_node("VariableHolder").add_child(vf)
 
 func change_state():
-	print("x")
+
 	if window.visible:
 		window.visible = false
 	else:
