@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8cd747xfb0vo" path="res://cursor/honey_wand.png" id="1_l5i11"]
 
 [node name="Cursor" type="Control"]
+process_mode = 3
 visible = false
 z_index = 100
 layout_mode = 3

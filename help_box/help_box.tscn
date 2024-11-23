@@ -1,0 +1,183 @@
+[gd_scene load_steps=12 format=3 uid="uid://r145qt1pyl50"]
+
+[ext_resource type="Shader" path="res://outline2.gdshader" id="1_3iwfj"]
+[ext_resource type="Texture2D" uid="uid://dbyuf7mqe7ija" path="res://sprites/butterfly.png" id="1_cse1f"]
+[ext_resource type="Script" path="res://help_box/help_box.gd" id="1_xj3qg"]
+[ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="4_vm3e2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hf44o"]
+bg_color = Color(0.803482, 0.522898, 0.370127, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 24
+border_color = Color(0.31, 0.16895, 0.093, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.176471)
+shadow_size = 24
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_4tbpv"]
+Label/colors/font_color = Color(1, 0.900333, 0.77, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.145098)
+Label/constants/outline_size = 8
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 16
+Panel/styles/panel = SubResource("StyleBoxFlat_hf44o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2j4v"]
+shader = ExtResource("1_3iwfj")
+shader_parameter/line_colour = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 5
+
+[sub_resource type="Animation" id="Animation_cu7ro"]
+resource_name = "pop_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.5),
+"transitions": PackedFloat32Array(2.2974, 0.31864, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_40p0i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1v4oc"]
+resource_name = "pop_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.5),
+"transitions": PackedFloat32Array(2.2974, 0.31864, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bpy58"]
+_data = {
+"RESET": SubResource("Animation_40p0i"),
+"pop_in": SubResource("Animation_cu7ro"),
+"pop_out": SubResource("Animation_1v4oc")
+}
+
+[node name="HelpBox" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_xj3qg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_4tbpv")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -107.0
+offset_right = 187.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.5
+offset_top = 11.0
+offset_right = 34.5
+offset_bottom = 34.0
+grow_horizontal = 2
+text = "Butterfly"
+
+[node name="Description" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -59.0
+offset_right = -13.0
+offset_bottom = 29.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Helps you by causing flowers to appear nearby!"
+autowrap_mode = 3
+
+[node name="SpriteContainer" type="Control" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 51.0
+offset_right = 51.0
+grow_vertical = 2
+
+[node name="OutlineShader" type="CanvasGroup" parent="Control/Panel/SpriteContainer"]
+material = SubResource("ShaderMaterial_m2j4v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Panel/SpriteContainer/OutlineShader"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_cse1f")
+
+[node name="Button" type="Button" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = -63.0
+offset_right = 53.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Got it!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bpy58")
+}
+
+[node name="Cursor" parent="." instance=ExtResource("4_vm3e2")]
+
+[connection signal="pressed" from="Control/Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
