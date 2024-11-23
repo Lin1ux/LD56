@@ -25,7 +25,8 @@ var side_acceleration : float
 
 var dashing : bool
 var dash_started: bool
-	
+
+@onready var bee_count_sprites = [$"Sprites/1", $"Sprites/2", $"Sprites/3", $"Sprites/4", $"Sprites/5", $"Sprites/6", $"Sprites/7"]
 
 func _physics_process(delta):
 	velocity = lerp(velocity,direction * max_speed ,0.5)
@@ -37,6 +38,22 @@ func _physics_process(delta):
 		$Sprites.modulate = Color(255.0/255.0, 189.0/255.0, 64.0/256.0)
 	else:
 		$Sprites.modulate = Color.WHITE
+		
+	
+	for i in range(bee_count_sprites.size()):
+		if $CompHP.hp > i:
+			bee_count_sprites[i].visible = true
+			
+			# Randomize fake bee location to look less predictable
+			var update_rate := 4
+			if Engine.get_physics_frames() % (Engine.physics_ticks_per_second / update_rate) == 0 and i > 1:
+				var pos_tween = create_tween()
+				pos_tween.tween_property(bee_count_sprites[i], "position", Vector2(randf_range(-10, 10), randf_range(-10, 10)), 1 / float(update_rate))
+				pos_tween.set_trans(Tween.TRANS_LINEAR)
+				#bee_count_sprites[i].position = Vector2(randf_range(-10, 10), randf_range(-10, 10))
+		else:
+			bee_count_sprites[i].visible = false
+	
 	move_and_slide()	
 	
 func provide_new_target_location(target: Vector2):
@@ -50,7 +67,7 @@ func new_target(target_position : Vector2):
 
 	direction_tween = create_tween()
 	direction_tween.tween_property(self,"direction",new_direction,tween_duration)
-	direction_tween.set_trans(Tween.TRANS_SPRING)	
+	direction_tween.set_trans(Tween.TRANS_SPRING)
 	
 func get_backpack():
 	return backpack

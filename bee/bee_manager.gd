@@ -7,7 +7,7 @@ extends Node2D
 @export_group("Other")
 @export var UI : Node
 
-
+@export var BEE_LIMIT: int = 50
 
 @export var bees_ratio: float = 0.5
 
@@ -41,13 +41,14 @@ func _input(event):
 
 var dashing_bees : Array[BeeControler]
 
-func sort_by_distance_to_cursor(a: Vector2, b: Vector2):
-	return a.distance_to(get_global_mouse_position()) < b.distance_to(get_global_mouse_position())
+func sort_by_distance_to_cursor(a: Node2D, b: Node2D):
+	return a.global_position.distance_to(get_global_mouse_position()) < b.global_position.distance_to(get_global_mouse_position())
 
 func statr_dash():
 	var bees_count = len(cursour_folowing)
 	var arr : Array = range(bees_count)
-	arr.sort_custom(sort_by_distance_to_cursor)
+	
+	cursour_folowing.sort_custom(sort_by_distance_to_cursor)
 	var bees_to_dash = ceil(bees_count * bees_ratio)
 	
 	for i in range(bees_to_dash):
@@ -82,14 +83,20 @@ func _process(delta):
 func spawn_bees(location : Vector2 = Vector2.ZERO, count : int = 5):
 
 	for i in range(count):
-		var bee :BeeControler= bee_prefab.instantiate()
-		bees.append(bee)
-		cursour_folowing.append(bee)
-		bee.position = location
-		bee.new_target(location)
-		bee.bee_dies.connect(destroy_bee,ConnectFlags.CONNECT_ONE_SHOT)
-		bees_holder.add_child(bee)
-		bee.manager = self
+		
+		if bees.size() >= BEE_LIMIT:
+			var combined_bee = bees.pick_random()
+			combined_bee.get_node("CompHP").max_hp += 1
+			combined_bee.get_node("CompHP").hp += 1
+		else:
+			var bee :BeeControler= bee_prefab.instantiate()
+			bees.append(bee)
+			cursour_folowing.append(bee)
+			bee.position = location
+			bee.new_target(location)
+			bee.bee_dies.connect(destroy_bee,ConnectFlags.CONNECT_ONE_SHOT)
+			bees_holder.add_child(bee)
+			bee.manager = self
 		
 	if UI:
 		UI.set_bees_amount(get_amount_of_bees())
@@ -97,7 +104,10 @@ func spawn_bees(location : Vector2 = Vector2.ZERO, count : int = 5):
 	return "spawned bees"
 		
 func get_amount_of_bees():
-	return len(bees)
+	var bee_count := 0
+	for bee in bees:
+		bee_count += bee.get_node("CompHP").hp
+	return bee_count
 	
 func get_random_bee():
 	if len(bees)> 0:
