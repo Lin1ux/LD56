@@ -74,12 +74,16 @@ var wave_map = [
 	{ "func": HelpBoxManager.show_help.bind("Butterfly", "Helps you by spawning flowers!", preload("res://sprites/butterfly.png")),
 		"spawn": [ENEMY.BUTTERFLY, ENEMY.BUTTERFLY] },
 	{ "func": HelpBoxManager.show_help.bind("Fly", "Wants to ruin your flowers, get rid of it!", preload("res://fly/fly.png")),
+		"wait_for_enemies_gone": true,
 		"spawn": [ENEMY.FLY] },
 	{ "func": HelpBoxManager.show_help.bind("Wasp", "If it reaches your hive, you'll take damage!", preload("res://enemies/wasp/wasp.png")),
+		"wait_for_enemies_gone": true,
 		"spawn": [ENEMY.WASP] },
 	{ "func": HelpBoxManager.show_help.bind("Bird", "Watch out, it'll eat through your army if you don't attack!", preload("res://sprites/bird.png")),
+		"wait_for_enemies_gone": true,
 		"spawn": [ENEMY.BUTTERFLY,ENEMY.WASP, ENEMY.FLY,ENEMY.BIRD] },
-	{ "spawn": [ENEMY.WASP,ENEMY.WASP,ENEMY.FLY,ENEMY.FLY] },
+	{ "wait_for_enemies_gone": true,
+		"spawn": [ENEMY.WASP,ENEMY.WASP,ENEMY.FLY,ENEMY.FLY] },
 	{ "spawn": [ENEMY.BUTTERFLY,ENEMY.WASP, ENEMY.FLY,ENEMY.BIRD] },
 	{ "spawn": [ENEMY.FLY, ENEMY.FLY, ENEMY.FLY] },
 	{ "func": HelpBoxManager.show_help.bind("Big Bird", "A dangerous predator, don't get caught by surprise!", preload("res://enemies/bigbird/dreamberd.png")),
@@ -95,7 +99,14 @@ var wave_map = [
 	{ "spawn": [ENEMY.FINAL] }
 ]
 
-func _on_wave_timer_timeout() -> void:
+func process_wave():
+	
+	# If all enemies need to be gone, wait and try again later
+	if wave_map[wave_number].has("wait_for_enemies_gone") and wave_map[wave_number]["wait_for_enemies_gone"] == true:
+		if get_tree().get_nodes_in_group("enemy").size() > 0:
+			$WaveTimerTryAgain.start()
+			return
+		
 	
 	if wave_number >= wave_map.size():							#zapobiega maratonowi bossów
 		return
@@ -108,3 +119,11 @@ func _on_wave_timer_timeout() -> void:
 	
 	wave_number += 1
 	
+	$WaveTimer.start()
+	return
+
+func _on_wave_timer_timeout() -> void:
+	process_wave()
+	
+func _on_wave_timer_try_again_timeout() -> void:
+	process_wave()

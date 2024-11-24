@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://fly.gd" id="1_3kitr"]
 [ext_resource type="PackedScene" uid="uid://bslpyvdn4cyi5" path="res://components/comp_interaction_area.tscn" id="1_4nkai"]
 [ext_resource type="Texture2D" uid="uid://cb2yjf4btbwwe" path="res://fly/fly.png" id="4_k2a1r"]
-[ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="4_w45d6"]
+[ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="4_w45d6"]
 [ext_resource type="Script" path="res://fly/circle.gd" id="6_omugo"]
 [ext_resource type="Script" path="res://enemies/butterfly/move_towards.gd" id="6_xbpnc"]
 [ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="7_fpai4"]
@@ -16,7 +16,7 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0ve3"]
 radius = 7.28011
 
-[node name="fly" type="CharacterBody2D"]
+[node name="fly" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_3kitr")
 
 [node name="CompInteractionArea" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("1_4nkai")]

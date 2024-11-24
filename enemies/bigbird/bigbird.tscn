@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://enemies/bird/bird.gd" id="1_eob7b"]
 [ext_resource type="Texture2D" uid="uid://7x4r86ttfhck" path="res://enemies/bigbird/dreamberd.png" id="2_si1s8"]
-[ext_resource type="PackedScene" path="res://components/comp_state_machine.tscn" id="3_gbhvg"]
+[ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="3_gbhvg"]
 [ext_resource type="Script" path="res://enemies/bird/spawned.gd" id="4_q5knr"]
 [ext_resource type="Script" path="res://enemies/bird/patrol.gd" id="6_1srce"]
 [ext_resource type="Script" path="res://enemies/bird/fly_forward.gd" id="7_k8wm3"]
@@ -22,7 +22,7 @@ radius = 33.1361
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lcu5"]
 radius = 21.2132
 
-[node name="BigBird" type="CharacterBody2D"]
+[node name="BigBird" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_eob7b")

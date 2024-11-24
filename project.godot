@@ -49,6 +49,10 @@ export/custom_image=""
 
 enabled=PackedStringArray("res://addons/console_plugin/plugin.cfg")
 
+[global_group]
+
+enemy=""
+
 [input]
 
 fullscreen={
