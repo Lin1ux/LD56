@@ -23,6 +23,7 @@ MusicManager="*res://music_manager/music_manager.tscn"
 Console="*res://addons/console_plugin/console.gd"
 Watcher="*res://addons/console_plugin/varibale_watcher.gd"
 WindowManager="*res://window_manager/window_manager.tscn"
+HelpBoxManager="*res://help_box/help_box_manager.tscn"
 
 [debug]
 

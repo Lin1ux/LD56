@@ -3,17 +3,18 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	visible = false
 	$AnimationPlayer.play("pop_in")
 	get_tree().paused = true
 
 func set_title(text: String):
-	$Control/Panel/Title.text = text
+	%Title.text = text
 
 func set_description(text: String):
-	$Control/Panel/Description.text = text
+	%Description.text = text
 	
 func set_icon(texture: CompressedTexture2D):
-	$Control/Panel/SpriteContainer/OutlineShader/Sprite2D.texture = texture
+	%Icon.texture = texture
 
 func _on_button_pressed() -> void:
 	$AnimationPlayer.play("pop_out")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://c3u7ikrbedrms"]
+[gd_scene load_steps=27 format=3 uid="uid://c3u7ikrbedrms"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_40j4h"]
+[ext_resource type="Script" path="res://mainMenu/main_menu.gd" id="1_meksa"]
 [ext_resource type="Shader" path="res://outline2.gdshader" id="3_u7asb"]
 [ext_resource type="Texture2D" uid="uid://de62ttyo31ql" path="res://flower/flower1.png" id="6_4aq35"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="6_6feqe"]
@@ -143,7 +144,8 @@ func _ready() -> void:
 	visible = true
 "
 
-[node name="Node2D2" type="Node2D"]
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_meksa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

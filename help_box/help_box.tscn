@@ -1,17 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://r145qt1pyl50"]
+[gd_scene load_steps=14 format=3 uid="uid://r145qt1pyl50"]
 
 [ext_resource type="Shader" path="res://outline2.gdshader" id="1_3iwfj"]
 [ext_resource type="Texture2D" uid="uid://dbyuf7mqe7ija" path="res://sprites/butterfly.png" id="1_cse1f"]
 [ext_resource type="Script" path="res://help_box/help_box.gd" id="1_xj3qg"]
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="4_vm3e2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_luuvy"]
+bg_color = Color(0.439216, 0.156863, 0.168627, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hf44o"]
-bg_color = Color(0.803482, 0.522898, 0.370127, 1)
+bg_color = Color(0.941176, 0.509804, 0.294118, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 24
-border_color = Color(0.31, 0.16895, 0.093, 1)
+border_color = Color(0.6, 0.219608, 0.2, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -21,6 +29,7 @@ shadow_size = 24
 anti_aliasing = false
 
 [sub_resource type="Theme" id="Theme_4tbpv"]
+Button/styles/normal = SubResource("StyleBoxFlat_luuvy")
 Label/colors/font_color = Color(1, 0.900333, 0.77, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.145098)
@@ -29,10 +38,49 @@ Label/constants/shadow_offset_y = 2
 Label/constants/shadow_outline_size = 16
 Panel/styles/panel = SubResource("StyleBoxFlat_hf44o")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksf0r"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing = false
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m2j4v"]
 shader = ExtResource("1_3iwfj")
 shader_parameter/line_colour = Color(0, 0, 0, 1)
 shader_parameter/line_thickness = 5
+
+[sub_resource type="Animation" id="Animation_40p0i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_cu7ro"]
 resource_name = "pop_in"
@@ -48,20 +96,17 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1.25, 1.25), Vector2(1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_40p0i"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Panel:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_1v4oc"]
@@ -92,9 +137,11 @@ script = ExtResource("1_xj3qg")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_4tbpv")
@@ -106,14 +153,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -187.0
-offset_top = -107.0
-offset_right = 187.0
-offset_bottom = 107.0
+offset_left = -180.0
+offset_top = -100.0
+offset_right = 180.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(180, 100)
+
+[node name="PanelOutline" type="Panel" parent="Control/Panel"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -100.0
+offset_right = 180.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(180, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ksf0r")
 
 [node name="Title" type="Label" parent="Control/Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -126,6 +192,7 @@ grow_horizontal = 2
 text = "Butterfly"
 
 [node name="Description" type="Label" parent="Control/Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -153,7 +220,8 @@ grow_vertical = 2
 [node name="OutlineShader" type="CanvasGroup" parent="Control/Panel/SpriteContainer"]
 material = SubResource("ShaderMaterial_m2j4v")
 
-[node name="Sprite2D" type="Sprite2D" parent="Control/Panel/SpriteContainer/OutlineShader"]
+[node name="Icon" type="Sprite2D" parent="Control/Panel/SpriteContainer/OutlineShader"]
+unique_name_in_owner = true
 scale = Vector2(4, 4)
 texture = ExtResource("1_cse1f")
 

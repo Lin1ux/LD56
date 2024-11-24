@@ -10,8 +10,6 @@ extends Node2D
 @export var UI : Node
 var wave_number: int = 0
 
-var help_box = preload("res://help_box/help_box.tscn")
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$WaveTimer.start()
@@ -70,34 +68,21 @@ func spawn(enemy):
 			b.bullet_container = bullet_container
 			b.UI = UI
 			enemy_container.add_child(b)
-			
-
-var show_help = func (title, description, icon):
-	var hb = help_box.instantiate()
-	hb.set_title(title)
-	hb.set_description(description)
-	hb.set_icon(icon)
-	
-	var root_nodes = get_tree().get_root().get_children()
-	for rn in root_nodes:
-		if rn is World:
-			rn.add_child(hb)
-			break
 
 
 var wave_map = [
-	{ "func": show_help.bind("Butterfly", "Helps you by spawning flowers!", preload("res://sprites/butterfly.png")),
+	{ "func": HelpBoxManager.show_help.bind("Butterfly", "Helps you by spawning flowers!", preload("res://sprites/butterfly.png")),
 		"spawn": [ENEMY.BUTTERFLY, ENEMY.BUTTERFLY] },
-	{ "func": show_help.bind("Fly", "Wants to ruin your flowers, get rid of it!", preload("res://fly/fly.png")),
+	{ "func": HelpBoxManager.show_help.bind("Fly", "Wants to ruin your flowers, get rid of it!", preload("res://fly/fly.png")),
 		"spawn": [ENEMY.FLY] },
-	{ "func": show_help.bind("Wasp", "If it reaches your hive, you'll take damage!", preload("res://enemies/wasp/wasp.png")),
+	{ "func": HelpBoxManager.show_help.bind("Wasp", "If it reaches your hive, you'll take damage!", preload("res://enemies/wasp/wasp.png")),
 		"spawn": [ENEMY.WASP] },
-	{ "func": show_help.bind("Bird", "Watch out, it'll eat through your army if you don't attack!", preload("res://sprites/bird.png")),
+	{ "func": HelpBoxManager.show_help.bind("Bird", "Watch out, it'll eat through your army if you don't attack!", preload("res://sprites/bird.png")),
 		"spawn": [ENEMY.BUTTERFLY,ENEMY.WASP, ENEMY.FLY,ENEMY.BIRD] },
 	{ "spawn": [ENEMY.WASP,ENEMY.WASP,ENEMY.FLY,ENEMY.FLY] },
 	{ "spawn": [ENEMY.BUTTERFLY,ENEMY.WASP, ENEMY.FLY,ENEMY.BIRD] },
 	{ "spawn": [ENEMY.FLY, ENEMY.FLY, ENEMY.FLY] },
-	{ "func": show_help.bind("Big Bird", "A dangerous predator, don't get caught by surprise!", preload("res://enemies/bigbird/dreamberd.png")),
+	{ "func": HelpBoxManager.show_help.bind("Big Bird", "A dangerous predator, don't get caught by surprise!", preload("res://enemies/bigbird/dreamberd.png")),
 		"spawn": [ENEMY.BUTTERFLY, ENEMY.FLY, ENEMY.BIG_BIRD] },
 	{ "spawn": [ENEMY.FLY, ENEMY.FLY, ENEMY.FLY] },
 	{ "spawn": [ENEMY.FLY, ENEMY.FLY, ENEMY.FLY, ENEMY.BIRD] },
