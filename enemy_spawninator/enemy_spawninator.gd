@@ -100,16 +100,14 @@ var wave_map = [
 ]
 
 func process_wave():
+	if wave_number >= wave_map.size():
+		return
 	
 	# If all enemies need to be gone, wait and try again later
 	if wave_map[wave_number].has("wait_for_enemies_gone") and wave_map[wave_number]["wait_for_enemies_gone"] == true:
 		if get_tree().get_nodes_in_group("enemy").size() > 0:
 			$WaveTimerTryAgain.start()
 			return
-		
-	
-	if wave_number >= wave_map.size():							#zapobiega maratonowi bossów
-		return
 		
 	for enemy in wave_map[wave_number]["spawn"]:
 		spawn(enemy)
