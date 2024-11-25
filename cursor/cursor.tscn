@@ -18,13 +18,15 @@ script = ExtResource("1_jj8ds")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(9, 9)
+position = Vector2(10, 10)
 texture = ExtResource("1_l5i11")
 
 [node name="DashCooldown" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 34.0
+offset_bottom = 34.0
 mouse_filter = 2
 max_value = 1.0
 step = 0.01
