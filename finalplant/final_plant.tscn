@@ -481,7 +481,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_5gow2"]
 radius = 28.0
 
-[node name="FinalPlant" type="CharacterBody2D" node_paths=PackedStringArray("HP_component")]
+[node name="FinalPlant" type="CharacterBody2D" node_paths=PackedStringArray("HP_component") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_1qwfq")

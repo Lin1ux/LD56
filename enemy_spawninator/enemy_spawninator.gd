@@ -68,31 +68,60 @@ func spawn(enemy):
 			b.bullet_container = bullet_container
 			b.UI = UI
 			enemy_container.add_child(b)
-			
+
+
 var wave_map = [
-	[ENEMY.BUTTERFLY, ENEMY.BUTTERFLY, ENEMY.FLY,ENEMY.WASP],
-	[ENEMY.BUTTERFLY,ENEMY.WASP, ENEMY.FLY,ENEMY.BIRD],
-	[ENEMY.WASP,ENEMY.WASP,ENEMY.FLY,ENEMY.FLY],
-	[ENEMY.BUTTERFLY,ENEMY.WASP, ENEMY.FLY,ENEMY.BIRD],
-	[ENEMY.FLY, ENEMY.FLY, ENEMY.FLY],
-	[ENEMY.BUTTERFLY, ENEMY.FLY, ENEMY.BIG_BIRD],
-	[ENEMY.FLY, ENEMY.FLY, ENEMY.FLY],
-	[ENEMY.FLY, ENEMY.FLY, ENEMY.FLY, ENEMY.BIRD],
-	[ENEMY.FLY, ENEMY.FLY, ENEMY.WASP],
-	[ENEMY.FLY, ENEMY.FLY, ENEMY.WASP, ENEMY.BIRD],
-	[ENEMY.FLY, ENEMY.FLY, ENEMY.FLY],
-	[ENEMY.FLY, ENEMY.WASP, ENEMY.WASP, ENEMY.BIG_BIRD],
-	[ENEMY.FLY, ENEMY.FLY, ENEMY.WASP],
-	[ENEMY.FLY, ENEMY.WASP, ENEMY.WASP, ENEMY.BIG_BIRD],
-	[ENEMY.FINAL]
+	{ "func": HelpBoxManager.show_help.bind("Butterfly", "Helps you by spawning flowers!", preload("res://sprites/butterfly.png")),
+		"spawn": [ENEMY.BUTTERFLY, ENEMY.BUTTERFLY] },
+	{ "func": HelpBoxManager.show_help.bind("Fly", "Wants to ruin your flowers, get rid of it!", preload("res://fly/fly.png")),
+		"wait_for_enemies_gone": true,
+		"spawn": [ENEMY.FLY] },
+	{ "func": HelpBoxManager.show_help.bind("Wasp", "If it reaches your hive, you'll take damage!", preload("res://enemies/wasp/wasp.png")),
+		"wait_for_enemies_gone": true,
+		"spawn": [ENEMY.WASP] },
+	{ "func": HelpBoxManager.show_help.bind("Bird", "Watch out, it'll eat through your army if you don't attack!", preload("res://sprites/bird.png")),
+		"wait_for_enemies_gone": true,
+		"spawn": [ENEMY.BUTTERFLY,ENEMY.WASP, ENEMY.FLY,ENEMY.BIRD] },
+	{ "wait_for_enemies_gone": true,
+		"spawn": [ENEMY.WASP,ENEMY.WASP,ENEMY.FLY,ENEMY.FLY] },
+	{ "spawn": [ENEMY.BUTTERFLY,ENEMY.WASP, ENEMY.FLY,ENEMY.BIRD] },
+	{ "spawn": [ENEMY.FLY, ENEMY.FLY, ENEMY.FLY] },
+	{ "func": HelpBoxManager.show_help.bind("Big Bird", "A dangerous predator, don't get caught by surprise!", preload("res://enemies/bigbird/dreamberd.png")),
+		"spawn": [ENEMY.BUTTERFLY, ENEMY.FLY, ENEMY.BIG_BIRD] },
+	{ "spawn": [ENEMY.FLY, ENEMY.FLY, ENEMY.FLY] },
+	{ "spawn": [ENEMY.FLY, ENEMY.FLY, ENEMY.FLY, ENEMY.BIRD] },
+	{ "spawn": [ENEMY.FLY, ENEMY.FLY, ENEMY.WASP] },
+	{ "spawn": [ENEMY.FLY, ENEMY.FLY, ENEMY.WASP, ENEMY.BIRD] },
+	{ "spawn": [ENEMY.FLY, ENEMY.FLY, ENEMY.FLY] },
+	{ "spawn": [ENEMY.FLY, ENEMY.WASP, ENEMY.WASP, ENEMY.BIG_BIRD] },
+	{ "spawn": [ENEMY.FLY, ENEMY.FLY, ENEMY.WASP] },
+	{ "spawn": [ENEMY.FLY, ENEMY.WASP, ENEMY.WASP, ENEMY.BIG_BIRD] },
+	{ "spawn": [ENEMY.FINAL] }
 ]
 
-func _on_wave_timer_timeout() -> void:
-	
-	if wave_number >= wave_map.size():							#zapobiega maratonowi bossów
+func process_wave():
+	if wave_number >= wave_map.size():
 		return
-	for enemy in wave_map[wave_number]:
+	
+	# If all enemies need to be gone, wait and try again later
+	if wave_map[wave_number].has("wait_for_enemies_gone") and wave_map[wave_number]["wait_for_enemies_gone"] == true:
+		if get_tree().get_nodes_in_group("enemy").size() > 0:
+			$WaveTimerTryAgain.start()
+			return
+		
+	for enemy in wave_map[wave_number]["spawn"]:
 		spawn(enemy)
+		
+	if wave_map[wave_number].has("func"):
+		wave_map[wave_number]["func"].call()
 	
 	wave_number += 1
-	#wave_number = min(wave_number, wave_map.size() - 1)		#Nieskończone fale
+	
+	$WaveTimer.start()
+	return
+
+func _on_wave_timer_timeout() -> void:
+	process_wave()
+	
+func _on_wave_timer_try_again_timeout() -> void:
+	process_wave()

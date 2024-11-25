@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://g2s0pv4i2v3p" path="res://music_manager/music.mp3" id="2_m1g8y"]
 
 [node name="MusicManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_ndecy")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
