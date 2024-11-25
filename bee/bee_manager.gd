@@ -15,7 +15,7 @@ extends Node2D
 
 var bees : Array[BeeControler]
 
-
+@export var cursor: Node
 
 var cursour_folowing : Array[BeeControler]
 
@@ -33,8 +33,7 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
-			statr_dash()
-			$DashSound.play()
+			start_dash()
 		if event.button_index == 1 and event.canceled:
 			end_dash()
 
@@ -44,22 +43,35 @@ var dashing_bees : Array[BeeControler]
 func sort_by_distance_to_cursor(a: Node2D, b: Node2D):
 	return a.global_position.distance_to(get_global_mouse_position()) < b.global_position.distance_to(get_global_mouse_position())
 
-func statr_dash():
+func get_dash_cooldown():
+	return $DashCooldown.time_left / $DashCooldown.wait_time
+
+func start_dash():
+	# Quit if dash not cooled down
+	if get_dash_cooldown() > 0:
+		return
+	
 	var bees_count = len(cursour_folowing)
 	var arr : Array = range(bees_count)
 	
 	cursour_folowing.sort_custom(sort_by_distance_to_cursor)
 	var bees_to_dash = ceil(bees_count * bees_ratio)
 	
-	for i in range(bees_to_dash):
-		var dashing_bee = cursour_folowing[arr[i]]
+	if bees_to_dash > 0:
 		
-		dashing_bee.dash()
-		dashing_bee.dash_finished.connect(dash_cleaup,ConnectFlags.CONNECT_ONE_SHOT)
-		dashing_bees.append(dashing_bee)
+		$DashSound.play()
+		cursor.target_effect()
+		$DashCooldown.start()
 		
-	for dashing_bee in dashing_bees:
-		cursour_folowing.erase(dashing_bee)
+		for i in range(bees_to_dash):
+			var dashing_bee = cursour_folowing[arr[i]]
+			
+			dashing_bee.dash()
+			dashing_bee.dash_finished.connect(dash_cleaup,ConnectFlags.CONNECT_ONE_SHOT)
+			dashing_bees.append(dashing_bee)
+			
+		for dashing_bee in dashing_bees:
+			cursour_folowing.erase(dashing_bee)
 	
 func dash_cleaup(bee : BeeControler):
 	dashing_bees.erase(bee)

@@ -130,7 +130,8 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Cursor" parent="CanvasLayer" instance=ExtResource("7_2y1m6")]
+[node name="Cursor" parent="CanvasLayer" node_paths=PackedStringArray("bee_manager") instance=ExtResource("7_2y1m6")]
+bee_manager = NodePath("../../BeeManager")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -295,5 +296,6 @@ hive = NodePath("../Objects/Objects/Hive")
 bullet_container = NodePath("../Objects/Bullet Container")
 UI = NodePath("../CanvasLayer/UI")
 
-[node name="BeeManager" parent="." node_paths=PackedStringArray("UI") instance=ExtResource("14_7ftfr")]
+[node name="BeeManager" parent="." node_paths=PackedStringArray("UI", "cursor") instance=ExtResource("14_7ftfr")]
 UI = NodePath("../CanvasLayer/UI")
+cursor = NodePath("../CanvasLayer/Cursor")
