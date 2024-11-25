@@ -21,6 +21,7 @@ func set_icon(texture: CompressedTexture2D):
 	%Icon.scale.y = floor(%SpriteContainer.size.y / %Icon.texture.get_height())
 
 func _on_button_pressed() -> void:
+	HelpBoxManager.hide_hints = %HideHints.button_pressed
 	$AnimationPlayer.play("pop_out")
 	get_tree().paused = false
 

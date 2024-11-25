@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://r145qt1pyl50"]
+[gd_scene load_steps=28 format=3 uid="uid://r145qt1pyl50"]
 
 [ext_resource type="Shader" path="res://outline2.gdshader" id="1_3iwfj"]
 [ext_resource type="Texture2D" uid="uid://dbyuf7mqe7ija" path="res://sprites/butterfly.png" id="1_cse1f"]
@@ -31,6 +31,26 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 anti_aliasing = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1x6h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d3qbm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6jfo7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s4rrv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wtcxg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5wjr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6hc8o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s0tai"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b5a2w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ne7nj"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hf44o"]
 bg_color = Color(0.941176, 0.509804, 0.294118, 1)
 border_width_left = 4
@@ -61,6 +81,7 @@ anti_aliasing = false
 
 [sub_resource type="Theme" id="Theme_4tbpv"]
 Button/colors/font_color = Color(1, 0.956863, 0.690196, 1)
+Button/colors/font_focus_color = Color(1, 0.956863, 0.690196, 1)
 Button/colors/font_hover_color = Color(1, 0.741176, 0.25098, 1)
 Button/colors/font_pressed_color = Color(0.984314, 0.654902, 0.364706, 1)
 Button/constants/outline_size = 8
@@ -68,6 +89,20 @@ Button/styles/focus = SubResource("StyleBoxEmpty_rp2h8")
 Button/styles/hover = SubResource("StyleBoxFlat_6cghm")
 Button/styles/normal = SubResource("StyleBoxFlat_luuvy")
 Button/styles/pressed = SubResource("StyleBoxFlat_7qvy7")
+CheckBox/colors/font_color = Color(1, 0.956863, 0.690196, 1)
+CheckBox/colors/font_focus_color = Color(1, 0.956863, 0.690196, 1)
+CheckBox/colors/font_hover_color = Color(1, 0.741176, 0.25098, 1)
+CheckBox/colors/font_pressed_color = Color(0.984314, 0.654902, 0.364706, 1)
+CheckBox/styles/disabled = SubResource("StyleBoxEmpty_s1x6h")
+CheckBox/styles/disabled_mirrored = SubResource("StyleBoxEmpty_d3qbm")
+CheckBox/styles/focus = SubResource("StyleBoxEmpty_6jfo7")
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_s4rrv")
+CheckBox/styles/hover_mirrored = SubResource("StyleBoxEmpty_wtcxg")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_i5wjr")
+CheckBox/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_6hc8o")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_s0tai")
+CheckBox/styles/normal_mirrored = SubResource("StyleBoxEmpty_b5a2w")
+CheckBox/styles/pressed = SubResource("StyleBoxEmpty_ne7nj")
 Label/colors/font_color = Color(1, 0.956863, 0.690196, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.145098)
@@ -301,9 +336,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -53.0
+offset_left = -27.0
 offset_top = -60.0
-offset_right = 53.0
+offset_right = 79.0
 offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -353,6 +388,15 @@ material = SubResource("ShaderMaterial_m2j4v")
 unique_name_in_owner = true
 scale = Vector2(7, 7)
 texture = ExtResource("1_cse1f")
+
+[node name="HideHints" type="CheckBox" parent="Control/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 166.0
+offset_right = 111.0
+offset_bottom = 190.0
+text = "Hide Hints"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
