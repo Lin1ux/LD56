@@ -1,12 +1,30 @@
-[gd_scene load_steps=14 format=3 uid="uid://r145qt1pyl50"]
+[gd_scene load_steps=18 format=3 uid="uid://r145qt1pyl50"]
 
 [ext_resource type="Shader" path="res://outline2.gdshader" id="1_3iwfj"]
 [ext_resource type="Texture2D" uid="uid://dbyuf7mqe7ija" path="res://sprites/butterfly.png" id="1_cse1f"]
 [ext_resource type="Script" path="res://help_box/help_box.gd" id="1_xj3qg"]
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="4_vm3e2"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rp2h8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cghm"]
+bg_color = Color(0.6, 0.219608, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_luuvy"]
 bg_color = Color(0.439216, 0.156863, 0.168627, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qvy7"]
+bg_color = Color(0.298039, 0.129412, 0.14902, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -28,15 +46,42 @@ shadow_color = Color(0, 0, 0, 0.176471)
 shadow_size = 24
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8x4ak"]
+bg_color = Color(0.6, 0.219608, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
 [sub_resource type="Theme" id="Theme_4tbpv"]
+Button/colors/font_color = Color(1, 0.956863, 0.690196, 1)
+Button/colors/font_hover_color = Color(1, 0.741176, 0.25098, 1)
+Button/colors/font_pressed_color = Color(0.984314, 0.654902, 0.364706, 1)
+Button/constants/outline_size = 8
+Button/styles/focus = SubResource("StyleBoxEmpty_rp2h8")
+Button/styles/hover = SubResource("StyleBoxFlat_6cghm")
 Button/styles/normal = SubResource("StyleBoxFlat_luuvy")
-Label/colors/font_color = Color(1, 0.900333, 0.77, 1)
+Button/styles/pressed = SubResource("StyleBoxFlat_7qvy7")
+Label/colors/font_color = Color(1, 0.956863, 0.690196, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.145098)
 Label/constants/outline_size = 8
 Label/constants/shadow_offset_y = 2
-Label/constants/shadow_outline_size = 16
+Label/constants/shadow_outline_size = 8
 Panel/styles/panel = SubResource("StyleBoxFlat_hf44o")
+PanelBackground/base_type = &"Panel"
+PanelBackground/styles/panel = SubResource("StyleBoxFlat_8x4ak")
+TitleLabel/base_type = &"Label"
+TitleLabel/constants/outline_size = 8
+TitleLabel/constants/shadow_offset_y = 2
+TitleLabel/constants/shadow_outline_size = 8
+TitleLabel/font_sizes/font_size = 24
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksf0r"]
 bg_color = Color(0, 0, 0, 1)
@@ -53,7 +98,7 @@ anti_aliasing = false
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m2j4v"]
 shader = ExtResource("1_3iwfj")
 shader_parameter/line_colour = Color(0, 0, 0, 1)
-shader_parameter/line_thickness = 5
+shader_parameter/line_thickness = 2
 
 [sub_resource type="Animation" id="Animation_40p0i"]
 length = 0.001
@@ -154,28 +199,22 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -180.0
-offset_top = -100.0
+offset_top = -110.0
 offset_right = 180.0
-offset_bottom = 100.0
+offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(180, 100)
+pivot_offset = Vector2(180, 110)
 
 [node name="PanelOutline" type="Panel" parent="Control/Panel"]
 z_index = -1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -180.0
-offset_top = -100.0
-offset_right = 180.0
-offset_bottom = 100.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(180, 100)
+pivot_offset = Vector2(180, 120)
 theme_override_styles/panel = SubResource("StyleBoxFlat_ksf0r")
 
 [node name="Title" type="Label" parent="Control/Panel"]
@@ -184,46 +223,40 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -34.5
-offset_top = 11.0
-offset_right = 34.5
-offset_bottom = 34.0
+offset_left = -51.0
+offset_top = 4.0
+offset_right = 51.0
+offset_bottom = 38.0
 grow_horizontal = 2
-text = "Butterfly"
+theme_type_variation = &"TitleLabel"
+text = "AAAAAAAAAAAAAAAAAAAA"
 
-[node name="Description" type="Label" parent="Control/Panel"]
-unique_name_in_owner = true
+[node name="DescriptionBackground" type="Panel" parent="Control/Panel"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -196.0
-offset_top = -59.0
-offset_right = -13.0
-offset_bottom = 29.0
+offset_left = -239.0
+offset_top = -62.0
+offset_right = -16.0
+offset_bottom = 38.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "Helps you by causing flowers to appear nearby!"
-autowrap_mode = 3
+pivot_offset = Vector2(180, 100)
+theme_type_variation = &"PanelBackground"
 
-[node name="SpriteContainer" type="Control" parent="Control/Panel"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 51.0
-offset_right = 51.0
-grow_vertical = 2
-
-[node name="OutlineShader" type="CanvasGroup" parent="Control/Panel/SpriteContainer"]
-material = SubResource("ShaderMaterial_m2j4v")
-
-[node name="Icon" type="Sprite2D" parent="Control/Panel/SpriteContainer/OutlineShader"]
+[node name="Description" type="Label" parent="Control/Panel/DescriptionBackground"]
 unique_name_in_owner = true
-scale = Vector2(4, 4)
-texture = ExtResource("1_cse1f")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+autowrap_mode = 3
 
 [node name="Button" type="Button" parent="Control/Panel"]
 layout_mode = 1
@@ -233,12 +266,57 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -53.0
-offset_top = -63.0
+offset_top = -60.0
 offset_right = 53.0
-offset_bottom = -32.0
+offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Got it!"
+
+[node name="SpriteCenter" type="Control" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -62.0
+offset_right = 112.0
+offset_bottom = 38.0
+grow_vertical = 2
+pivot_offset = Vector2(-154, -123)
+
+[node name="SpriteContainer" type="Control" parent="Control/Panel/SpriteCenter"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite" type="Control" parent="Control/Panel/SpriteCenter/SpriteContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OutlineShader" type="CanvasGroup" parent="Control/Panel/SpriteCenter/SpriteContainer/Sprite"]
+material = SubResource("ShaderMaterial_m2j4v")
+
+[node name="Icon" type="Sprite2D" parent="Control/Panel/SpriteCenter/SpriteContainer/Sprite/OutlineShader"]
+unique_name_in_owner = true
+scale = Vector2(7, 7)
+texture = ExtResource("1_cse1f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
