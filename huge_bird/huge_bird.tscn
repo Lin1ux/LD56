@@ -1,40 +1,43 @@
-[gd_scene load_steps=15 format=3 uid="uid://df0rfyogsfqj2"]
+[gd_scene load_steps=15 format=3 uid="uid://cegosgyqqb556"]
 
-[ext_resource type="Script" path="res://enemies/bird/bird.gd" id="1_eob7b"]
-[ext_resource type="Texture2D" uid="uid://7x4r86ttfhck" path="res://enemies/bigbird/dreamberd.png" id="2_si1s8"]
-[ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="3_gbhvg"]
-[ext_resource type="Script" path="res://enemies/bird/spawned.gd" id="4_q5knr"]
-[ext_resource type="Script" path="res://enemies/bird/patrol.gd" id="6_1srce"]
-[ext_resource type="Script" path="res://enemies/bird/fly_forward.gd" id="7_k8wm3"]
-[ext_resource type="Script" path="res://enemies/bird/after_dash.gd" id="8_myk3u"]
-[ext_resource type="Script" path="res://enemies/bird/dash.gd" id="9_t6j2b"]
-[ext_resource type="PackedScene" uid="uid://dpy36m31oqt6m" path="res://offscreen_indicator/offscreen_indicator.tscn" id="10_qsiou"]
-[ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="10_ykqpi"]
-[ext_resource type="Texture2D" uid="uid://cnkiudhkcnujt" path="res://sprites/enemy_indicator.png" id="11_dw2rv"]
+[ext_resource type="Script" path="res://huge_bird/huge_bird.gd" id="1_5va6t"]
+[ext_resource type="Texture2D" uid="uid://cuuidsrn70eu" path="res://huge_bird/Qeen Bird.png" id="2_22iyf"]
+[ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="3_d3buq"]
+[ext_resource type="Script" path="res://enemies/bird/spawned.gd" id="4_llkaa"]
+[ext_resource type="Script" path="res://enemies/bird/patrol.gd" id="5_vawjn"]
+[ext_resource type="Script" path="res://enemies/bird/fly_forward.gd" id="6_kuqby"]
+[ext_resource type="Script" path="res://enemies/bird/after_dash.gd" id="7_qcg21"]
+[ext_resource type="Script" path="res://enemies/bird/dash.gd" id="8_jm3qv"]
+[ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="9_px22m"]
+[ext_resource type="PackedScene" uid="uid://dpy36m31oqt6m" path="res://offscreen_indicator/offscreen_indicator.tscn" id="10_g8vmb"]
+[ext_resource type="Texture2D" uid="uid://cnkiudhkcnujt" path="res://sprites/enemy_indicator.png" id="11_346pu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjawy"]
 radius = 6.0
 height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8ybw"]
-radius = 33.1361
+radius = 32.0156
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lcu5"]
-radius = 21.2132
+radius = 26.0192
 
 [node name="BigBird" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_eob7b")
-correction = 0.3
-enemy_name = "Big bird"
-speed = 140
-max_hp = 5
+script = ExtResource("1_5va6t")
+after_dash_range = 70.0
+correction = 0.5
+enemy_name = "Lady's Birds"
+speed = 160
+max_hp = 30
 
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("2_si1s8")
+position = Vector2(8, 0)
+scale = Vector2(-1, -1)
+texture = ExtResource("2_22iyf")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
@@ -45,38 +48,38 @@ position = Vector2(2, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kjawy")
 
-[node name="CompStateMachine" parent="." node_paths=PackedStringArray("state") instance=ExtResource("3_gbhvg")]
+[node name="CompStateMachine" parent="." node_paths=PackedStringArray("state") instance=ExtResource("3_d3buq")]
 state_machine_name = "Bird"
 state = NodePath("Spawned")
 
 [node name="Spawned" type="Node" parent="CompStateMachine"]
-script = ExtResource("4_q5knr")
+script = ExtResource("4_llkaa")
 
 [node name="Timer" type="Timer" parent="CompStateMachine/Spawned"]
 
 [node name="Rotate" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
-script = ExtResource("6_1srce")
+script = ExtResource("5_vawjn")
 parent = NodePath("../..")
 
 [node name="FlyForward" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
-script = ExtResource("7_k8wm3")
+script = ExtResource("6_kuqby")
 parent = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="CompStateMachine/FlyForward"]
 wait_time = 2.0
 
 [node name="AfterDash" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
-script = ExtResource("8_myk3u")
+script = ExtResource("7_qcg21")
 parent = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="CompStateMachine/AfterDash"]
 wait_time = 2.0
 
 [node name="Dash" type="Node" parent="CompStateMachine" node_paths=PackedStringArray("parent")]
-script = ExtResource("9_t6j2b")
+script = ExtResource("8_jm3qv")
 parent = NodePath("../..")
 
-[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("10_ykqpi")]
+[node name="CompHP" parent="." node_paths=PackedStringArray("parent", "parent_sprite", "hitbox") instance=ExtResource("9_px22m")]
 max_hp = 5
 parent = NodePath("..")
 parent_sprite = NodePath("../Sprites")
@@ -90,9 +93,10 @@ shape = SubResource("CircleShape2D_d8ybw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0lcu5")
+debug_color = Color(0.943872, 7.5084e-06, 0.599656, 0.42)
 
-[node name="OffscreenIndicator" parent="." instance=ExtResource("10_qsiou")]
-sprite = ExtResource("11_dw2rv")
+[node name="OffscreenIndicator" parent="." instance=ExtResource("10_g8vmb")]
+sprite = ExtResource("11_346pu")
 sprite_rotation = 1.5708
 
 [connection signal="timeout" from="CompStateMachine/Spawned/Timer" to="CompStateMachine/Spawned" method="_on_timer_timeout"]

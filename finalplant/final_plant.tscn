@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://uccjog3kg6b7" path="res://finalplant/plant-1.png" id="2_3qday"]
 [ext_resource type="PackedScene" uid="uid://bew46r22ofb1a" path="res://finalplant/bullet/bullet.tscn" id="2_fkqej"]
 [ext_resource type="Texture2D" uid="uid://o5ua4w3oxeib" path="res://finalplant/plant-2.png" id="3_12l6h"]
-[ext_resource type="PackedScene" uid="uid://bfwpk23clejcm" path="res://flower/flower.tscn" id="3_vlmc1"]
+[ext_resource type="PackedScene" uid="uid://b5dk7x2qcey4m" path="res://finalplant/root/root.tscn" id="3_nhpfm"]
 [ext_resource type="Texture2D" uid="uid://bsx34ej4wtgu7" path="res://finalplant/plant-3.png" id="4_rjib4"]
 [ext_resource type="Texture2D" uid="uid://v0ehiufv2h2c" path="res://finalplant/plant-4.png" id="5_2ggyb"]
 [ext_resource type="Texture2D" uid="uid://b8r2aokv3gaei" path="res://finalplant/plant-6.png" id="6_ty8ig"]
@@ -382,7 +382,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_88dme"]
 resource_name = "shoot"
-length = 0.3
+length = 0.15
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -415,7 +415,7 @@ tracks/2/path = NodePath("Node2D/Sprite2D:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("13_l6bur"), ExtResource("14_ubrri"), ExtResource("15_at7o3"), ExtResource("16_d7rhc")]
@@ -427,7 +427,7 @@ tracks/3/path = NodePath("CompStateMachine/Shot")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0.05),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -479,7 +479,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5gow2"]
-radius = 28.0
+radius = 24.0
 
 [node name="FinalPlant" type="CharacterBody2D" node_paths=PackedStringArray("HP_component") groups=["enemy"]]
 collision_layer = 2
@@ -488,7 +488,7 @@ script = ExtResource("1_1qwfq")
 HP_component = NodePath("Node2D/CompHP")
 range = 400.0
 bullet = ExtResource("2_fkqej")
-root = ExtResource("3_vlmc1")
+root = ExtResource("3_nhpfm")
 enemy_name = "Plant Of Terror"
 speed = 200
 max_hp = 100
@@ -620,8 +620,9 @@ anim = NodePath("../../AnimationPlayer")
 anim_name = "melee"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -30)
+position = Vector2(-1, -54)
 shape = SubResource("CircleShape2D_5gow2")
+debug_color = Color(0.959633, 8.66354e-07, 0.520542, 0.42)
 
 [node name="OffscreenIndicator" parent="." instance=ExtResource("44_8k14a")]
 sprite = ExtResource("45_igxgv")

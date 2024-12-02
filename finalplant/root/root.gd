@@ -1,14 +1,13 @@
 extends Node2D
 
+@export var anim : AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+	anim.play("spawn")
+	#set_rand_pos(Vector2(0,0))
+	
 func set_rand_pos(start_pos : Vector2):
-	self.position = Vector2(randf_range(start_pos.x-400,start_pos.y+400),randf_range(start_pos.y-400,start_pos.y+400))
+	self.global_position = Vector2(randf_range(start_pos.x-200,start_pos.y+200),randf_range(start_pos.y-200,start_pos.y+200))
+
+func remove():
+	self.queue_free()

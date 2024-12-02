@@ -16,6 +16,7 @@ var start_pos : Vector2
 var target : BeeControler
 var next_action
 var boss_bar : Node
+var last_action : int = -1
 
 var attacking: bool = true
 
@@ -53,9 +54,13 @@ func should_sleep():
 	return start_pos.distance_squared_to(target.global_position) > fight_range*fight_range
 
 func change_action():
-	#next_action = actions.MELEE
 	next_action = randi_range(0,2)
-	#print("Next Action")
+	if last_action == next_action:
+		next_action += 1
+		if next_action > 2:
+			next_action = 0
+	last_action = next_action 
+	next_action = actions.DEFENCE
 	return next_action
 	
 func spawn_bullet():
@@ -65,11 +70,9 @@ func spawn_bullet():
 	bullet_container.add_child(b)
 	
 func spawn_roots(amount : int):
-	return
 	for i in range(amount):
 		var r = root.instantiate()
 		r.set_rand_pos(self.global_position)
-		r.start_rot_timer()
 		bullet_container.add_child(r)
 		
 func update_boss_bar(value : int):

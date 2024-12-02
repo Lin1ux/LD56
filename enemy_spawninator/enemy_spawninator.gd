@@ -27,8 +27,9 @@ var big_bird = preload("res://enemies/bigbird/bigbird.tscn")
 var butterfly = preload("res://enemies/butterfly/butterfly.tscn")
 var wasp = preload("res://enemies/wasp/wasp.tscn")
 var final = preload("res://finalplant/final_plant.tscn")
+var huge_bird = preload("res://huge_bird/huge_bird.tscn")
 
-enum ENEMY { FLY, BIRD, BIG_BIRD, BUTTERFLY,WASP,FINAL }
+enum ENEMY { FLY, BIRD, BIG_BIRD, BUTTERFLY,WASP,FINAL,HUGE_BIRD }
 func spawn(enemy):
 	match enemy:
 		ENEMY.FLY:
@@ -68,8 +69,15 @@ func spawn(enemy):
 			b.bullet_container = bullet_container
 			b.UI = UI
 			enemy_container.add_child(b)
+		ENEMY.HUGE_BIRD:
+			var hb = huge_bird.instantiate()
+			hb.global_position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * 700
+			hb.bee_manager = bee_manager
+			enemy_container.add_child(hb)
+			$BigBirdSpawn.play()
 
-
+var wave_map = [{ "spawn": [ENEMY.FINAL] }]
+'''
 var wave_map = [
 	{ "func": HelpBoxManager.show_help.bind("Butterfly", "Helps you by spawning flowers!", preload("res://sprites/butterfly.png")),
 		"spawn": [ENEMY.BUTTERFLY, ENEMY.BUTTERFLY] },
@@ -98,6 +106,7 @@ var wave_map = [
 	{ "spawn": [ENEMY.FLY, ENEMY.WASP, ENEMY.WASP, ENEMY.BIG_BIRD] },
 	{ "spawn": [ENEMY.FINAL] }
 ]
+'''
 
 func process_wave():
 	if wave_number >= wave_map.size():
