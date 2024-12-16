@@ -27,3 +27,5 @@ func _process(delta: float) -> void:
 	else:
 		$Indicator.global_position.x = clamp(global_position.x, camera_position.x - screen_size.x / 2 + screen_margin, camera_position.x + screen_size.x / 2 - screen_margin)
 		$Indicator.global_position.y = clamp(global_position.y, camera_position.y - screen_size.y / 2 + screen_margin, camera_position.y + screen_size.y / 2 - screen_margin)
+		
+		
