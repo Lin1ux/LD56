@@ -60,7 +60,7 @@ func change_action():
 		if next_action > 2:
 			next_action = 0
 	last_action = next_action 
-	next_action = actions.DEFENCE
+	next_action = actions.DEFENCE	#TODO usunąć
 	return next_action
 	
 func spawn_bullet():
