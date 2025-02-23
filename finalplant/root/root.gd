@@ -20,7 +20,7 @@ func can_deal_damage():
 	return spawned;
 	
 func enemy_atacked():
-	queue_free()
+	anim.play("hide")
 	
 func death():
 	anim.play("hide")
