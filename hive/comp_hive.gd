@@ -13,6 +13,13 @@ func _ready() -> void:
 	update_progress_bar()
 	
 func spawn_bees():
+	
+	var prev = bee_cost
+	bee_cost = 1 + (0.25 * parent.bee_controller.get_amount_of_bees())
+	if prev != bee_cost:
+		pass
+		#print("Bee cost: ", bee_cost)
+	
 	if number_of_pollen >= bee_cost:
 		$"../BeeSpawnSound".play()
 

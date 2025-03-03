@@ -113,7 +113,7 @@ script = ExtResource("10_lx68i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_gst4o")
+&"": SubResource("AnimationLibrary_gst4o")
 }
 
 [editable path="CompHP"]
