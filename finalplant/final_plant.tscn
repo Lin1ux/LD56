@@ -1,6 +1,6 @@
 [gd_scene load_steps=60 format=3 uid="uid://br8gkj5owgbla"]
 
-[ext_resource type="Script" path="res://finalplant/final_plant.gd" id="1_1qwfq"]
+[ext_resource type="Script" uid="uid://dumosbiy8vm88" path="res://finalplant/final_plant.gd" id="1_1qwfq"]
 [ext_resource type="Texture2D" uid="uid://uccjog3kg6b7" path="res://finalplant/plant-1.png" id="2_3qday"]
 [ext_resource type="PackedScene" uid="uid://bew46r22ofb1a" path="res://finalplant/bullet/bullet.tscn" id="2_fkqej"]
 [ext_resource type="Texture2D" uid="uid://o5ua4w3oxeib" path="res://finalplant/plant-2.png" id="3_12l6h"]
@@ -29,19 +29,19 @@
 [ext_resource type="Texture2D" uid="uid://b5fwol25ax4iv" path="res://finalplant/plant-26.png" id="25_ppxkr"]
 [ext_resource type="Texture2D" uid="uid://il4p78ensqex" path="res://finalplant/plant-27.png" id="26_ogc16"]
 [ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="27_8ajlm"]
-[ext_resource type="Script" path="res://finalplant/sleep.gd" id="28_5qqed"]
-[ext_resource type="Script" path="res://finalplant/open.gd" id="29_cwuob"]
-[ext_resource type="Script" path="res://finalplant/prepare_cannon.gd" id="30_qabpe"]
-[ext_resource type="Script" path="res://finalplant/close.gd" id="30_wygv8"]
-[ext_resource type="Script" path="res://finalplant/shot.gd" id="31_47ivy"]
-[ext_resource type="Script" path="res://finalplant/hide_cannon.gd" id="31_cx8bk"]
-[ext_resource type="Script" path="res://finalplant/prepare_teetg.gd" id="32_7hveq"]
-[ext_resource type="Script" path="res://finalplant/defence.gd" id="34_8a3tv"]
-[ext_resource type="Script" path="res://finalplant/hide_teeth.gd" id="34_ldqyw"]
-[ext_resource type="Script" path="res://finalplant/melee.gd" id="36_6prvr"]
-[ext_resource type="Script" path="res://finalplant/melee_charge.gd" id="38_ubvl5"]
-[ext_resource type="Script" path="res://finalplant/after_charge.gd" id="39_g3xoi"]
-[ext_resource type="Script" path="res://finalplant/charge.gd" id="39_guq6j"]
+[ext_resource type="Script" uid="uid://dpry73rcder7s" path="res://finalplant/sleep.gd" id="28_5qqed"]
+[ext_resource type="Script" uid="uid://n8bowl1xbwui" path="res://finalplant/open.gd" id="29_cwuob"]
+[ext_resource type="Script" uid="uid://rdag3lgdthge" path="res://finalplant/prepare_cannon.gd" id="30_qabpe"]
+[ext_resource type="Script" uid="uid://b13ujdfg01ogf" path="res://finalplant/close.gd" id="30_wygv8"]
+[ext_resource type="Script" uid="uid://p2bxrxlmfmne" path="res://finalplant/shot.gd" id="31_47ivy"]
+[ext_resource type="Script" uid="uid://dsqk5tfnapptv" path="res://finalplant/hide_cannon.gd" id="31_cx8bk"]
+[ext_resource type="Script" uid="uid://3k5j3jcqvbkl" path="res://finalplant/prepare_teetg.gd" id="32_7hveq"]
+[ext_resource type="Script" uid="uid://biu5kwon6tu68" path="res://finalplant/defence.gd" id="34_8a3tv"]
+[ext_resource type="Script" uid="uid://c31gv6wwlxtlr" path="res://finalplant/hide_teeth.gd" id="34_ldqyw"]
+[ext_resource type="Script" uid="uid://svxxwh3hor3" path="res://finalplant/melee.gd" id="36_6prvr"]
+[ext_resource type="Script" uid="uid://r0qsc7e2he50" path="res://finalplant/melee_charge.gd" id="38_ubvl5"]
+[ext_resource type="Script" uid="uid://dod0hy00f6v4v" path="res://finalplant/after_charge.gd" id="39_g3xoi"]
+[ext_resource type="Script" uid="uid://bj0vexp4fwb1k" path="res://finalplant/charge.gd" id="39_guq6j"]
 [ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="41_qecgs"]
 [ext_resource type="PackedScene" uid="uid://dpy36m31oqt6m" path="res://offscreen_indicator/offscreen_indicator.tscn" id="44_8k14a"]
 [ext_resource type="Texture2D" uid="uid://cnkiudhkcnujt" path="res://sprites/enemy_indicator.png" id="45_igxgv"]
@@ -466,16 +466,16 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6d6u2"]
 _data = {
-"RESET": SubResource("Animation_fxlyk"),
-"close": SubResource("Animation_vk5ff"),
-"hideCannon": SubResource("Animation_563pe"),
-"hide_teeth": SubResource("Animation_v8u26"),
-"melee": SubResource("Animation_3kkwk"),
-"open": SubResource("Animation_ii822"),
-"prepareCannon": SubResource("Animation_0g56i"),
-"prepare_teeth": SubResource("Animation_cqmsa"),
-"shoot": SubResource("Animation_88dme"),
-"sleep": SubResource("Animation_rjhuj")
+&"RESET": SubResource("Animation_fxlyk"),
+&"close": SubResource("Animation_vk5ff"),
+&"hideCannon": SubResource("Animation_563pe"),
+&"hide_teeth": SubResource("Animation_v8u26"),
+&"melee": SubResource("Animation_3kkwk"),
+&"open": SubResource("Animation_ii822"),
+&"prepareCannon": SubResource("Animation_0g56i"),
+&"prepare_teeth": SubResource("Animation_cqmsa"),
+&"shoot": SubResource("Animation_88dme"),
+&"sleep": SubResource("Animation_rjhuj")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5gow2"]

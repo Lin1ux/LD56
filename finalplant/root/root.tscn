@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://b5dk7x2qcey4m"]
 
-[ext_resource type="Script" path="res://finalplant/root/root.gd" id="1_rggkr"]
+[ext_resource type="Script" uid="uid://cgha2y6unqk12" path="res://finalplant/root/root.gd" id="1_rggkr"]
 [ext_resource type="Texture2D" uid="uid://dnp4fa1sdev7m" path="res://finalplant/root/root1.png" id="2_dvjif"]
 [ext_resource type="Texture2D" uid="uid://w6m8xuvaa5hs" path="res://finalplant/root/root2.png" id="3_3p2rt"]
 [ext_resource type="Texture2D" uid="uid://c3pik152ua2ad" path="res://finalplant/root/root3.png" id="4_m10ed"]
@@ -160,9 +160,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h8rvk"]
 _data = {
-"RESET": SubResource("Animation_yn8w8"),
-"hide": SubResource("Animation_7e4xa"),
-"spawn": SubResource("Animation_icveg")
+&"RESET": SubResource("Animation_yn8w8"),
+&"hide": SubResource("Animation_7e4xa"),
+&"spawn": SubResource("Animation_icveg")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6a1fc"]
@@ -182,7 +182,7 @@ texture = ExtResource("2_dvjif")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_h8rvk")
+&"": SubResource("AnimationLibrary_h8rvk")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

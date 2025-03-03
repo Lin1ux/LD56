@@ -1,8 +1,8 @@
 [gd_scene load_steps=28 format=3 uid="uid://r145qt1pyl50"]
 
-[ext_resource type="Shader" path="res://outline2.gdshader" id="1_3iwfj"]
+[ext_resource type="Shader" uid="uid://cxvghnyul12wj" path="res://outline2.gdshader" id="1_3iwfj"]
 [ext_resource type="Texture2D" uid="uid://dbyuf7mqe7ija" path="res://sprites/butterfly.png" id="1_cse1f"]
-[ext_resource type="Script" path="res://help_box/help_box.gd" id="1_xj3qg"]
+[ext_resource type="Script" uid="uid://cx04f5no2d0ow" path="res://help_box/help_box.gd" id="1_xj3qg"]
 [ext_resource type="PackedScene" uid="uid://b3tqc20jr2x8q" path="res://cursor/cursor.tscn" id="4_vm3e2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rp2h8"]
@@ -242,9 +242,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bpy58"]
 _data = {
-"RESET": SubResource("Animation_40p0i"),
-"pop_in": SubResource("Animation_cu7ro"),
-"pop_out": SubResource("Animation_1v4oc")
+&"RESET": SubResource("Animation_40p0i"),
+&"pop_in": SubResource("Animation_cu7ro"),
+&"pop_out": SubResource("Animation_1v4oc")
 }
 
 [node name="HelpBox" type="CanvasLayer"]
@@ -400,7 +400,7 @@ text = "Hide Hints"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bpy58")
+&"": SubResource("AnimationLibrary_bpy58")
 }
 
 [node name="Cursor" parent="." instance=ExtResource("4_vm3e2")]

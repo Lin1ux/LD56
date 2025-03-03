@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://udutv2qvts45"]
 
-[ext_resource type="Script" path="res://bee/bee_manager.gd" id="1_lpqgk"]
+[ext_resource type="Script" uid="uid://nrgltbte0qvw" path="res://bee/bee_manager.gd" id="1_lpqgk"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="2_5y36g"]
-[ext_resource type="Shader" path="res://outline2.gdshader" id="3_25eci"]
+[ext_resource type="Shader" uid="uid://cxvghnyul12wj" path="res://outline2.gdshader" id="3_25eci"]
 [ext_resource type="AudioStream" uid="uid://tkhv62xv7g4h" path="res://sounds/beedash.wav" id="4_rhpx0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ix8h"]

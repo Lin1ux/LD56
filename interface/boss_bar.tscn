@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2uu132ckyitj"]
 
 [ext_resource type="Texture2D" uid="uid://c4o86ewhk3bsc" path="res://sprites/bossbar.png" id="1_mnuwk"]
-[ext_resource type="Script" path="res://interface/boss_bar.gd" id="2_am2bn"]
+[ext_resource type="Script" uid="uid://bish8sjlnu283" path="res://interface/boss_bar.gd" id="2_am2bn"]
 [ext_resource type="Texture2D" uid="uid://0wius75h024k" path="res://sprites/bossbar_health.png" id="2_yj5y3"]
 
 [node name="Boss Bar" type="TextureProgressBar"]

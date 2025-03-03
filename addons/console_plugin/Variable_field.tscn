@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://br0kad247uebq"]
 
-[ext_resource type="Script" path="res://addons/console_plugin/variable_entry.gd" id="1_0kw3h"]
+[ext_resource type="Script" uid="uid://b7gdmsbsyiukv" path="res://addons/console_plugin/variable_entry.gd" id="1_0kw3h"]
 
 [node name="HBoxContainer" type="HBoxContainer"]
 custom_minimum_size = Vector2(400, 50)

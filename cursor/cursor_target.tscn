@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxttjwhkwynj0"]
 
-[ext_resource type="Script" path="res://cursor/cursor_target.gd" id="1_45r5e"]
+[ext_resource type="Script" uid="uid://cvyeaj52db6hn" path="res://cursor/cursor_target.gd" id="1_45r5e"]
 [ext_resource type="Texture2D" uid="uid://b78kmqgyu18q6" path="res://cursor/target.png" id="2_ma64l"]
 
 [sub_resource type="Animation" id="Animation_yytjy"]
@@ -59,8 +59,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vg6bp"]
 _data = {
-"RESET": SubResource("Animation_yytjy"),
-"animation": SubResource("Animation_spd5d")
+&"RESET": SubResource("Animation_yytjy"),
+&"animation": SubResource("Animation_spd5d")
 }
 
 [node name="CursorTarget" type="Control"]
@@ -79,7 +79,7 @@ texture = ExtResource("2_ma64l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_vg6bp")
+&"": SubResource("AnimationLibrary_vg6bp")
 }
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

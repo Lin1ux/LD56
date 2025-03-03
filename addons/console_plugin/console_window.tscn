@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5vhg2um2kv0v"]
 
-[ext_resource type="Script" path="res://addons/console_plugin/input_line.gd" id="1_p7wc7"]
+[ext_resource type="Script" uid="uid://di34l2mdoadeu" path="res://addons/console_plugin/input_line.gd" id="1_p7wc7"]
 
 [node name="Window" type="Window"]
 process_mode = 3

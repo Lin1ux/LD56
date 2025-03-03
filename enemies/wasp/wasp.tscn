@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b0g1l6aggyf33"]
 
-[ext_resource type="Script" path="res://enemies/wasp/wasp.gd" id="1_0agsq"]
+[ext_resource type="Script" uid="uid://dqll2wt33y75g" path="res://enemies/wasp/wasp.gd" id="1_0agsq"]
 [ext_resource type="Texture2D" uid="uid://bs22ls8bmffct" path="res://enemies/wasp/wasp.png" id="1_u37na"]
 [ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="2_uaf20"]
 [ext_resource type="PackedScene" uid="uid://dpy36m31oqt6m" path="res://offscreen_indicator/offscreen_indicator.tscn" id="4_1x8ky"]

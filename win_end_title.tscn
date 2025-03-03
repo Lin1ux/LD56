@@ -52,8 +52,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2otur"]
 _data = {
-"RESET": SubResource("Animation_ew34c"),
-"sway": SubResource("Animation_u2x20")
+&"RESET": SubResource("Animation_ew34c"),
+&"sway": SubResource("Animation_u2x20")
 }
 
 [sub_resource type="GDScript" id="GDScript_qw8in"]

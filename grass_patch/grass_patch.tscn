@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bq46xm6orymse"]
 
 [ext_resource type="Texture2D" uid="uid://bkr0oteyms6dh" path="res://sprites/prop_grass.png" id="1_4yq4c"]
-[ext_resource type="Script" path="res://grass_patch/grass_patch.gd" id="1_sl866"]
+[ext_resource type="Script" uid="uid://beey2smj4lj3c" path="res://grass_patch/grass_patch.gd" id="1_sl866"]
 
 [sub_resource type="Animation" id="Animation_6ahsj"]
 length = 0.001
@@ -36,8 +36,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2qqnb"]
 _data = {
-"RESET": SubResource("Animation_6ahsj"),
-"flow": SubResource("Animation_s7kdw")
+&"RESET": SubResource("Animation_6ahsj"),
+&"flow": SubResource("Animation_s7kdw")
 }
 
 [node name="GrassPatch" type="Node2D"]

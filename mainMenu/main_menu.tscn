@@ -1,8 +1,8 @@
 [gd_scene load_steps=32 format=3 uid="uid://c3u7ikrbedrms"]
 
 [ext_resource type="Texture2D" uid="uid://bnymacjh2sjo3" path="res://sprites/grass.png" id="1_40j4h"]
-[ext_resource type="Script" path="res://mainMenu/main_menu.gd" id="1_meksa"]
-[ext_resource type="Shader" path="res://outline2.gdshader" id="3_u7asb"]
+[ext_resource type="Script" uid="uid://bvyuywyv4x4vm" path="res://mainMenu/main_menu.gd" id="1_meksa"]
+[ext_resource type="Shader" uid="uid://cxvghnyul12wj" path="res://outline2.gdshader" id="3_u7asb"]
 [ext_resource type="Texture2D" uid="uid://de62ttyo31ql" path="res://flower/flower1.png" id="6_4aq35"]
 [ext_resource type="PackedScene" uid="uid://bq46xm6orymse" path="res://grass_patch/grass_patch.tscn" id="6_6feqe"]
 [ext_resource type="Texture2D" uid="uid://cdyrisukkr3rc" path="res://flower/flower3.png" id="7_m4e1b"]
@@ -87,8 +87,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2otur"]
 _data = {
-"RESET": SubResource("Animation_ew34c"),
-"sway": SubResource("Animation_u2x20")
+&"RESET": SubResource("Animation_ew34c"),
+&"sway": SubResource("Animation_u2x20")
 }
 
 [sub_resource type="GDScript" id="GDScript_eq2v3"]
@@ -134,8 +134,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ipmux"]
 _data = {
-"RESET": SubResource("Animation_75gyc"),
-"anim": SubResource("Animation_gclnk")
+&"RESET": SubResource("Animation_75gyc"),
+&"anim": SubResource("Animation_gclnk")
 }
 
 [sub_resource type="GDScript" id="GDScript_rc8ny"]
@@ -178,8 +178,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6he0h"]
 _data = {
-"RESET": SubResource("Animation_2jiym"),
-"loop": SubResource("Animation_iakr2")
+&"RESET": SubResource("Animation_2jiym"),
+&"loop": SubResource("Animation_iakr2")
 }
 
 [sub_resource type="GDScript" id="GDScript_d7nw4"]
@@ -357,7 +357,7 @@ script = SubResource("GDScript_6ylym")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Objects2/LogoContainer/Logo"]
 libraries = {
-"": SubResource("AnimationLibrary_2otur")
+&"": SubResource("AnimationLibrary_2otur")
 }
 
 [node name="StartGameMinigame" type="Node2D" parent="Objects2"]
@@ -388,7 +388,7 @@ script = SubResource("GDScript_eq2v3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Objects2/StartGameMinigame/Arrow"]
 libraries = {
-"": SubResource("AnimationLibrary_ipmux")
+&"": SubResource("AnimationLibrary_ipmux")
 }
 
 [node name="StartGame" parent="Objects2/StartGameMinigame" instance=ExtResource("13_p41sl")]
@@ -404,7 +404,7 @@ texture = ExtResource("14_jpt8r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Objects2/StartGameMinigame/PollinationHelper"]
 libraries = {
-"": SubResource("AnimationLibrary_6he0h")
+&"": SubResource("AnimationLibrary_6he0h")
 }
 
 [node name="Controls" type="Sprite2D" parent="Objects2"]

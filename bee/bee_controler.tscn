@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyygyfbpr3yqq"]
 
-[ext_resource type="Script" path="res://bee/bee_manager.gd" id="1_6rsat"]
+[ext_resource type="Script" uid="uid://nrgltbte0qvw" path="res://bee/bee_manager.gd" id="1_6rsat"]
 [ext_resource type="PackedScene" uid="uid://bk8yhj7gqf6qe" path="res://bee/bee.tscn" id="2_txc8r"]
 
 [node name="beeManager" type="Node2D"]

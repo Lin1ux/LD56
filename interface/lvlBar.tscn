@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://oyb10us6hrpt"]
 
-[ext_resource type="Script" path="res://interface/lvl_bar.gd" id="1_3nv2s"]
-[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://ui/square.png" id="2_1db0h"]
+[ext_resource type="Script" uid="uid://c47rmg10c6hu6" path="res://interface/lvl_bar.gd" id="1_3nv2s"]
+[ext_resource type="Texture2D" uid="uid://cpss2yjxa1mk4" path="res://UI/square.png" id="2_1db0h"]
 
 [node name="LvlBar" type="Control"]
 layout_mode = 3

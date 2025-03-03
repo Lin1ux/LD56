@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ceagu34mf0ohi"]
 
-[ext_resource type="Script" path="res://mainMenu/comp_start_game.gd" id="1_64nck"]
+[ext_resource type="Script" uid="uid://dc71jtbt2q6kg" path="res://mainMenu/comp_start_game.gd" id="1_64nck"]
 
 [node name="CompStartGame" type="Node2D"]
 script = ExtResource("1_64nck")

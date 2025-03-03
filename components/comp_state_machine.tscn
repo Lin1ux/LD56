@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://fj5wspmpen8a"]
 
-[ext_resource type="Script" path="res://components/comp_state_machine.gd" id="1_wwt8h"]
+[ext_resource type="Script" uid="uid://bp1m54107my5d" path="res://components/comp_state_machine.gd" id="1_wwt8h"]
 
 [node name="CompStateMachine" type="Node"]
 script = ExtResource("1_wwt8h")

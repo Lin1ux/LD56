@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpy36m31oqt6m"]
 
-[ext_resource type="Script" path="res://offscreen_indicator/offscreen_indicator.gd" id="1_12lmr"]
+[ext_resource type="Script" uid="uid://o55t1k3phlxh" path="res://offscreen_indicator/offscreen_indicator.gd" id="1_12lmr"]
 [ext_resource type="Texture2D" uid="uid://cnkiudhkcnujt" path="res://sprites/enemy_indicator.png" id="2_jl2l4"]
 
 [sub_resource type="Curve" id="Curve_rbekx"]
@@ -16,6 +16,6 @@ curve = SubResource("Curve_rbekx")
 visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Indicator"]
-rotation = 11093.7
+rotation = 35323.6
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_jl2l4")
