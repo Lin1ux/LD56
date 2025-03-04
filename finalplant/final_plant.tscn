@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://br8gkj5owgbla"]
+[gd_scene load_steps=59 format=3 uid="uid://br8gkj5owgbla"]
 
 [ext_resource type="Script" uid="uid://dumosbiy8vm88" path="res://finalplant/final_plant.gd" id="1_1qwfq"]
 [ext_resource type="Texture2D" uid="uid://uccjog3kg6b7" path="res://finalplant/plant-1.png" id="2_3qday"]
@@ -44,7 +44,6 @@
 [ext_resource type="Script" uid="uid://bj0vexp4fwb1k" path="res://finalplant/charge.gd" id="39_guq6j"]
 [ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="41_qecgs"]
 [ext_resource type="PackedScene" uid="uid://dpy36m31oqt6m" path="res://offscreen_indicator/offscreen_indicator.tscn" id="44_8k14a"]
-[ext_resource type="Texture2D" uid="uid://cnkiudhkcnujt" path="res://sprites/enemy_indicator.png" id="45_igxgv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dlqt"]
 radius = 34.7851
@@ -524,7 +523,7 @@ parent = NodePath("../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_6d6u2")
+&"": SubResource("AnimationLibrary_6d6u2")
 }
 
 [node name="CompStateMachine" parent="." node_paths=PackedStringArray("state") instance=ExtResource("27_8ajlm")]
@@ -625,8 +624,6 @@ shape = SubResource("CircleShape2D_5gow2")
 debug_color = Color(0.959633, 8.66354e-07, 0.520542, 0.42)
 
 [node name="OffscreenIndicator" parent="." instance=ExtResource("44_8k14a")]
-sprite = ExtResource("45_igxgv")
-sprite_rotation = 1.5708
 
 [connection signal="timeout" from="CompStateMachine/Shot/Timer" to="CompStateMachine/Shot" method="_on_timer_timeout"]
 [connection signal="timeout" from="CompStateMachine/Defence/Timer" to="CompStateMachine/Defence" method="_on_timer_timeout"]

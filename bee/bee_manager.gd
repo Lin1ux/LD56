@@ -134,13 +134,18 @@ func get_amount_of_pollen():
 
 
 
-func destroy_bee(bee: BeeControler):
-	bees.erase(bee)
-	cursour_folowing.erase(bee)
-	dashing_bees.erase(bee)
-	bee.queue_free()
+func destroy_bee(bee: BeeControler, fatal: bool):
+	
 	if UI:
 		UI.set_bees_amount(get_amount_of_bees())
-	if len(bees) == 0:
-		var callable = Callable(get_tree(),"change_scene_to_file")
-		callable.call_deferred("res://end_title.tscn")
+	
+	if fatal:
+		
+		bees.erase(bee)
+		cursour_folowing.erase(bee)
+		dashing_bees.erase(bee)
+		bee.queue_free()
+		
+		if len(bees) == 0:
+			var callable = Callable(get_tree(),"change_scene_to_file")
+			callable.call_deferred("res://end_title.tscn")

@@ -9,6 +9,7 @@ func _ready() -> void:
 	
 func set_spawned(can_damage : bool):
 	spawned = can_damage
+	$DespawnTimer.start()
 	
 func set_rand_pos(start_pos : Vector2):
 	self.global_position = Vector2(randf_range(start_pos.x-200,start_pos.x+200),randf_range(start_pos.y-100,start_pos.y+100))
@@ -23,4 +24,7 @@ func enemy_atacked():
 	anim.play("hide")
 	
 func death():
+	anim.play("hide")
+
+func _on_despawn_timer_timeout() -> void:
 	anim.play("hide")

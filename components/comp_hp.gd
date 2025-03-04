@@ -64,6 +64,8 @@ func decrease_hp(value : int):
 	hp = hp - value
 	hp_changed.emit(hp)
 	progress_bar.value = hp
+	
+	hp_update(hp)
 	if hp <= 0:
 		death()
 	return
@@ -81,6 +83,12 @@ func death():
 		death_callback.death()
 	else:
 		parent.queue_free()
+	return
+	
+@export var update_callback: Node
+func hp_update(_hp: int):
+	if update_callback != null:
+		update_callback.hp_update(_hp)
 	return
 	
 func set_vulnerable(mode :bool):

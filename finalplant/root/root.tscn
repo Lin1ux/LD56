@@ -204,3 +204,9 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CompHP/Area2D"]
 position = Vector2(-2, -2.5)
 shape = SubResource("RectangleShape2D_7mk20")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

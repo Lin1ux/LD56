@@ -81,8 +81,8 @@ func dash():
 func end_dash():
 	$StateMachine/Dash.end_dash_prematurely()
 	
-func bee_died():
-	bee_dies.emit(self)
+func bee_died(fatal: bool):
+	bee_dies.emit(self, fatal)
 	
 func can_deal_damage() -> bool:
 	return $StateMachine.state.name == "Dash"
