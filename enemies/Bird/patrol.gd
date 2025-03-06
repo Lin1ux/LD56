@@ -10,7 +10,8 @@ func enter() -> void:
 		tween.kill()
 	tween = create_tween()
 	start_location = parent.rotation
-	tween.tween_property(parent,"rotation",parent.rotation + deg_to_rad(180),2)
+	var dir = lerp_angle(parent.rotation,parent.rotation + deg_to_rad(180),1)
+	tween.tween_property(parent,"rotation",dir,2)
 	tween.finished.connect(next_state)
 	current_angle = parent.rotation
 

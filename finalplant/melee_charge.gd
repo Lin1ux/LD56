@@ -45,7 +45,7 @@ func correction():
 	if target == null:
 		parent.get_new_target()
 	var angle = parent.get_angle_to(target.global_position)
-	tween.tween_property(parent,"rotation",parent.global_rotation + angle,0.2)
+	tween.tween_property(parent,"rotation",parent.global_rotation + angle,0.2)	#TODO ROTACJA
 	tween.finished.connect(correction)	
 
 func fly_forward(delta: float):

@@ -1,16 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://df0rfyogsfqj2"]
+[gd_scene load_steps=14 format=3 uid="uid://df0rfyogsfqj2"]
 
-[ext_resource type="Script" uid="uid://b6yb3wpi35p0k" path="res://enemies/bird/bird.gd" id="1_eob7b"]
+[ext_resource type="Script" uid="uid://b6yb3wpi35p0k" path="res://enemies/Bird/bird.gd" id="1_eob7b"]
 [ext_resource type="Texture2D" uid="uid://7x4r86ttfhck" path="res://enemies/bigbird/dreamberd.png" id="2_si1s8"]
 [ext_resource type="PackedScene" uid="uid://fj5wspmpen8a" path="res://components/comp_state_machine.tscn" id="3_gbhvg"]
-[ext_resource type="Script" uid="uid://b1hxd72s7mgul" path="res://enemies/bird/spawned.gd" id="4_q5knr"]
-[ext_resource type="Script" uid="uid://b5cg10e8wsk3g" path="res://enemies/bird/patrol.gd" id="6_1srce"]
-[ext_resource type="Script" uid="uid://cl80251aroinw" path="res://enemies/bird/fly_forward.gd" id="7_k8wm3"]
-[ext_resource type="Script" uid="uid://dkbn0ins2ox31" path="res://enemies/bird/after_dash.gd" id="8_myk3u"]
-[ext_resource type="Script" uid="uid://doxcq0ijh81iy" path="res://enemies/bird/dash.gd" id="9_t6j2b"]
+[ext_resource type="Script" uid="uid://b1hxd72s7mgul" path="res://enemies/Bird/spawned.gd" id="4_q5knr"]
+[ext_resource type="Script" uid="uid://b5cg10e8wsk3g" path="res://enemies/Bird/patrol.gd" id="6_1srce"]
+[ext_resource type="Script" uid="uid://cl80251aroinw" path="res://enemies/Bird/fly_forward.gd" id="7_k8wm3"]
+[ext_resource type="Script" uid="uid://dkbn0ins2ox31" path="res://enemies/Bird/after_dash.gd" id="8_myk3u"]
+[ext_resource type="Script" uid="uid://doxcq0ijh81iy" path="res://enemies/Bird/dash.gd" id="9_t6j2b"]
 [ext_resource type="PackedScene" uid="uid://dpy36m31oqt6m" path="res://offscreen_indicator/offscreen_indicator.tscn" id="10_qsiou"]
 [ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="10_ykqpi"]
-[ext_resource type="Texture2D" uid="uid://cnkiudhkcnujt" path="res://sprites/enemy_indicator.png" id="11_dw2rv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjawy"]
 radius = 6.0
@@ -92,8 +91,6 @@ shape = SubResource("CircleShape2D_d8ybw")
 shape = SubResource("CircleShape2D_0lcu5")
 
 [node name="OffscreenIndicator" parent="." instance=ExtResource("10_qsiou")]
-sprite = ExtResource("11_dw2rv")
-sprite_rotation = 1.5708
 
 [connection signal="timeout" from="CompStateMachine/Spawned/Timer" to="CompStateMachine/Spawned" method="_on_timer_timeout"]
 [connection signal="timeout" from="CompStateMachine/FlyForward/Timer" to="CompStateMachine/FlyForward" method="_on_timer_timeout"]

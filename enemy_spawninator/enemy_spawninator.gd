@@ -76,7 +76,7 @@ func spawn(enemy):
 			enemy_container.add_child(hb)
 			$BigBirdSpawn.play()
 
-#var wave_map = [{ "spawn": [ENEMY.FINAL] }]
+#var wave_map = [{ "spawn": [ENEMY.BIG_BIRD] }]
 var wave_map = [
 	{ "func": HelpBoxManager.show_help.bind("Butterfly", "Helps you by spawning flowers!", preload("res://sprites/butterfly.png")),
 		"spawn": [ENEMY.BUTTERFLY, ENEMY.BUTTERFLY] },
