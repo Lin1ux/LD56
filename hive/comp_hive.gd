@@ -15,7 +15,7 @@ func _ready() -> void:
 func spawn_bees():
 	
 	var prev = bee_cost
-	bee_cost = 1 + (0.25 * parent.bee_controller.get_amount_of_bees())
+	bee_cost = 1 + pow(float(parent.bee_controller.get_amount_of_bees()) / 15.0, 2.5)
 	if prev != bee_cost:
 		pass
 		#print("Bee cost: ", bee_cost)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b207xegfvb5um"]
 
-[ext_resource type="Script" uid="uid://b8rgt3gf6wip" path="res://enemy_spawninator/enemy_spawninator.gd" id="1_wdtb5"]
+[ext_resource type="Script" path="res://enemy_spawninator/enemy_spawninator.gd" id="1_wdtb5"]
 [ext_resource type="AudioStream" uid="uid://17vk40krq2sf" path="res://sounds/fly_spawn.wav" id="2_elk12"]
 [ext_resource type="AudioStream" uid="uid://dhkpc5csgt4s" path="res://sounds/bird_spawn.wav" id="3_nluh1"]
 [ext_resource type="AudioStream" uid="uid://vstyoxtk1trv" path="res://sounds/butterfly_spawn.wav" id="4_aiq85"]
