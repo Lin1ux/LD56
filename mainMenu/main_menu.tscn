@@ -429,8 +429,8 @@ offset_right = 416.0
 offset_bottom = 365.0
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 12
-text = "Nectarmancer 1.1, 2024
-falubaz, igorekkedziorek, Liniux, shamotte, Zedgame"
+text = "Nectarmancer 1.1
+© 2025 ZedGame, Liniux, shamotte, falubaz, igorekkedziorek"
 
 [node name="Cursor" parent="CanvasLayer" node_paths=PackedStringArray("bee_manager") instance=ExtResource("15_elfjy")]
 bee_manager = NodePath("../../BeeManager")

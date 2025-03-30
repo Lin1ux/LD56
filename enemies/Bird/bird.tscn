@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://b5cg10e8wsk3g" path="res://enemies/bird/patrol.gd" id="6_jyri1"]
 [ext_resource type="Script" uid="uid://cl80251aroinw" path="res://enemies/bird/fly_forward.gd" id="7_yuqr1"]
 [ext_resource type="Script" uid="uid://dkbn0ins2ox31" path="res://enemies/bird/after_dash.gd" id="8_sxmcw"]
-[ext_resource type="Script" path="res://enemies/bird/dash.gd" id="9_p5ugu"]
+[ext_resource type="Script" uid="uid://doxcq0ijh81iy" path="res://enemies/bird/dash.gd" id="9_p5ugu"]
 [ext_resource type="PackedScene" uid="uid://dpy36m31oqt6m" path="res://offscreen_indicator/offscreen_indicator.tscn" id="10_3121e"]
 [ext_resource type="PackedScene" uid="uid://gumua4x16fpt" path="res://components/comp_hp.tscn" id="10_afevb"]
 
